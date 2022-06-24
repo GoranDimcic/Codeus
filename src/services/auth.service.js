@@ -1,0 +1,20 @@
+import db from '../db/db.js'
+
+export const createUser = async (email, username, password, first_name, last_name) => {
+
+    const result = await db('user')
+        .insert({
+            email: email,
+            username: username,
+            password: password,
+            first_name: first_name,
+            last_name: last_name
+        })
+
+    return result;
+}
+
+export const loginUser = async (emailOrUsername, password) => {
+
+    
+}
