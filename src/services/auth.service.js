@@ -1,7 +1,6 @@
 import db from '../db/db.js'
 
 export const getUser = async (email) => {
-
     const result = await db('user')
         .where({
             email, email
@@ -11,7 +10,6 @@ export const getUser = async (email) => {
 }
 
 export const createUser = async (email, username, password, first_name, last_name) => {
-
     const result = await db('user')
         .insert({
             email: email,
@@ -25,7 +23,6 @@ export const createUser = async (email, username, password, first_name, last_nam
 }
 
 export const loginUser = async (emailOrUsername, password) => {
-
     const result = await db('user')
         .where({
             email: emailOrUsername, password: password
@@ -37,7 +34,6 @@ export const loginUser = async (emailOrUsername, password) => {
 }
 
 export const updateUser = async (email, username, first_name, last_name) => {
-
     const result = await db('user')
         .where({
             email: email
@@ -51,7 +47,7 @@ export const updateUser = async (email, username, first_name, last_name) => {
     return result;
 }
 
-export const updatePass = async() => {
+export const updatePass = async () => {
 
     //update password samo ako unese isti pass koji je vec imao
 }
