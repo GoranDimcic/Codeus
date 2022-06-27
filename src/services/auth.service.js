@@ -16,5 +16,12 @@ export const createUser = async (email, username, password, first_name, last_nam
 
 export const loginUser = async (emailOrUsername, password) => {
 
-    
+    const result = await db('user')
+        .where({
+            email: emailOrUsername, password: password
+        })
+
+    //uslov da li je nick ili email
+
+    return result;
 }
