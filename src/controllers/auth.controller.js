@@ -25,12 +25,37 @@ export const login = async (req, res) => {
 
         if (!user) {
             res.status(400).json({
-                message: "Error"
+                message: "No user with that email"
             })
         }
         else {
             res.status(200).json({
                 message: "Login succesful"
+            })
+        }
+    }
+    catch (error) {
+        res.status(400).json({
+            message: "Error"
+        })
+    }
+}
+
+export const update = async (req, res) => {
+    const { email, username, first_name, last_name } = req.body;
+
+    try {
+        const [user] = await authService.getUser(email);
+
+        if (!user) {
+            res.status(400).json({
+                message: "No user with that email!"
+            })
+        }
+        else {
+            await authService.updateUser(email, username, first_name, last_name)
+            res.status(200).json({
+                message: "Update complete."
             })
         }
     }
