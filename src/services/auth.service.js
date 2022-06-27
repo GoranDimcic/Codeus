@@ -36,7 +36,7 @@ export const loginUser = async (emailOrUsername, password) => {
     return result;
 }
 
-export const updateUser = async (email, username, first_name, last_name, password) => {
+export const updateUser = async (email, username, first_name, last_name) => {
 
     const result = await db('user')
         .where({
@@ -48,8 +48,10 @@ export const updateUser = async (email, username, first_name, last_name, passwor
             last_name: last_name
         })
 
-    //update password samo ako unese isti pass koji je vec imao
-    //update ostalih vrednosti standarno
-
     return result;
+}
+
+export const updatePass = async() => {
+
+    //update password samo ako unese isti pass koji je vec imao
 }
