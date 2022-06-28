@@ -4,7 +4,7 @@ export const addRating = async (req, res) => {
     const { user_id, game_id, rate } = req.body
 
     try {
-        await ratingService.createRate(user_id, game_id, rate)
+        await ratingService.createRating(user_id, game_id, rate)
         res.status(200).json({
             message: "You rated the game."
         })
@@ -20,7 +20,7 @@ export const updateRating = async (req, res) => {
     const { user_id, game_id, rate } = req.body
 
     try {
-        await ratingService.updateRate(user_id, game_id, rate)
+        await ratingService.updateRating(user_id, game_id, rate)
         res.status(200).json({
             message: "You updated the rate."
         })
