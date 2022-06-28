@@ -1,6 +1,6 @@
 import * as ratingService from "../services/rating.service.js"
 
-export const createRating = async (req, res) => {
+export const addRating = async (req, res) => {
     const { user_id, game_id, rate } = req.body
 
     try {
