@@ -20,10 +20,19 @@ export const deleteComment = async (req, res) => {
     const { user_id, game_id } = req.body;
 
     try {
-        await commentService.removeComment(user_id, game_id)
-        res.status(201).json({
-            message: "Comment removed for the game."
-        })
+        const [comment] = await commentService.getComment(user_id, game_id)
+
+        if (!comment) {
+            res.status(401).json({
+                message: "There is no comment for this game!"
+            })
+        }
+        else {
+            await commentService.removeComment(user_id, game_id)
+            res.status(201).json({
+                message: "Comment removed for the game."
+            })
+        }
     }
     catch (error) {
         res.status(401).json({

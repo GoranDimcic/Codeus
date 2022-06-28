@@ -5,12 +5,12 @@ export const register = async (req, res) => {
 
     try {
         await authService.createUser(email, username, password, first_name, last_name)
-        res.status(200).json({
+        res.status(201).json({
             message: "You are successfully registred."
         })
     }
     catch (error) {
-        res.status(400).json({
+        res.status(401).json({
             message: "Error"
         })
     }
@@ -23,18 +23,18 @@ export const login = async (req, res) => {
         const [user] = await authService.loginUser(email, password);
 
         if (!user) {
-            res.status(400).json({
+            res.status(401).json({
                 message: "No user with that email"
             })
         }
         else {
-            res.status(200).json({
+            res.status(201).json({
                 message: "Login succesful"
             })
         }
     }
     catch (error) {
-        res.status(400).json({
+        res.status(401).json({
             message: "Error"
         })
     }
@@ -47,19 +47,19 @@ export const update = async (req, res) => {
         const [user] = await authService.getUser(email);
 
         if (!user) {
-            res.status(400).json({
+            res.status(401).json({
                 message: "No user with that email!"
             })
         }
         else {
             await authService.updateUser(email, username, first_name, last_name)
-            res.status(200).json({
+            res.status(201).json({
                 message: "Update complete."
             })
         }
     }
     catch (error) {
-        res.status(400).json({
+        res.status(401).json({
             message: "Error"
         })
     }

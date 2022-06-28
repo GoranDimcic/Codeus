@@ -5,12 +5,12 @@ export const addGame = async (req, res) => {
 
     try {
         await gamesService.createGame(title, description, image, price)
-        res.status(200).json({
+        res.status(201).json({
             message: "Game created."
         })
     }
     catch (error) {
-        res.status(400).json({
+        res.status(401).json({
             message: "Error"
         })
     }
