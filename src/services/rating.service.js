@@ -7,7 +7,7 @@ export const getRating = async (user_id, game_id) => {
             game_id: game_id
         })
 
-    return result;
+        return result;
 }
 
 export const createRating = async (user_id, game_id, rate) => {

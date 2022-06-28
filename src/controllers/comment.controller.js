@@ -16,6 +16,31 @@ export const addComment = async (req, res) => {
     }
 }
 
+export const updateComment = async (req, res) => {
+    const { user_id, game_id, comment } = req.body;
+
+    try {
+        const [comm] = await commentService.getComment(user_id, game_id)
+
+        if (!comm) {
+            res.status(401).json({
+                message: "There is no comment for this game!"
+            })
+        }
+        else {
+            await commentService.updateComment(user_id, game_id, comment)
+            res.status(201).json({
+                message: "Comment is updated for the game."
+            })
+        }
+    }
+    catch (error) {
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
 export const deleteComment = async (req, res) => {
     const { user_id, game_id } = req.body;
 
