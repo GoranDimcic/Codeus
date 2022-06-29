@@ -4,6 +4,8 @@ import gameRouter from "./routes/games.route.js"
 import ratingRouter from "./routes/rating.route.js"
 import favoriteRouter from "./routes/favorite.route.js"
 import commentRouter from "./routes/comment.route.js"
+import transactionRouter from "./routes/transaction.route.js"
+import cartRouter from "./routes/cart.route.js"
 import bodyParser from 'body-parser'
 import 'dotenv/config'
 
@@ -17,6 +19,8 @@ app.use("/games", gameRouter)
 app.use("/rating", ratingRouter)
 app.use("/favorite", favoriteRouter)
 app.use("/comment", commentRouter)
+app.use("/transaction", transactionRouter)
+app.use("/cart", cartRouter)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

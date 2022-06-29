@@ -13,6 +13,7 @@ export const up = function (knex) {
             table.foreign('user_id').references('user_id').inTable('user').onDelete("CASCADE");
             table.integer('transaction_id').unsigned();
             table.foreign('transaction_id').references('transaction_id').inTable('transaction').onDelete("CASCADE");
+            table.unique(['user_id', 'game_id'])
         })
 };
 

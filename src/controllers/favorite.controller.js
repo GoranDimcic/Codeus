@@ -16,6 +16,22 @@ export const addFavorite = async (req, res) => {
     }
 }
 
+export const addGamePlatform = async (req, res) => {
+    const { game_id, type_id } = req.body;
+
+    try {
+        await favoriteServices.createGamePlatform(game_id, type_id)
+        res.status(201).json({
+            message: "You added game to the platform."
+        })
+    }
+    catch (error) {
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
 export const deleteFavorite = async (req, res) => {
     const { user_id, game_id } = req.body;
 
