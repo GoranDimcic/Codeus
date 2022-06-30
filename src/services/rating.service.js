@@ -33,3 +33,14 @@ export const updateRating = async (user_id, game_id, rate) => {
 
     return result;
 }
+
+export const deleteRating = async (user_id, game_id) => {
+    const result = db('rating')
+        .where({
+            user_id: user_id,
+            game_id: game_id
+        })
+        .delete()
+
+    return result;
+}

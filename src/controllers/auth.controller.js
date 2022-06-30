@@ -1,7 +1,6 @@
 import * as authService from '../services/auth.service.js';
-import jwt from "jsonwebtoken"
-import 'dotenv/config'
 import bcrypt from "bcrypt"
+import 'dotenv/config'
 
 export const register = async (req, res) => {
     const { email, username, password, first_name, last_name } = req.body;
@@ -14,15 +13,7 @@ export const register = async (req, res) => {
             await authService.createUser(email.toLowerCase(), username, encryptedUserPassword, first_name, last_name)
             const [user] = await authService.getUser(email.toLowerCase(), username)
 
-            const token = jwt.sign(
-                {
-                    user_id: user.user_id
-                },
-                process.env.TOKEN_KEY,
-                {
-                    expiresIn: "2h",
-                }
-            );
+            const token = await authService.getToken(user)
 
             res.status(201).json({
                 message: "You are successfully registred.",
@@ -62,15 +53,7 @@ export const login = async (req, res) => {
         else {
             const isCorrect = await bcrypt.compare(password, user.password)
             if (isCorrect) {
-                const token = jwt.sign(
-                    {
-                        user_id: user.user_id
-                    },
-                    process.env.TOKEN_KEY,
-                    {
-                        expiresIn: "2h",
-                    }
-                );
+                const token = await authService.getToken(user)
 
                 res.status(201).json({
                     message: "You are successfully logged.",
@@ -92,10 +75,9 @@ export const login = async (req, res) => {
 }
 
 export const update = async (req, res) => {
-    const { email, username, first_name, last_name } = req.body;
-
+    const { first_name, last_name } = req.body;
     try {
-        const [user] = await authService.getUser(email, username);
+        const [user] = await authService.getUserById(req.user_id);
 
         if (!user) {
             res.status(401).json({
@@ -103,7 +85,7 @@ export const update = async (req, res) => {
             })
         }
         else {
-            await authService.updateUser(email, username, first_name, last_name)
+            await authService.updateUser(user.user_id, first_name, last_name)
             res.status(201).json({
                 message: "Update complete."
             })

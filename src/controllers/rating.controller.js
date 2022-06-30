@@ -1,13 +1,39 @@
 import * as ratingService from "../services/rating.service.js"
 
 export const addRating = async (req, res) => {
-    const { user_id, game_id, rate } = req.body
+    const { game_id, rate } = req.body
 
     try {
-        await ratingService.createRating(user_id, game_id, rate)
+        await ratingService.createRating(req.user_id, game_id, rate)
         res.status(201).json({
-            message: "You rated the game."
+            message: "You rated this game."
         })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
+export const updateRating = async (req, res) => {
+    const { game_id, rate } = req.body
+
+    try {
+        const [rating] = await ratingService.getRating(req.user_id, game_id)
+
+        if (!rating) {
+            res.status(401).json({
+                message: "There is no rating for this game!"
+            })
+        }
+        else {
+            await ratingService.updateRating(req.user_id, game_id, rate)
+            res.status(201).json({
+                message: "You updated the rate."
+            })
+        }
     }
     catch (error) {
         res.status(401).json({
@@ -16,11 +42,11 @@ export const addRating = async (req, res) => {
     }
 }
 
-export const updateRating = async (req, res) => {
-    const { user_id, game_id, rate } = req.body
+export const deleteRating = async (req, res) => {
+    const { game_id, rate } = req.body
 
     try {
-        const [rating] = await ratingService.getRating(user_id, game_id)
+        const [rating] = await ratingService.getRating(req.user_id, game_id)
 
         if (!rating) {
             res.status(401).json({
@@ -28,9 +54,9 @@ export const updateRating = async (req, res) => {
             })
         }
         else {
-            await ratingService.updateRating(user_id, game_id, rate)
+            await ratingService.deleteRating(req.user_id, game_id)
             res.status(201).json({
-                message: "You updated the rate."
+                message: "You deleted the rating for this game."
             })
         }
     }
