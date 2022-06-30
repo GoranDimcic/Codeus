@@ -1,9 +1,10 @@
 import db from '../db/db.js'
 
-export const getUser = async (email) => {
+export const getUser = async (email, username) => {
     const result = await db('user')
         .where({
-            email
+            email: email,
+            username: username
         })
 
     return result;
@@ -12,7 +13,7 @@ export const getUser = async (email) => {
 export const createUser = async (email, username, password, first_name, last_name) => {
     const result = await db('user')
         .insert({
-            email: email.toLowerCase(),
+            email: email,
             username: username,
             password: password,
             first_name: first_name,
@@ -22,24 +23,31 @@ export const createUser = async (email, username, password, first_name, last_nam
     return result;
 }
 
-export const loginUser = async (emailOrUsername, password) => {
+export const getUserByEmail = async (email) => {
     const result = await db('user')
         .where({
-            email: emailOrUsername, password: password
+            email, email
         })
 
-    //uslov da li je login preko nick-a ili email-a
+    return result
+}
 
-    return result;
+export const getUserByUsername = async (username) => {
+    const result = await db('user')
+        .where({
+            username, username
+        })
+
+    return result
 }
 
 export const updateUser = async (email, username, first_name, last_name) => {
     const result = await db('user')
         .where({
-            email: email
+            email: email,
+            username: username
         })
         .update({
-            username: username,
             first_name: first_name,
             last_name: last_name
         })

@@ -8,20 +8,21 @@ export const register = async (req, res) => {
     const encryptedUserPassword = await bcrypt.hash(password, 10);
 
     try {
-        const [user] = await authService.getUser(email)
+        const [user] = await authService.getUser(email.toLowerCase(), username)
 
         if (!user) {
-            await authService.createUser(email, username, encryptedUserPassword, first_name, last_name)
-            const [user] = await authService.getUser(email)
+            await authService.createUser(email.toLowerCase(), username, encryptedUserPassword, first_name, last_name)
+            const [user] = await authService.getUser(email.toLowerCase(), username)
 
             const token = jwt.sign(
-                { user_id: user.user_id, email },
+                {
+                    user_id: user.user_id
+                },
                 process.env.TOKEN_KEY,
                 {
                     expiresIn: "2h",
                 }
             );
-            user.token = token
 
             res.status(201).json({
                 message: "You are successfully registred.",
@@ -30,37 +31,62 @@ export const register = async (req, res) => {
         }
         else {
             res.status(401).json({
-                message: "Email is taken, try again."
+                message: "Email or username is taken, try again."
             })
         }
     }
     catch (error) {
         res.status(401).json({
-            message: "Error"
+            message: "Email or username is taken, try again."
         })
     }
 }
 
 export const login = async (req, res) => {
-    const { email, password } = req.body;
+    const { usernameOrEmail, password } = req.body
+    let user
 
     try {
-        const [user] = await authService.loginUser(email, password);
+        if (usernameOrEmail.includes('@')) {
+            [user] = await authService.getUserByEmail(usernameOrEmail)
+        }
+        else {
+            [user] = await authService.getUserByUsername(usernameOrEmail)
+        }
 
         if (!user) {
             res.status(401).json({
-                message: "No user with that email"
+                message: "Wrong email or username."
             })
         }
         else {
-            res.status(201).json({
-                message: "Login succesful"
-            })
+            const isCorrect = await bcrypt.compare(password, user.password)
+            if (isCorrect) {
+                const token = jwt.sign(
+                    {
+                        user_id: user.user_id
+                    },
+                    process.env.TOKEN_KEY,
+                    {
+                        expiresIn: "2h",
+                    }
+                );
+
+                res.status(201).json({
+                    message: "You are successfully logged.",
+                    data: { accessToken: token }
+                })
+            }
+            else {
+                res.status(401).json({
+                    message: "Wrong password!"
+                })
+            }
         }
     }
     catch (error) {
         res.status(401).json({
-            message: "Error"
+            message: "Error!"
         })
     }
 }
@@ -69,7 +95,7 @@ export const update = async (req, res) => {
     const { email, username, first_name, last_name } = req.body;
 
     try {
-        const [user] = await authService.getUser(email);
+        const [user] = await authService.getUser(email, username);
 
         if (!user) {
             res.status(401).json({
