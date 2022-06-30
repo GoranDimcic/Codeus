@@ -3,7 +3,7 @@ import db from '../db/db.js'
 export const getUser = async (email) => {
     const result = await db('user')
         .where({
-            email, email
+            email
         })
 
     return result;
@@ -12,7 +12,7 @@ export const getUser = async (email) => {
 export const createUser = async (email, username, password, first_name, last_name) => {
     const result = await db('user')
         .insert({
-            email: email,
+            email: email.toLowerCase(),
             username: username,
             password: password,
             first_name: first_name,

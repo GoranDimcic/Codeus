@@ -9,8 +9,9 @@ import cartRouter from "./routes/cart.route.js"
 import bodyParser from 'body-parser'
 import 'dotenv/config'
 
+const {API_PORT} = process.env
 const app = express()
-const port = 3000
+const port = process.env.port || API_PORT
 
 app.use(bodyParser.json())
 
