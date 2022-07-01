@@ -17,6 +17,8 @@ export const createFavorite = async (user_id, game_id) => {
             game_id: game_id
         })
 
+    console.log(result)
+
     return result;
 }
 

@@ -1,10 +1,12 @@
 import db from "../db/db.js"
 
-export const getComment = (user_id, game_id) => {
+
+export const createComment = (user_id, game_id, comment) => {
     const result = db('comment')
-        .where({
+        .insert({
             user_id: user_id,
-            game_id: game_id
+            game_id: game_id,
+            comment: comment
         })
 
     return result;
