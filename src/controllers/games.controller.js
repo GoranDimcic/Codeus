@@ -15,3 +15,31 @@ export const addGame = async (req, res) => {
         })
     }
 }
+
+export const getGamesFromCart = async (req, res) => {
+    try {
+        const games = await gamesService.getGamesFromCart(req.user_id)
+        res.status(201).json({
+            message: "Get games!"
+        })
+    }
+    catch (error) {
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
+export const getGamesFromFavorite = async (req, res) => {
+    try {
+        const games = await gamesService.getGamesFromFavorite(req.user_id)
+        res.status(201).json({
+            message: "Get games!"
+        })
+    }
+    catch (error) {
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
