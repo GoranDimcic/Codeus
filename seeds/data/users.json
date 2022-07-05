@@ -3990,5 +3990,13 @@
         "username": "vada.prohaska",
         "email": "lilliana_tremblay@gmail.com",
         "password": "$2b$10$VeIFRBHiiDLvt5r3IzFtU.2oWeixv0LkKxiNIo7ovTBAdfrfsiowq"
+    },
+    {
+        "user_id": 500,
+        "first_name": "Bogdan",
+        "last_name": "Zoran",
+        "username": "zoran.prohaska",
+        "email": "zoran.proshaska1@gmail.com",
+        "password": "$2b$10$VeIFRBHiiDLvt5r3IzFtU.2oWeixv0LkKxiNIo7ovTBAdfrfsiowq"
     }
 ]
