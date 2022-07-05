@@ -39,3 +39,23 @@ export const getMostCommentedGame = async () => {
         .limit(6)
     return result
 }
+
+export const getMostAvgRatedGames = async () => {
+    const result = await db('rating')
+        .select('game_id')
+        .avg('rating_number')
+        .groupBy('game_id')
+        .orderBy('avg', 'desc')
+        .limit(6)
+    return result
+}
+
+export const getMostRatedGames = async () => {
+    const result = await db('rating')
+        .select('game_id')
+        .count('rating_number')
+        .groupBy('game_id')
+        .orderBy('count', 'desc')
+        .limit(3)
+    return result
+}

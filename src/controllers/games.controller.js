@@ -34,7 +34,7 @@ export const getGamesFromFavorite = async (req, res) => {
     try {
         const games = await gamesService.getGamesFromFavorite(req.user_id)
         res.status(201).json({
-            message: "Get games!"
+            message: games
         })
     }
     catch (error) {
@@ -52,7 +52,34 @@ export const getMostCommentedGame = async (req, res) => {
         })
     }
     catch (error) {
-        console.log(error)
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
+export const getMostAvgRatedGames = async (req, res) => {
+    try {
+        const games = await gamesService.getMostAvgRatedGames()
+        res.status(201).json({
+            message: games
+        })
+    }
+    catch (error) {
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
+export const getMostRatedGames = async (req, res) => {
+    try {
+        const game = await gamesService.getMostRatedGames()
+        res.status(201).json({
+            message: game
+        })
+    }
+    catch (error) {
         res.status(401).json({
             message: "Error"
         })
