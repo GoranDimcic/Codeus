@@ -20,7 +20,7 @@ export const getGamesFromCart = async (req, res) => {
     try {
         const games = await gamesService.getGamesFromCart(req.user_id)
         res.status(201).json({
-            message: "Get games!"
+            message: games
         })
     }
     catch (error) {
@@ -38,6 +38,21 @@ export const getGamesFromFavorite = async (req, res) => {
         })
     }
     catch (error) {
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
+export const getMostCommentedGame = async (req, res) => {
+    try {
+        const game = await gamesService.getMostCommentedGame()
+        res.status(201).json({
+            message: game
+        })
+    }
+    catch (error) {
+        console.log(error)
         res.status(401).json({
             message: "Error"
         })

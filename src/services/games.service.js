@@ -29,3 +29,13 @@ export const getGamesFromFavorite = async (user_id) => {
     //.join('rating', 'game.game_id', '=', 'rating.game_id')
     return result
 }
+
+export const getMostCommentedGame = async () => {
+    const result = await db('comment')
+        .select('game_id')
+        .count('game_id')
+        .groupBy('game_id')
+        .orderBy('count', 'desc')
+        .limit(6)
+    return result
+}
