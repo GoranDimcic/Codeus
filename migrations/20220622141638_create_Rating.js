@@ -5,13 +5,13 @@
 export const up = function (knex) {
     return knex.schema
         .createTable('rating', function (table) {
-            table.integer('user_id').unsigned().notNullable();
-            table.foreign('user_id').references('user_id').inTable('user').onDelete("CASCADE");
-            table.integer('game_id').unsigned().notNullable();
-            table.foreign('game_id').references('game_id').inTable('game').onDelete("CASCADE");
-            table.tinyint('rating_number').unsigned();
-            table.dateTime('created_at').defaultTo(knex.fn.now());
-            table.unique(['user_id', 'game_id']);
+            table.integer('userId').unsigned().notNullable();
+            table.foreign('userId').references('id').inTable('user').onDelete("CASCADE");
+            table.integer('gameId').unsigned().notNullable();
+            table.foreign('gameId').references('id').inTable('game').onDelete("CASCADE");
+            table.tinyint('ratingNumber').unsigned();
+            table.dateTime('createdAt').defaultTo(knex.fn.now());
+            table.unique(['userId', 'gameId']);
         })
 };
 

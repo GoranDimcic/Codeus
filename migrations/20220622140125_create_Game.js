@@ -5,10 +5,10 @@
 export const up = function (knex) {
     return knex.schema
         .createTable('game', function (table) {
-            table.increments('game_id').primary();
-            table.string('title').notNullable();
-            table.text('description');
-            table.string('image');
+            table.increments('id').primary();
+            table.string('gameTitle').notNullable();
+            table.text('gameDescription');
+            table.string('mainPhoto');
             table.decimal('price').unsigned();
         })
 };

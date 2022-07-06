@@ -2,7 +2,7 @@ import { Router } from "express"
 import {
     addGame, getGamesFromCart,
     getGamesFromFavorite, getMostCommentedGame,
-    getMostAvgRatedGames, getMostRatedGames
+    getMostAvgRatedGames, getMostRatedGames, getSingleGame
 } from "../controllers/games.controller.js"
 import authenticateToken from "../middleware/auth.middleware.js"
 
@@ -15,5 +15,6 @@ router.get("/getGamesFromFavorite", authenticateToken, getGamesFromFavorite)
 router.get("/getMostCommentedGame", getMostCommentedGame)
 router.get("/getMostAvgRatedGames", getMostAvgRatedGames)
 router.get("/getMostRatedGames", getMostRatedGames)
+router.get("/getSingleGame", getSingleGame)
 
 export default router

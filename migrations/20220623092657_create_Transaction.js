@@ -5,8 +5,8 @@
 export const up = function (knex) {
     return knex.schema
         .createTable('transaction', function (table) {
-            table.increments('transaction_id').primary();
-            table.dateTime('created_at').defaultTo(knex.fn.now());
+            table.increments('id').primary();
+            table.dateTime('createdAt').defaultTo(knex.fn.now());
         })
 };
 

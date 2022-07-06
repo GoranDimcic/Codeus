@@ -5,10 +5,10 @@
 export const up = function (knex) {
     return knex.schema
         .createTable('gamePlatform', function (table) {
-            table.integer('game_id').unsigned().notNullable();
-            table.foreign('game_id').references('game_id').inTable('game').onDelete("CASCADE");
-            table.integer('platform_id').unsigned().notNullable();
-            table.foreign('platform_id').references('platform_id').inTable('platform').onDelete("CASCADE");
+            table.integer('gameId').unsigned().notNullable();
+            table.foreign('gameId').references('id').inTable('game').onDelete("CASCADE");
+            table.integer('platformId').unsigned().notNullable();
+            table.foreign('platformId').references('id').inTable('platform').onDelete("CASCADE");
         })
 };
 

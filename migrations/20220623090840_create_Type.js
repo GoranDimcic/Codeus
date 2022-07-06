@@ -5,7 +5,7 @@
 export const up = function (knex) {
     return knex.schema
         .createTable('type', function (table) {
-            table.increments('type_id').primary();
+            table.increments('id').primary();
             table.string('name');
         })
 };

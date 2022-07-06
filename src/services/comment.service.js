@@ -8,6 +8,5 @@ export const createComment = (user_id, game_id, comment) => {
             game_id: game_id,
             comment: comment
         })
-
     return result;
 }

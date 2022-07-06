@@ -6,8 +6,7 @@ export const getRating = async (user_id, game_id) => {
             user_id: user_id,
             game_id: game_id
         })
-
-        return result;
+    return result;
 }
 
 export const createRating = async (user_id, game_id, rate) => {
@@ -17,7 +16,6 @@ export const createRating = async (user_id, game_id, rate) => {
             game_id: game_id,
             rating_number: rate
         })
-
     return result;
 }
 
@@ -30,7 +28,6 @@ export const updateRating = async (user_id, game_id, rate) => {
         .update({
             rating_number: rate
         })
-
     return result;
 }
 
@@ -41,6 +38,5 @@ export const deleteRating = async (user_id, game_id) => {
             game_id: game_id
         })
         .delete()
-
     return result;
 }

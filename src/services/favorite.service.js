@@ -6,7 +6,6 @@ export const getFavorite = async (user_id, game_id) => {
             user_id: user_id,
             game_id: game_id
         })
-
     return result;
 }
 
@@ -16,9 +15,6 @@ export const createFavorite = async (user_id, game_id) => {
             user_id: user_id,
             game_id: game_id
         })
-
-    console.log(result)
-
     return result;
 }
 
@@ -29,6 +25,5 @@ export const removeFavorite = async (user_id, game_id) => {
             game_id: game_id
         })
         .delete()
-
     return result;
 }

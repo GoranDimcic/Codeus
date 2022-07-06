@@ -7,7 +7,6 @@ export const getUser = async (email, username) => {
             email: email,
             username: username
         })
-
     return result;
 }
 
@@ -16,7 +15,6 @@ export const getUserById = async (user_id) => {
         .where({
             user_id, user_id
         })
-
     return result
 }
 
@@ -25,7 +23,6 @@ export const getUserByEmail = async (email) => {
         .where({
             email, email
         })
-
     return result
 }
 
@@ -34,7 +31,6 @@ export const getUserByUsername = async (username) => {
         .where({
             username, username
         })
-
     return result
 }
 
@@ -47,7 +43,6 @@ export const createUser = async (email, username, password, first_name, last_nam
             first_name: first_name,
             last_name: last_name
         })
-
     return result;
 }
 
@@ -60,7 +55,6 @@ export const updateUser = async (user_id, first_name, last_name) => {
             first_name: first_name,
             last_name: last_name
         })
-
     return result;
 }
 

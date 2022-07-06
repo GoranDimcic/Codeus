@@ -47,6 +47,7 @@ export const getMostAvgRatedGames = async () => {
         .groupBy('game_id')
         .orderBy('avg', 'desc')
         .limit(6)
+    //uporedi sa datumom od pre x dana
     return result
 }
 
@@ -57,5 +58,14 @@ export const getMostRatedGames = async () => {
         .groupBy('game_id')
         .orderBy('count', 'desc')
         .limit(3)
+    //uporedi sa tipom igre
+    return result
+}
+
+export const getSingleGame = async (game_id) => {
+    const result = await db('game')
+        .where('game.game_id', game_id)
+        .join('pictures', 'pictures.game_id', '=', 'game.game_id').select('game.*', 'pictures.image as picture')
+        .join('comment', 'comment.game_id', '=', 'game.game_id')
     return result
 }

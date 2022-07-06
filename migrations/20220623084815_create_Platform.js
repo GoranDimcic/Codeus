@@ -5,7 +5,7 @@
 export const up = function (knex) {
     return knex.schema
         .createTable('platform', function (table) {
-            table.increments('platform_id').primary();
+            table.increments('id').primary();
             table.string('name');
         })
 };
