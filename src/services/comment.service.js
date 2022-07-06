@@ -1,11 +1,11 @@
 import db from "../db/db.js"
 
 
-export const createComment = (user_id, game_id, comment) => {
+export const createComment = (userId, gameId, comment) => {
     const result = db('comment')
         .insert({
-            user_id: user_id,
-            game_id: game_id,
+            userId: userId,
+            gameId: gameId,
             comment: comment
         })
     return result;

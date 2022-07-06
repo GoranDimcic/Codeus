@@ -15,7 +15,7 @@ const authenticateToken = (req, res, next) => {
                 message: "Token is invalid or expired."
             })
         }
-        req.user_id = data.user_id
+        req.id = data.id
         next()
     })
 }

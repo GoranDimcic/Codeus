@@ -3,14 +3,14 @@ import bcrypt from "bcrypt"
 import 'dotenv/config'
 
 export const register = async (req, res) => {
-    const { email, username, password, first_name, last_name } = req.body;
+    const { email, username, password, firstName, lasdtName } = req.body;
     const encryptedUserPassword = await bcrypt.hash(password, 10);
 
     try {
         const [user] = await authService.getUser(email.toLowerCase(), username)
 
         if (!user) {
-            await authService.createUser(email.toLowerCase(), username, encryptedUserPassword, first_name, last_name)
+            await authService.createUser(email.toLowerCase(), username, encryptedUserPassword, firstName, lasdtName)
             const [user] = await authService.getUser(email.toLowerCase(), username)
 
             const token = await authService.getToken(user)
@@ -75,7 +75,7 @@ export const login = async (req, res) => {
 }
 
 export const update = async (req, res) => {
-    const { first_name, last_name } = req.body;
+    const { firstName, lasdtName } = req.body;
     try {
         const [user] = await authService.getUserById(req.user_id);
 
@@ -85,7 +85,7 @@ export const update = async (req, res) => {
             })
         }
         else {
-            await authService.updateUser(user.user_id, first_name, last_name)
+            await authService.updateUser(user.user_id, firstName, lasdtName)
             res.status(201).json({
                 message: "Update complete."
             })

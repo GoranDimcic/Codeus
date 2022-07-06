@@ -1,32 +1,32 @@
 import db from "../db/db.js"
 
-export const createCart = async (user_id, game_id, price) => {
+export const createCart = async (userId, gameId, price) => {
     const result = await db('cart')
         .insert({
-            user_id: user_id,
-            game_id: game_id,
+            userId: userId,
+            gameId: gameId,
             price: price,
         })
     return result;
 }
 
-export const updateCart = async (user_id, transaction_id) => {
+export const updateCart = async (userId, transactionId) => {
     const result = await db('cart')
         .where({
-            user_id: user_id,
-            transaction_id: null
+            userId: userId,
+            transactionId: null
         })
         .update({
-            transaction_id: transaction_id
+            transactionId: transactionId
         })
     return result;
 }
 
-export const deleteFromCart = async (user_id, game_id) => {
+export const deleteFromCart = async (userId, gameId) => {
     const result = await db('cart')
         .where({
-            user_id: user_id,
-            game_id: game_id
+            userId: userId,
+            gameId: gameId
         })
         .delete()
     return result

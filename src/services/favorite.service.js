@@ -1,28 +1,28 @@
 import db from "../db/db.js"
 
-export const getFavorite = async (user_id, game_id) => {
+export const getFavorite = async (userId, gameId) => {
     const result = await db('favorite')
         .where({
-            user_id: user_id,
-            game_id: game_id
+            userId: userId,
+            gameId: gameId
         })
     return result;
 }
 
-export const createFavorite = async (user_id, game_id) => {
+export const createFavorite = async (userId, gameId) => {
     const result = await db('favorite')
         .insert({
-            user_id: user_id,
-            game_id: game_id
+            userId: userId,
+            gameId: gameId
         })
     return result;
 }
 
-export const removeFavorite = async (user_id, game_id) => {
+export const removeFavorite = async (userId, gameId) => {
     const result = await db('favorite')
         .where({
-            user_id: user_id,
-            game_id: game_id
+            userId: userId,
+            gameId: gameId
         })
         .delete()
     return result;

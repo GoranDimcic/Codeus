@@ -1,40 +1,40 @@
 import db from '../db/db.js'
 
-export const createGame = async (title, description, image, price) => {
+export const createGame = async (gameTitle, gameDescription, mainPhoto, price) => {
     const result = await db('game')
         .insert({
-            title: title,
-            description: description,
-            image: image,
+            gameTitle: gameTitle,
+            gameDescription: gameDescription,
+            mainPhoto: mainPhoto,
             price: price
         })
 
     return result;
 }
 
-export const getGamesFromCart = async (user_id) => {
+export const getGamesFromCart = async (userId) => {
     const result = await db('cart')
-        .where('cart.user_id', user_id)
-        .join('game', 'cart.game_id', '=', 'game.game_id')
+        .where('cart.userId', userId)
+        .join('game', 'cart.gameId', '=', 'game.gameId')
     //.join('rating', 'game.game_id', '=', 'rating.game_id')
     return result
 }
 
-export const getGamesFromFavorite = async (user_id) => {
+export const getGamesFromFavorite = async (userId) => {
     const result = await db('favorite')
         .where({
-            user_id: user_id
+            userId: userId
         })
-        .join('game', 'favorite.game_id', '=', 'game.game_id')
+        .join('game', 'favorite.gameId', '=', 'game.gameId')
     //.join('rating', 'game.game_id', '=', 'rating.game_id')
     return result
 }
 
 export const getMostCommentedGame = async () => {
     const result = await db('comment')
-        .select('game_id')
-        .count('game_id')
-        .groupBy('game_id')
+        .select('gameId')
+        .count('gameId')
+        .groupBy('gameId')
         .orderBy('count', 'desc')
         .limit(6)
     return result
@@ -42,9 +42,9 @@ export const getMostCommentedGame = async () => {
 
 export const getMostAvgRatedGames = async () => {
     const result = await db('rating')
-        .select('game_id')
-        .avg('rating_number')
-        .groupBy('game_id')
+        .select('gameId')
+        .avg('ratingNumber')
+        .groupBy('gameId')
         .orderBy('avg', 'desc')
         .limit(6)
     //uporedi sa datumom od pre x dana
@@ -53,9 +53,9 @@ export const getMostAvgRatedGames = async () => {
 
 export const getMostRatedGames = async () => {
     const result = await db('rating')
-        .select('game_id')
+        .select('gameId')
         .count('rating_number')
-        .groupBy('game_id')
+        .groupBy('gameId')
         .orderBy('count', 'desc')
         .limit(3)
     //uporedi sa tipom igre
@@ -64,8 +64,8 @@ export const getMostRatedGames = async () => {
 
 export const getSingleGame = async (game_id) => {
     const result = await db('game')
-        .where('game.game_id', game_id)
-        .join('pictures', 'pictures.game_id', '=', 'game.game_id').select('game.*', 'pictures.image as picture')
-        .join('comment', 'comment.game_id', '=', 'game.game_id')
+        .where('game.gameId', game_id)
+        .join('pictures', 'pictures.gameId', '=', 'game.gameId').select('game.*', 'pictures.image as picture')
+        .join('comment', 'comment.gameId', '=', 'game.gameId')
     return result
 }

@@ -10,10 +10,10 @@ export const getUser = async (email, username) => {
     return result;
 }
 
-export const getUserById = async (user_id) => {
+export const getUserById = async (userId) => {
     const result = await db('user')
         .where({
-            user_id, user_id
+            id, userId
         })
     return result
 }
@@ -34,26 +34,26 @@ export const getUserByUsername = async (username) => {
     return result
 }
 
-export const createUser = async (email, username, password, first_name, last_name) => {
+export const createUser = async (email, username, password, firstName, lasdtName) => {
     const result = await db('user')
         .insert({
             email: email,
             username: username,
             password: password,
-            first_name: first_name,
-            last_name: last_name
+            firstName: firstName,
+            lasdtName: lasdtName
         })
     return result;
 }
 
-export const updateUser = async (user_id, first_name, last_name) => {
+export const updateUser = async (userId, firstName, lasdtName) => {
     const result = await db('user')
         .where({
-            user_id: user_id
+            id: userId
         })
         .update({
-            first_name: first_name,
-            last_name: last_name
+            firstName: firstName,
+            lasdtName: lasdtName
         })
     return result;
 }
@@ -66,7 +66,7 @@ export const updatePass = async () => {
 export const getToken = async (user) => {
     const token = jwt.sign(
         {
-            user_id: user.user_id
+            id: user.id
         },
         process.env.TOKEN_KEY,
         {

@@ -1,41 +1,41 @@
 import db from '../db/db.js'
 
-export const getRating = async (user_id, game_id) => {
+export const getRating = async (userId, gameId) => {
     const result = await db('rating')
         .where({
-            user_id: user_id,
-            game_id: game_id
+            userId: userId,
+            gameId: gameId
         })
     return result;
 }
 
-export const createRating = async (user_id, game_id, rate) => {
+export const createRating = async (userId, gameId, rate) => {
     const result = await db('rating')
         .insert({
-            user_id: user_id,
-            game_id: game_id,
-            rating_number: rate
+            userId: userId,
+            gameId: gameId,
+            ratingNumber: rate
         })
     return result;
 }
 
-export const updateRating = async (user_id, game_id, rate) => {
+export const updateRating = async (userId, gameId, rate) => {
     const result = db('rating')
         .where({
-            user_id: user_id,
-            game_id: game_id
+            userId: userId,
+            gameId: gameId
         })
         .update({
-            rating_number: rate
+            ratingNumber: rate
         })
     return result;
 }
 
-export const deleteRating = async (user_id, game_id) => {
+export const deleteRating = async (userId, gameId) => {
     const result = db('rating')
         .where({
-            user_id: user_id,
-            game_id: game_id
+            userId: userId,
+            gameId: gameId
         })
         .delete()
     return result;

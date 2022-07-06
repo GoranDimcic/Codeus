@@ -1,10 +1,10 @@
 import * as ratingService from "../services/rating.service.js"
 
 export const addRating = async (req, res) => {
-    const { game_id, rate } = req.body
+    const { gameId, rate } = req.body
 
     try {
-        await ratingService.createRating(req.user_id, game_id, rate)
+        await ratingService.createRating(req.id, gameId, rate)
         res.status(201).json({
             message: "You rated this game."
         })
@@ -17,10 +17,10 @@ export const addRating = async (req, res) => {
 }
 
 export const updateRating = async (req, res) => {
-    const { game_id, rate } = req.body
+    const { gameId, rate } = req.body
 
     try {
-        const [rating] = await ratingService.getRating(req.user_id, game_id)
+        const [rating] = await ratingService.getRating(req.id, gameId)
 
         if (!rating) {
             res.status(401).json({
@@ -28,7 +28,7 @@ export const updateRating = async (req, res) => {
             })
         }
         else {
-            await ratingService.updateRating(req.user_id, game_id, rate)
+            await ratingService.updateRating(req.id, gameId, rate)
             res.status(201).json({
                 message: "You updated the rate."
             })
@@ -45,7 +45,7 @@ export const deleteRating = async (req, res) => {
     const { game_id, rate } = req.body
 
     try {
-        const [rating] = await ratingService.getRating(req.user_id, game_id)
+        const [rating] = await ratingService.getRating(req.id, gameId)
 
         if (!rating) {
             res.status(401).json({
@@ -53,7 +53,7 @@ export const deleteRating = async (req, res) => {
             })
         }
         else {
-            await ratingService.deleteRating(req.user_id, game_id)
+            await ratingService.deleteRating(req.id, gameId)
             res.status(201).json({
                 message: "You deleted the rating for this game."
             })

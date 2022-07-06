@@ -1,10 +1,10 @@
 import * as favoriteServices from "../services/favorite.service.js"
 
 export const addFavorite = async (req, res) => {
-    const { game_id } = req.body;
+    const { gameId } = req.body;
 
     try {
-        await favoriteServices.createFavorite(req.user_id, game_id)
+        await favoriteServices.createFavorite(req.id, gameId)
         res.status(201).json({
             message: "You added game to the favorite list."
         })
@@ -17,10 +17,10 @@ export const addFavorite = async (req, res) => {
 }
 
 export const deleteFavorite = async (req, res) => {
-    const { game_id } = req.body;
+    const { gameId } = req.body;
 
     try {
-        const [favorite] = await favoriteServices.getFavorite(req.user_id, game_id)
+        const [favorite] = await favoriteServices.getFavorite(req.id, gameId)
 
         if (!favorite) {
             res.status(401).json({
@@ -28,7 +28,7 @@ export const deleteFavorite = async (req, res) => {
             })
         }
         else {
-            await favoriteServices.removeFavorite(req.user_id, game_id)
+            await favoriteServices.removeFavorite(req.id, gameId)
             res.status(201).json({
                 message: "You removed game from favorite list!"
             })

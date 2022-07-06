@@ -1,10 +1,10 @@
 import * as commentService from "../services/comment.service.js"
 
 export const addComment = async (req, res) => {
-    const { game_id, comment } = req.body;
+    const { gameId, comment } = req.body;
 
     try {
-        await commentService.createComment(req.user_id, game_id, comment)
+        await commentService.createComment(req.id, gameId, comment)
         res.status(201).json({
             message: "Comment added for the game."
         })

@@ -1,10 +1,10 @@
 import * as gamesService from "../services/games.service.js"
 
 export const addGame = async (req, res) => {
-    const { title, description, image, price } = req.body;
+    const { gameTitle, gameDescription, mainPhoto, price } = req.body;
 
     try {
-        await gamesService.createGame(title, description, image, price)
+        await gamesService.createGame(gameTitle, gameDescription, mainPhoto, price)
         res.status(201).json({
             message: "Game created."
         })
@@ -18,7 +18,7 @@ export const addGame = async (req, res) => {
 
 export const getGamesFromCart = async (req, res) => {
     try {
-        const games = await gamesService.getGamesFromCart(req.user_id)
+        const games = await gamesService.getGamesFromCart(req.id)
         res.status(201).json({
             message: games
         })
@@ -32,7 +32,7 @@ export const getGamesFromCart = async (req, res) => {
 
 export const getGamesFromFavorite = async (req, res) => {
     try {
-        const games = await gamesService.getGamesFromFavorite(req.user_id)
+        const games = await gamesService.getGamesFromFavorite(req.id)
         res.status(201).json({
             message: games
         })
@@ -88,9 +88,9 @@ export const getMostRatedGames = async (req, res) => {
 }
 
 export const getSingleGame = async (req, res) => {
-    const { game_id } = req.body
+    const { gameId } = req.body
     try {
-        const game = await gamesService.getSingleGame(game_id)
+        const game = await gamesService.getSingleGame(gameId)
         res.status(201).json({
             message: game
         })
