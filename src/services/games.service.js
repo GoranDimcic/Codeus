@@ -15,18 +15,40 @@ export const createGame = async (gameTitle, gameDescription, mainPhoto, price) =
 export const getGamesFromCart = async (userId) => {
     const result = await db('cart')
         .where('cart.userId', userId)
-        .join('game', 'cart.gameId', '=', 'game.gameId')
-    //.join('rating', 'game.game_id', '=', 'rating.game_id')
+        .join('game', 'cart.gameId', '=', 'game.id')
+        //isto kao za favorite
     return result
 }
 
 export const getGamesFromFavorite = async (userId) => {
-    const result = await db('favorite')
+    let result = await db('favorite')
         .where({
-            userId: userId
+            'favorite.userId': userId,
         })
-        .join('game', 'favorite.gameId', '=', 'game.gameId')
-    //.join('rating', 'game.game_id', '=', 'rating.game_id')
+        .leftJoin('game', 'favorite.gameId', '=', 'game.id')
+        .innerJoin('gameType', 'favorite.gameId', '=', 'gameType.gameId')
+        .leftJoin('type', 'gameType.typeId', '=', 'type.id')
+        .leftJoin('rating', 'favorite.gameId', '=', 'rating.gameId')
+        .groupBy('game.id', 'type.name')
+        .select('game.id', 'game.gameTitle', 'game.gameDescription', 'game.mainPhoto', 'type.name')
+        .avg('rating.ratingNumber as ratingNum')
+        .orderBy('game.id')
+    return result
+}
+
+export const getSingleGame = async (gameId) => {
+    const result = await db('game')
+        .where({
+            id: gameId
+        })
+        .leftJoin('rating', 'game.id', '=', 'rating.gameId')
+        .leftJoin('comment', 'game.id', '=', 'comment.gameId')
+        .leftJoin('pictures', 'game.id', '=', 'pictures.gameId')
+        .groupBy('game.id', 'comment.comment', 'comment.userId', 'comment.createdAt', 'pictures.image')
+        .select('game.id', 'game.gameTitle', 'game.gameDescription', 'game.mainPhoto', 'game.price',
+            'comment.comment', 'comment.userId', 'comment.createdAt',
+            'pictures.image')
+        .avg('rating.ratingNumber as ratingNum')
     return result
 }
 
@@ -54,18 +76,10 @@ export const getMostAvgRatedGames = async () => {
 export const getMostRatedGames = async () => {
     const result = await db('rating')
         .select('gameId')
-        .count('rating_number')
+        .count('ratingNumber')
         .groupBy('gameId')
         .orderBy('count', 'desc')
         .limit(3)
     //uporedi sa tipom igre
-    return result
-}
-
-export const getSingleGame = async (game_id) => {
-    const result = await db('game')
-        .where('game.gameId', game_id)
-        .join('pictures', 'pictures.gameId', '=', 'game.gameId').select('game.*', 'pictures.image as picture')
-        .join('comment', 'comment.gameId', '=', 'game.gameId')
     return result
 }

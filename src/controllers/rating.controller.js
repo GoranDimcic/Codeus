@@ -42,7 +42,7 @@ export const updateRating = async (req, res) => {
 }
 
 export const deleteRating = async (req, res) => {
-    const { game_id, rate } = req.body
+    const { gameId } = req.body
 
     try {
         const [rating] = await ratingService.getRating(req.id, gameId)
