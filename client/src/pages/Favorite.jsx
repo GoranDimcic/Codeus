@@ -1,3 +1,4 @@
+import GamePreview from "../components/GamePreview"
 import Header from "../components/Header"
 import Inline from "../components/Inline"
 
@@ -6,6 +7,15 @@ const Favorite = () => {
         <div>
             <Header />
             <Inline />
+            <div>
+                <div>
+                    Total: 3 item(s) in favorites
+                </div>
+            </div>
+            <div>
+                <GamePreview />
+                <GamePreview />
+            </div>
         </div>
     )
 }

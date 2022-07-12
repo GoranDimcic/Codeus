@@ -1,10 +1,10 @@
-import { ParentDiv, ChildDiv, StyledLi, StyledNav } from "../styledComponent";
+import { ParentDiv, ChildDiv, StyledLi, StyledNav, StyleImg } from "../styledComponent";
 
 const Header = () => {
     return (
         <ParentDiv>
             <ChildDiv>
-                Logo
+                <StyleImg src="images/logo.png"></StyleImg>
             </ChildDiv>
             <ChildDiv>
                 <StyledNav>
@@ -15,9 +15,9 @@ const Header = () => {
                 </StyledNav>
             </ChildDiv>
             <ChildDiv>
-                User logo
+                <StyleImg src="images/user1.png"></StyleImg>
             </ChildDiv>
-        </ParentDiv>
+        </ParentDiv >
     );
 }
 

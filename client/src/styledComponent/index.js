@@ -8,6 +8,11 @@ export const ChildDiv = styled.div`
     flex: 1;
 `
 
+export const StyleImg = styled.img`
+    height: 50px;
+    margin: 0 0 0 10px;
+`
+
 export const StyledButton = styled.button`
     height: 25px;
     border-radius: 20px;
@@ -28,6 +33,7 @@ export const StyledLi = styled.li`
     display: inline-block;
     font-size: 20px;
     padding: 10px;
+    color: white;
 `
 
 export const StyledP = styled.p`
@@ -37,5 +43,5 @@ export const StyledP = styled.p`
 
 export const StyledSpan = styled.span`
     flex-grow: 1;
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid white;
 `
