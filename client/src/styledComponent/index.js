@@ -6,6 +6,7 @@ export const ParentDiv = styled.div`
 
 export const ChildDiv = styled.div`
     flex: 1;
+    margin-right: 20px;
 `
 
 export const StyleImg = styled.img`
@@ -14,19 +15,19 @@ export const StyleImg = styled.img`
 `
 
 export const StyledButton = styled.button`
-    height: 25px;
+    height: 30px;
+    width: 150px;
     border-radius: 20px;
-    margin-left: 40px;
     color: white;
     background-color: blueviolet;
     border: 1px solid black;
+    float: right;
 `
 
 export const StyledNav = styled.ul`
     list-style-type: none;
-    text-align: center;
     margin: 0;
-    padding: 0;    
+    padding: 0;
 `
 
 export const StyledLi = styled.li`

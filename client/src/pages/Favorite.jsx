@@ -1,22 +1,15 @@
-import GamePreview from "../components/GamePreview"
-import Header from "../components/Header"
-import Inline from "../components/Inline"
+import { StyleFavorite } from "../styledComponent/FavoritePage"
+import SingleGame from "../components/SingleGame"
 
 const Favorite = () => {
     return (
-        <div>
-            <Header />
-            <Inline />
-            <div>
-                <div>
-                    Total: 3 item(s) in favorites
-                </div>
+        <StyleFavorite>
+            <p>Total: 3 item(s) in favorites</p>
+            <div className="all games in favorite">
+                <SingleGame />
+                <SingleGame />
             </div>
-            <div>
-                <GamePreview />
-                <GamePreview />
-            </div>
-        </div>
+        </StyleFavorite>
     )
 }
 
