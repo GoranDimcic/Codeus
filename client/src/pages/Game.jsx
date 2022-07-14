@@ -1,10 +1,10 @@
-import { StyledButton, StyledNav, StyledLi } from "../styledComponent"
-import { StyledStarImg } from "../styledComponent/SingleGame"
+import { StyledButton, StyledNav, StyledLi } from "../styles"
+import { StyledStarImg } from "../styles/SingleGame"
 import {
     StyleGame, StyledImg, StyleComment, StyleGamePictures,
     StyleSpan, StyleLeftSide, StyleRightSide, StyleSelectedGame,
     StyleMorePictures, StyleComments, StyleP
-} from "../styledComponent/GamePage"
+} from "../styles/GamePage"
 
 const Game = () => {
     return (

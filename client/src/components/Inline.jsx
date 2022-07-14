@@ -1,4 +1,4 @@
-import { StyledP, StyledSpan } from "../styledComponent";
+import { StyledP, StyledSpan } from "../styles";
 
 const Inline = () => {
     return (

@@ -1,7 +1,7 @@
 import SingleGame from "../components/SingleGame"
-import { ChildDiv, StyledButton } from "../styledComponent"
-import { StyleFilter, StyleGameTypeAndPrice, StyleInput, StyleLi, StylePlatform, StyleSearch, StyleUl, StyleMiddle } from "../styledComponent/SearchPage"
-import { StyledStarImg } from "../styledComponent/SingleGame"
+import { ChildDiv, StyledButton } from "../styles"
+import { StyleFilter, StyleGameTypeAndPrice, StyleInput, StyleLi, StylePlatform, StyleSearch, StyleUl, StyleMiddle } from "../styles/SearchPage"
+import { StyledStarImg } from "../styles/SingleGame"
 
 
 const Search = () => {

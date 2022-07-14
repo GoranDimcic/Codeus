@@ -1,4 +1,4 @@
-import { StyleFavorite } from "../styledComponent/FavoritePage"
+import { StyleFavorite } from "../styles/FavoritePage"
 import SingleGame from "../components/SingleGame"
 
 const Favorite = () => {

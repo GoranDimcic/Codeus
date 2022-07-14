@@ -1,5 +1,10 @@
 import styled from "styled-components"
 
+export const StyleMargin = styled.div`
+    margin: 0 20px;
+    border: 1px solid black;
+`
+
 export const ParentDiv = styled.div`
     display: flex;
 `
@@ -21,7 +26,6 @@ export const StyledButton = styled.button`
     color: white;
     background-color: blueviolet;
     border: 1px solid black;
-    float: right;
 `
 
 export const StyledNav = styled.ul`

@@ -1,4 +1,4 @@
-import { ParentDiv, ChildDiv, StyledLi, StyledNav, StyleImg } from "../styledComponent";
+import { ParentDiv, ChildDiv, StyledLi, StyledNav, StyleImg } from "../styles";
 
 const Header = () => {
     return (
