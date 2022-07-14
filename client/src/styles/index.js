@@ -2,16 +2,6 @@ import styled from "styled-components"
 
 export const StyleMargin = styled.div`
     margin: 0 20px;
-    border: 1px solid black;
-`
-
-export const ParentDiv = styled.div`
-    display: flex;
-`
-
-export const ChildDiv = styled.div`
-    flex: 1;
-    margin-right: 20px;
 `
 
 export const StyleImg = styled.img`
@@ -39,14 +29,4 @@ export const StyledLi = styled.li`
     font-size: 20px;
     padding: 10px;
     color: white;
-`
-
-export const StyledP = styled.p`
-    display: flex;
-    align-items: center;
-`
-
-export const StyledSpan = styled.span`
-    flex-grow: 1;
-    border-bottom: 1px solid white;
 `

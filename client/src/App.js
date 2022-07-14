@@ -11,7 +11,7 @@ const App = () => {
     <>
       <Header />
       <Inline />
-      <Cart />
+      <Search />
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { StyledButton } from "../styles";
-import { StyleSingleGame, StyleImg, StyleGame, StyleLeftSide, StyleRightSide } from "../styles/SingleGame";
+import { StyleSingleGame, StyleGameImg, StyleGameDescription, StyleLeftSide, StyleRightSide } from "../styles/SingleGame";
 import GameType from "./GameType";
 import Rating from "./Rating";
 
@@ -7,13 +7,13 @@ const SingleGame = () => {
     return (
         <StyleSingleGame>
             <StyleLeftSide>
-                <StyleImg src="images/game.png"></StyleImg>
+                <StyleGameImg src="images/game.png"></StyleGameImg>
             </StyleLeftSide>
             <StyleRightSide>
-                <StyleGame>
+                <StyleGameDescription>
                     <h2>Dishonored 2</h2>
                     <StyledButton>Remove from favorites</StyledButton>
-                </StyleGame>
+                </StyleGameDescription>
                 <GameType />
                 <Rating />
                 <div>

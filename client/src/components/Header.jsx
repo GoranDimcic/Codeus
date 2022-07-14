@@ -1,24 +1,34 @@
-import { ParentDiv, ChildDiv, StyledLi, StyledNav, StyleImg } from "../styles";
+import styled from "styled-components"
+import { StyleImg } from "../styles";
 
 const Header = () => {
     return (
-        <ParentDiv>
-            <ChildDiv>
+        <StyleHeader>
+            <div>
                 <StyleImg src="images/logo.png"></StyleImg>
-            </ChildDiv>
-            <ChildDiv>
-                <StyledNav>
-                    <StyledLi><a>Browse</a></StyledLi>
-                    <StyledLi><a>Search</a></StyledLi>
-                    <StyledLi><a>Favorites</a></StyledLi>
-                    <StyledLi><a>Community</a></StyledLi>
-                </StyledNav>
-            </ChildDiv>
-            <ChildDiv>
+            </div>
+            <div>
+                <a>BROWSE</a>
+                <a>SEARCH</a>
+                <a>FAVORITES</a>
+                <a>COMMUNITY</a>
+            </div>
+            <div>
                 <StyleImg src="images/user1.png"></StyleImg>
-            </ChildDiv>
-        </ParentDiv >
+            </div>
+        </StyleHeader >
     );
 }
+
+const StyleHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+    a {
+        margin-left: 20px;
+        padding: 20px;
+    }
+`
 
 export default Header;

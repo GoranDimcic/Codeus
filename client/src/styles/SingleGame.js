@@ -15,7 +15,7 @@ export const StyleLeftSide = styled.div`
     width: 20%;
 `
 
-export const StyleImg = styled.img`
+export const StyleGameImg = styled.img`
     width: 100%;
 `
 
@@ -29,7 +29,7 @@ export const StyledStarImg = styled.img`
     width: 30px;
 `
 
-export const StyleGame = styled.div`
+export const StyleGameDescription = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;

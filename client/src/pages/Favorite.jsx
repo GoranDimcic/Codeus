@@ -1,15 +1,16 @@
-import { StyleFavorite } from "../styles/FavoritePage"
 import SingleGame from "../components/SingleGame"
+import { StyleMargin } from "../styles"
 
 const Favorite = () => {
     return (
-        <StyleFavorite>
+        <StyleMargin>
             <p>Total: 3 item(s) in favorites</p>
-            <div className="all games in favorite">
+            <div>
+                <SingleGame />
                 <SingleGame />
                 <SingleGame />
             </div>
-        </StyleFavorite>
+        </StyleMargin>
     )
 }
 
