@@ -1,21 +1,18 @@
 import styled from "styled-components"
-import { StyleImg } from "../styles";
 
 const Header = () => {
     return (
         <StyleHeader>
-            <div>
-                <StyleImg src="images/logo.png"></StyleImg>
-            </div>
+            <StyleLogo src="images/logo.png"></StyleLogo>
             <div>
                 <a>BROWSE</a>
                 <a>SEARCH</a>
                 <a>FAVORITES</a>
                 <a>COMMUNITY</a>
             </div>
-            <div>
+            <StyleUser>
                 <StyleImg src="images/user1.png"></StyleImg>
-            </div>
+            </StyleUser>
         </StyleHeader >
     );
 }
@@ -29,6 +26,25 @@ const StyleHeader = styled.div`
         margin-left: 20px;
         padding: 20px;
     }
+`
+
+const StyleLogo = styled.img`
+    height: 50px;
+`
+
+const StyleUser = styled.div`
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF00C7;
+    height: 50px;
+    width: 50px;
+`
+
+const StyleImg = styled.img`
+    height: 30px;
+    width: 30px;
 `
 
 export default Header;

@@ -4,11 +4,6 @@ export const StyleMargin = styled.div`
     margin: 0 20px;
 `
 
-export const StyleImg = styled.img`
-    height: 50px;
-    margin: 0 0 0 10px;
-`
-
 export const StyledButton = styled.button`
     height: 30px;
     width: 150px;

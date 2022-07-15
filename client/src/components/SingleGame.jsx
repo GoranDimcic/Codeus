@@ -1,5 +1,5 @@
-import { StyledButton } from "../styles";
 import { StyleSingleGame, StyleGameImg, StyleGameDescription, StyleLeftSide, StyleRightSide } from "../styles/SingleGame";
+import Button from "./Button";
 import GameType from "./GameType";
 import Rating from "./Rating";
 
@@ -12,7 +12,7 @@ const SingleGame = () => {
             <StyleRightSide>
                 <StyleGameDescription>
                     <h2>Dishonored 2</h2>
-                    <StyledButton>Remove from favorites</StyledButton>
+                    <Button text="Remove from favorites" />
                 </StyleGameDescription>
                 <GameType />
                 <Rating />

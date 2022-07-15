@@ -5,13 +5,15 @@ import Game from "./pages/Game"
 import Inline from "./components/Inline"
 import Search from "./pages/Search"
 import Browse from "./pages/Browse"
+import Footer from "./components/Footer"
 
 const App = () => {
   return (
     <>
       <Header />
       <Inline />
-      <Search />
+      <Favorite />
+      <Footer />
     </>
   )
 }
