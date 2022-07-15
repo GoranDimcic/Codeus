@@ -1,34 +1,35 @@
 import styled from "styled-components"
 import Inline from "./Inline"
+import A from "./A"
 
 const Footer = () => {
     return (
         <StyleFooter>
             <StyleTop>
                 <StyleTopItems>
-                    <a>Login</a>
-                    <a>Registration</a>
-                    <a>Favorites</a>
+                    <A text="Login" />
+                    <A text="Registration" />
+                    <A text="Favorites" />
                 </StyleTopItems>
                 <StyleTopItems>
-                    <a>Community</a>
-                    <a>Browse games</a>
-                    <a>Search</a>
+                    <A text="Community" />
+                    <A text="Browse games" />
+                    <A text="Search" />
                 </StyleTopItems>
                 <StyleTopItems>
-                    <a>About</a>
-                    <a>Contact us</a>
-                    <a>FAQ</a>
+                    <A text="About" />
+                    <A text="Contact us" />
+                    <A text="FAQ" />
                 </StyleTopItems>
                 <StyleLogo src="images/logo.png"></StyleLogo>
             </StyleTop>
             <Inline />
             <StyleBottom>
                 <div>
-                    <a>Facebook</a>
-                    <a>Twitter</a>
-                    <a>Twitch</a>
-                    <a>Youtube</a>
+                    <A text="Facebook" />
+                    <A text="Twitter" />
+                    <A text="Twitch" />
+                    <A text="Youtube" />
                 </div>
                 <span>
                     +(581) 893-15-90

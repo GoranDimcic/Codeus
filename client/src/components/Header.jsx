@@ -1,14 +1,15 @@
 import styled from "styled-components"
+import A from "./A";
 
 const Header = () => {
     return (
         <StyleHeader>
             <StyleLogo src="images/logo.png"></StyleLogo>
             <div>
-                <a>BROWSE</a>
-                <a>SEARCH</a>
-                <a>FAVORITES</a>
-                <a>COMMUNITY</a>
+                <A text="Browse" />
+                <A text="SEARCH" />
+                <A text="FAVORITES" />
+                <A text="COMMUNITY" />
             </div>
             <StyleUser>
                 <StyleImg src="images/user1.png"></StyleImg>
