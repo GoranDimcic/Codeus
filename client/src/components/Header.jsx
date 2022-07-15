@@ -6,7 +6,7 @@ const Header = () => {
         <StyleHeader>
             <StyleLogo src="images/logo.png"></StyleLogo>
             <div>
-                <A text="Browse" />
+                <A text="BROWSE" />
                 <A text="SEARCH" />
                 <A text="FAVORITES" />
                 <A text="COMMUNITY" />
@@ -22,7 +22,7 @@ const StyleHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 10px;
+    margin: 10px 10px;
     a {
         margin-left: 20px;
         padding: 20px;

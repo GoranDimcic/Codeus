@@ -1,65 +1,51 @@
+import Button from "../components/Button"
 import SingleGame from "../components/SingleGame"
-import { StyledButton } from "../styles"
-import { StyleFilter, StyleGameTypeAndPrice, StyleInput, StyleLi, StylePlatform, StyleSearch, StyleUl, StyleMiddle } from "../styles/SearchPage"
-import { StyledStarImg } from "../styles/SingleGame"
+import StarImg from "../components/StarImg"
+import { StyleMargin } from "../styles"
+import { StyleGameTypeAndPrice, StyleFilter, StyleInput, StyleLoadMore, StyleMiddle, StylePlatform, StyleSearch } from "../styles/SearchPage"
 
 
 const Search = () => {
     return (
-        <StyleSearch>
-            <div>
+        <StyleMargin>
+            <StyleSearch>
                 <StyleInput></StyleInput>
-                <StyledButton>Search</StyledButton>
-            </div>
+                <Button text="Search" />
+            </StyleSearch>
             <StyleFilter>
                 <StyleGameTypeAndPrice>
-                    <ul>
-                        <li>ROLE-PLAYING</li>
-                        <li>REAL TIME STRATEGY</li>
-                        <li>RACING</li>
-                        <li>SIMULATION</li>
-                        <li>ACTION</li>
-                        <li>ADVENTURE</li>
-                    </ul>
+                    <div>Role-playing</div>
+                    <div>Real time strategy</div>
+                    <div>Racing</div>
+                    <div>Simulation</div>
+                    <div>Action</div>
+                    <div>Adventure</div>
                 </StyleGameTypeAndPrice>
-                <StylePlatform>
-                    <StyleMiddle>
-                        <ul>
-                            <li>MAC OS</li>
-                            <li>WINDOWS</li>
-                            <li>LINXU</li>
-                        </ul>
-                    </StyleMiddle>
-                    <StyleMiddle>
-                        <StyleUl>
-                            <StyleLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyleLi>
-                            <StyleLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyleLi>
-                            <StyleLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyleLi>
-                            <StyleLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyleLi>
-                            <StyleLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyleLi>
-                        </StyleUl>
-                    </StyleMiddle>
-                </StylePlatform>
+                <StyleMiddle>
+                    <StylePlatform>
+                        <div>Mac oc</div>
+                        <div>Windows</div>
+                        <div>Linux</div>
+                    </StylePlatform>
+                    <StarImg />
+                </StyleMiddle>
                 <StyleGameTypeAndPrice>
-                    <ul>
-                        <li>FREE</li>
-                        <li>UNDER $5</li>
-                        <li>FROM $5 - $10</li>
-                        <li>FROM $10 - $30</li>
-                        <li>OVER $30</li>
-                    </ul>
+                    <div>Free</div>
+                    <div>Under $5</div>
+                    <div>From $5 - $10</div>
+                    <div>From $10 - $30</div>
+                    <div>Over $30</div>
                 </StyleGameTypeAndPrice>
-                <div className="cena">
-
-                </div>
             </StyleFilter>
-            <div className="games">
+            <div>
                 <SingleGame />
                 <SingleGame />
                 <SingleGame />
             </div>
-            <button>Load more</button>
-        </StyleSearch>
+            <StyleLoadMore>
+                <Button text="Loan more" />
+            </StyleLoadMore>
+        </StyleMargin>
     )
 }
 

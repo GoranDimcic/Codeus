@@ -1,10 +1,11 @@
-import { StyledButton, StyledNav, StyledLi } from "../styles"
+import { StyledNav, StyledLi } from "../styles"
 import { StyledStarImg } from "../styles/SingleGame"
 import {
     StyleGame, StyledImg, StyleComment, StyleGamePictures,
     StyleSpan, StyleLeftSide, StyleRightSide, StyleSelectedGame,
     StyleMorePictures, StyleComments, StyleP
 } from "../styles/GamePage"
+import Button from "../components/Button"
 
 const Game = () => {
     return (
@@ -31,7 +32,7 @@ const Game = () => {
                         <StyledLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyledLi>
                     </StyledNav>
                     <p>Add to favorite</p>
-                    <StyledButton>Add to cart $15</StyledButton>
+                    <Button text="Add to cart $15" />
                     <p>Game description</p>
                 </StyleRightSide>
             </StyleSelectedGame>

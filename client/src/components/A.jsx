@@ -1,6 +1,6 @@
-const A = ({ text }) => {
+const A = ({ text, link }) => {
     return (
-        <a>{text}</a>
+        <a href={link}>{text}</a>
     )
 }
 

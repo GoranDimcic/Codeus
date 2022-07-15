@@ -1,11 +1,12 @@
 import styled from "styled-components"
+import Span from "./Span"
 
 const GameType = () => {
     return (
         <StyleDiv>
-            <span>RPG</span>
-            <span>Adventure</span>
-            <span>Action</span>
+            <Span text="RPG" />
+            <Span text="Adventure" />
+            <Span text="Action" />
         </StyleDiv>
     )
 }

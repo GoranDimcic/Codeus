@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Inline from "./Inline"
 import A from "./A"
+import Span from "./Span"
 
 const Footer = () => {
     return (
@@ -31,9 +32,7 @@ const Footer = () => {
                     <A text="Twitch" />
                     <A text="Youtube" />
                 </div>
-                <span>
-                    +(581) 893-15-90
-                </span>
+                <Span text="+(581) 893-15-90" />
             </StyleBottom>
         </StyleFooter>
     )

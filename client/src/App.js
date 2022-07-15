@@ -12,7 +12,7 @@ const App = () => {
     <>
       <Header />
       <Inline />
-      <Favorite />
+      <Search />
       <Footer />
     </>
   )
