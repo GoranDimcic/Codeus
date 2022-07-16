@@ -1,58 +1,48 @@
 import styled from "styled-components"
 
 export const StyleGame = styled.div`
-    border: 1px solid black;
-`
-
-export const StyleSelectedGame = styled.div`
     display: flex;
+    padding: 20px;
 `
 
 export const StyleLeftSide = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    border: 1px solid black;
-    margin-left: 20px;
 `
 
-export const StyleGamePictures = styled.div`
+export const StyleProfilePicture = styled.img`
     width: 100%;
+`
+
+export const StyleOtherGamePictures = styled.div`
     display: flex;
 `
 
-export const StyleMorePictures = styled.img`
-    width: 100px;
-    height: 100px;
+export const StyleSmallPicutre = styled.img`
+    width: 20%;
+    margin-top: 20px;
 `
 
 export const StyleRightSide = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
     width: 50%;
-    margin: 0 20px 0 20px;
-    border: 1px solid black;
-`
-
-export const StyledImg = styled.img`
-    width: 100%;
-    object-fit: cover;
-    height: 300px;
-    margin-bottom: 20px;
+    h1 {
+        margin-top: 0;
+    }
 `
 
 export const StyleComment = styled.div`
-    margin: 0 20px 0 20px;
-    border: 1px solid black;
-    color: white;
+    padding: 0 20px;
 `
 
 export const StyleComments = styled.div`
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
     margin-bottom: 20px;
-    background-color: #20021A;
-`
-
-export const StyleSpan = styled.span`
-    display: block;
-`
-
-export const StyleP = styled.p`
-    margin: 10px 20px 20px 20px;
+    background-color: #200220;
+    padding: 0 20px;
 `

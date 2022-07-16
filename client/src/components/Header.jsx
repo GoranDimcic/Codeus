@@ -24,8 +24,9 @@ const StyleHeader = styled.div`
     align-items: center;
     margin: 10px 10px;
     a {
-        margin-left: 20px;
-        padding: 20px;
+        margin-left: 10px;
+        padding: 10px;
+        border-radius: 20px;
     }
 `
 

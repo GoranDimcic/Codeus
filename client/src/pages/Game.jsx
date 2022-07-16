@@ -1,53 +1,48 @@
-import { StyledNav, StyledLi } from "../styles"
-import { StyledStarImg } from "../styles/SingleGame"
+import { StyleMargin } from "../styles"
 import {
-    StyleGame, StyledImg, StyleComment, StyleGamePictures,
-    StyleSpan, StyleLeftSide, StyleRightSide, StyleSelectedGame,
-    StyleMorePictures, StyleComments, StyleP
+    StyleGame, StyleComment, StyleRightSide, StyleProfilePicture, StyleLeftSide, StyleSmallPicutre, StyleOtherGamePictures, StyleComments
 } from "../styles/GamePage"
 import Button from "../components/Button"
+import Rating from "../components/Rating"
 
 const Game = () => {
     return (
-        <StyleGame>
-            <StyleSelectedGame>
+        <StyleMargin>
+            <StyleGame>
                 <StyleLeftSide>
-                    <StyledImg src="images/Dishonored.png"></StyledImg>
-                    <StyleGamePictures>
-                        <StyleMorePictures src="images/Dishonored.png"></StyleMorePictures>
-                        <StyleMorePictures src="images/Dishonored.png"></StyleMorePictures>
-                        <StyleMorePictures src="images/Dishonored.png"></StyleMorePictures>
-                        <StyleMorePictures src="images/Dishonored.png"></StyleMorePictures>
-                        <StyleMorePictures src="images/Dishonored.png"></StyleMorePictures>
-                        <StyleMorePictures src="images/Dishonored.png"></StyleMorePictures>
-                    </StyleGamePictures>
+                    <div>
+                        <StyleProfilePicture src="images/Dishonored.png"></StyleProfilePicture>
+                    </div>
+                    <StyleOtherGamePictures>
+                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
+                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
+                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
+                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
+                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
+                    </StyleOtherGamePictures>
                 </StyleLeftSide>
                 <StyleRightSide>
                     <h1>Dishonored 2</h1>
-                    <StyledNav>
-                        <StyledLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyledLi>
-                        <StyledLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyledLi>
-                        <StyledLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyledLi>
-                        <StyledLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyledLi>
-                        <StyledLi><StyledStarImg src="images/star-empty.png"></StyledStarImg></StyledLi>
-                    </StyledNav>
+                    <Rating />
                     <p>Add to favorite</p>
                     <Button text="Add to cart $15" />
                     <p>Game description</p>
                 </StyleRightSide>
-            </StyleSelectedGame>
+            </StyleGame>
             <StyleComment>
                 <h1>Comment</h1>
                 <StyleComments>
-                    <StyleP>David<StyleSpan>12 October 2021</StyleSpan></StyleP>
-                    <StyleP>Komentar</StyleP>
+                    <p>David</p>
+                    <p>12 October 2021</p>
+                    <p>Text</p>
                 </StyleComments>
                 <StyleComments>
-                    <StyleP>David<StyleSpan>12 October 2021</StyleSpan></StyleP>
-                    <StyleP>Komentar</StyleP>
+                    <p>David</p>
+                    <p>12 October 2021</p>
+                    <p>Text</p>
                 </StyleComments>
             </StyleComment>
-        </StyleGame>
+        </StyleMargin>
     )
 }
 

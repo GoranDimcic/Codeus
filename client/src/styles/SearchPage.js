@@ -36,7 +36,7 @@ export const StyleMiddle = styled.div`
     flex-direction: column;
     width: 33%;
     margin: 0 20px;
-    `
+`
 
 export const StylePlatform = styled.div`
     display: flex;

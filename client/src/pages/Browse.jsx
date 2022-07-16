@@ -6,7 +6,7 @@ const Browse = () => {
         // <StyleBrowse>
         //     <StyleFirst>
         //         <div>
-                    
+
         //         </div>
         //     </StyleFirst>
         //     <StyleSecond>
