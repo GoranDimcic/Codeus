@@ -1,6 +1,6 @@
 import { StyleMargin } from "../styles"
 import {
-    StyleGame, StyleComment, StyleRightSide, StyleProfilePicture, StyleLeftSide, StyleSmallPicutre, StyleOtherGamePictures, StyleComments
+    StyleGame, StyleRightSide, StyleProfilePicture, StyleLeftSide, StyleSmallPicutre, StyleOtherGamePictures, StyleComments
 } from "../styles/GamePage"
 import Button from "../components/Button"
 import Rating from "../components/Rating"
@@ -29,7 +29,7 @@ const Game = () => {
                     <p>Game description</p>
                 </StyleRightSide>
             </StyleGame>
-            <StyleComment>
+            <div>
                 <h1>Comment</h1>
                 <StyleComments>
                     <p>David</p>
@@ -41,7 +41,7 @@ const Game = () => {
                     <p>12 October 2021</p>
                     <p>Text</p>
                 </StyleComments>
-            </StyleComment>
+            </div>
         </StyleMargin>
     )
 }

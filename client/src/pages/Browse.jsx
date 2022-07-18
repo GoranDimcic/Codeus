@@ -1,26 +1,19 @@
-import Button from "../components/Button"
-import { StyleBrowse, StyleFirst, StyleSecond, StyleThird } from "../styles/BrowsePage"
+import { StyleMargin } from "../styles"
+import { StyleFirst, StyleSecond, StyleThird } from "../styles/BrowsePage"
 
 const Browse = () => {
     return (
-        // <StyleBrowse>
-        //     <StyleFirst>
-        //         <div>
+        <StyleMargin>
+            <StyleFirst>
 
-        //         </div>
-        //     </StyleFirst>
-        //     <StyleSecond>
+            </StyleFirst>
+            <StyleSecond>
 
-        //     </StyleSecond>
-        //     <StyleThird>
+            </StyleSecond>
+            <StyleThird>
 
-        //     </StyleThird>
-        // </StyleBrowse >
-        <>
-            <Button color="blue" />
-            <Button color="red" />
-            <Button color="green" text="asda" />
-        </>
+            </StyleThird>
+        </StyleMargin >
     )
 }
 

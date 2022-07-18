@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const StyleGame = styled.div`
     display: flex;
-    padding: 20px;
 `
 
 export const StyleLeftSide = styled.div`
@@ -34,14 +33,9 @@ export const StyleRightSide = styled.div`
     }
 `
 
-export const StyleComment = styled.div`
-    padding: 0 20px;
-`
-
 export const StyleComments = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
     margin-bottom: 20px;
     background-color: #200220;
     padding: 0 20px;

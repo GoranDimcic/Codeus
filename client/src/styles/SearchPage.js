@@ -20,6 +20,9 @@ export const StyleFilter = styled.div`
     background-color: #3B0931;
     margin-top: 20px;
     padding: 20px;
+    div {
+        margin-bottom: 5px;
+    }
 `
 
 export const StyleGameTypeAndPrice = styled.div`
@@ -43,9 +46,6 @@ export const StylePlatform = styled.div`
     flex-direction: column;
     background-color: #20021D;
     padding: 10px;
-    div {
-        margin-left: 20px;
-    }
 `
 
 export const StyleLoadMore = styled.div`

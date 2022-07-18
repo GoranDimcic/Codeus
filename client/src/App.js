@@ -6,13 +6,14 @@ import Inline from "./components/Inline"
 import Search from "./pages/Search"
 import Browse from "./pages/Browse"
 import Footer from "./components/Footer"
+import FirstPage from "./pages/FirstPage"
 
 const App = () => {
   return (
     <>
       <Header />
       <Inline />
-      <Game />
+      <FirstPage />
       <Footer />
     </>
   )

@@ -40,6 +40,7 @@ const StyleUser = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #FF00C7;
+    background-image: linear-gradient(to right, #FF00C7, #d6a5cb);
     height: 50px;
     width: 50px;
 `
