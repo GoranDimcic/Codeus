@@ -20,10 +20,6 @@ const StyleImg = styled.div`
     padding: 10px;
     img {
         width: 30px;
-        margin-left: 20px;
-    }
-    img:nth-child(1) {
-        margin-left: 0;
     }
 `
 

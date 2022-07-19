@@ -16,11 +16,12 @@ export const StyleProfilePicture = styled.img`
 
 export const StyleOtherGamePictures = styled.div`
     display: flex;
+    margin-top: 20px;
+    overflow-x: scroll;
 `
 
 export const StyleSmallPicutre = styled.img`
-    width: 20%;
-    margin-top: 20px;
+    width: 150px;
 `
 
 export const StyleRightSide = styled.div`
@@ -38,5 +39,6 @@ export const StyleComments = styled.div`
     flex-direction: column;
     margin-bottom: 20px;
     background-color: #200220;
-    padding: 0 20px;
+    padding: 10px 20px;
+    padding-bottom: 0;
 `

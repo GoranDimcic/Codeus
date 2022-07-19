@@ -4,6 +4,7 @@ import {
 } from "../styles/GamePage"
 import Button from "../components/Button"
 import Rating from "../components/Rating"
+import Span from "../components/Span"
 
 const Game = () => {
     return (
@@ -14,6 +15,8 @@ const Game = () => {
                         <StyleProfilePicture src="images/Dishonored.png"></StyleProfilePicture>
                     </div>
                     <StyleOtherGamePictures>
+                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
+                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
                         <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
                         <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
                         <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
@@ -32,13 +35,13 @@ const Game = () => {
             <div>
                 <h1>Comment</h1>
                 <StyleComments>
-                    <p>David</p>
-                    <p>12 October 2021</p>
+                    <Span text="David" color="red" />
+                    <Span text="12 October 2021" />
                     <p>Text</p>
                 </StyleComments>
                 <StyleComments>
-                    <p>David</p>
-                    <p>12 October 2021</p>
+                    <Span text="David" color="red" />
+                    <Span text="12 October 2021" />
                     <p>Text</p>
                 </StyleComments>
             </div>

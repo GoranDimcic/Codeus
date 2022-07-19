@@ -1,6 +1,6 @@
-const Span = ({ text }) => {
+const Span = ({ text, color }) => {
     return (
-        <span>{text}</span>
+        <span style={{ color }}>{text}</ span>
     )
 }
 

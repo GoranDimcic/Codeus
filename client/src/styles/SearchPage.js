@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const StyleSearch = styled.div`
     display: flex;
-    justify-content: space-between;
 `
 
 export const StyleInput = styled.input`
@@ -30,7 +29,9 @@ export const StyleGameTypeAndPrice = styled.div`
     width: 33%;
     padding: 10px;
     div {
-        margin-left: 20px;
+        border-radius: 5px;
+        width: 80%;
+        padding-left: 20px;
     }
 `
 
@@ -46,6 +47,11 @@ export const StylePlatform = styled.div`
     flex-direction: column;
     background-color: #20021D;
     padding: 10px;
+    div {
+        border-radius: 5px;
+        padding-left: 20px;
+        width: 80%;
+    }
 `
 
 export const StyleLoadMore = styled.div`
