@@ -13,7 +13,7 @@ const App = () => {
     <>
       <Header />
       <Inline />
-      <Cart />
+      <Browse />
       <Footer />
     </>
   )

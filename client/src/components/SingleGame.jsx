@@ -2,36 +2,18 @@ import { StyleSingleGame, StyleGameImg, StyleGameDescription, StyleLeftSide, Sty
 import Button from "./Button";
 import GameType from "./GameType";
 import Rating from "./Rating";
-import { useState } from "react";
 
-const SingleGame = () => {
-
-    const [isHovering, setIsHovering] = useState(false);
-
-    const handleMouseEnter = () => {
-        setIsHovering(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovering(false);
-    };
-
+const SingleGame = ({ text1, text2 }) => {
     return (
         <StyleSingleGame>
             <StyleLeftSide>
-                <StyleGameImg src="images/game.png"
-                    style={{
-                        filter: isHovering ? 'blur(4px)' : ''
-                    }}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                >
-                </StyleGameImg>
+                <StyleGameImg src="images/game.png"></StyleGameImg>
+                <Button text1={text1} />
             </StyleLeftSide>
             <StyleRightSide>
                 <StyleGameDescription>
                     <h2>Dishonored 2</h2>
-                    <Button text="Remove from favorites" />
+                    <Button text2={text2} />
                 </StyleGameDescription>
                 <GameType />
                 <Rating />

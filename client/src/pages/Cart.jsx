@@ -8,12 +8,12 @@ const Cart = () => {
         <StyleMargin>
             <StyledCart>
                 <p>Total: 3 item(s) in cart</p>
-                <Button text="Checkout $45"></Button>
+                <Button text1="Checkout $45"></Button>
             </StyledCart>
             <div>
-                <SingleGame />
-                <SingleGame />
-                <SingleGame />
+                <SingleGame text1="Add to favorite" text2="Remove from cart" />
+                <SingleGame text1="Add to favorite" text2="Remove from cart" />
+                <SingleGame text1="Add to favorite" text2="Remove from cart" />
             </div>
         </StyleMargin>
     )

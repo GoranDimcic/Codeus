@@ -1,29 +1,8 @@
 import styled from "styled-components"
-import { useState } from "react";
 
-const Button = ({ text }) => {
-
-    const [isHovering, setIsHovering] = useState(false);
-
-    const handleMouseEnter = () => {
-        setIsHovering(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovering(false);
-    };
-
+const Button = ({ text1, text2 }) => {
     return (
-        <StyledButton
-            style={{
-                backgroundColor: isHovering ? '#C100BC' : '',
-                cursor: "pointer"
-            }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
-            {text}
-        </StyledButton>
+        <StyledButton>{text1}{text2}</StyledButton>
     )
 }
 
@@ -34,6 +13,10 @@ const StyledButton = styled.button`
     color: white;
     background-color: #661053;
     border: 1px solid black;
+    &:hover {
+        background-color: #C100BC;
+        cursor: pointer;
+    }
 `
 
 export default Button

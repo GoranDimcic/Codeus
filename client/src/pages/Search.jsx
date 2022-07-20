@@ -13,7 +13,7 @@ const Search = () => {
         <StyleMargin>
             <StyleSearch>
                 <StyleInput></StyleInput>
-                <Button text="Search" />
+                <Button text1="Search" />
             </StyleSearch>
             <StyleFilter>
                 <StyleGameTypeAndPrice>
@@ -41,12 +41,12 @@ const Search = () => {
                 </StyleGameTypeAndPrice>
             </StyleFilter>
             <div>
-                <SingleGame />
-                <SingleGame />
-                <SingleGame />
+                <SingleGame text1="Add to favorite" text2="Add to cart $15" />
+                <SingleGame text1="Add to favorite" text2="Add to cart $15" />
+                <SingleGame text1="Add to favorite" text2="Add to cart $15" />
             </div>
             <StyleLoadMore>
-                <Button text="Loan more" />
+                <Button text1="Loan more" />
             </StyleLoadMore>
         </StyleMargin>
     )

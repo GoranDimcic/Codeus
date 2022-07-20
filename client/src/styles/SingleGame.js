@@ -12,7 +12,21 @@ export const StyleLeftSide = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     width: 20%;
+    button {
+        position: absolute;
+        opacity: 0;
+        transition: .3s ease-in;
+    }
+    &:hover {
+        button {
+            opacity: 1;
+        }
+        img {
+            filter: blur(4px);
+        }
+    }
 `
 
 export const StyleGameImg = styled.img`

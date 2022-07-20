@@ -28,20 +28,20 @@ const Game = () => {
                     <h1>Dishonored 2</h1>
                     <Rating />
                     <p>Add to favorite</p>
-                    <Button text="Add to cart $15" />
+                    <Button text1="Add to cart $15" />
                     <p>Game description</p>
                 </StyleRightSide>
             </StyleGame>
             <div>
                 <h1>Comment</h1>
                 <StyleComments>
-                    <Span text="David" color="red" />
-                    <Span text="12 October 2021" />
+                    <Span text="David" color="#9D1B1B" />
+                    <Span text="12 October 2021" color="grey" />
                     <p>Text</p>
                 </StyleComments>
                 <StyleComments>
-                    <Span text="David" color="red" />
-                    <Span text="12 October 2021" />
+                    <Span text="David" color="#9D1B1B" />
+                    <Span text="12 October 2021" color="grey" />
                     <p>Text</p>
                 </StyleComments>
             </div>

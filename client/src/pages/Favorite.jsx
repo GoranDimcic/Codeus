@@ -6,9 +6,9 @@ const Favorite = () => {
         <StyleMargin>
             <p>Total: 3 item(s) in favorites</p>
             <div>
-                <SingleGame />
-                <SingleGame />
-                <SingleGame />
+                <SingleGame text1="Add to cart" text2="Remove from favorite"/>
+                <SingleGame text1="Add to cart" text2="Remove from favorite"/>
+                <SingleGame text1="Add to cart" text2="Remove from favorite"/>
             </div>
         </StyleMargin>
     )

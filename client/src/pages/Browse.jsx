@@ -1,8 +1,9 @@
+import GameHover from "../components/GameHover"
 import Span from "../components/Span"
 import { StyleMargin } from "../styles"
 import {
-    StyleMostRankedGames, StyleMostCommentedGame, StyleThird,
-    StyleMostRankedLatestGamesLeft, StyleMostRankedLatestGamesRight, StyleGrid
+    StyleMostRankedGames, StyleThird,
+    StyleMostRankedLatestGamesLeft, StyleMostRankedLatestGamesRight, StyleGrid, StyleBestGameType
 } from "../styles/BrowsePage"
 
 const Browse = () => {
@@ -10,35 +11,33 @@ const Browse = () => {
         <StyleMargin>
             <StyleGrid>
                 <StyleMostRankedGames>
-                    <div>
+                    <StyleBestGameType>
                         <Span text="BEST" />
                         <Span text="RPG" />
                         <Span text="GAMES" />
-                    </div>
-                    <img src="images/game.png"></img>
-                    <img src="images/game.png"></img>
-                    <img src="images/game.png"></img>
+                    </StyleBestGameType>
+                    <GameHover />
+                    <GameHover />
+                    <GameHover />
                 </StyleMostRankedGames>
-                <StyleMostCommentedGame>
-                    <img src="images/game.png"></img>
-                </StyleMostCommentedGame>
+                <GameHover />
                 <StyleMostRankedLatestGamesLeft>
-                    <img src="images/game.png"></img>
-                    <img src="images/game.png"></img>
-                    <img src="images/game.png"></img>
+                    <GameHover />
+                    <GameHover />
+                    <GameHover />
                 </StyleMostRankedLatestGamesLeft>
                 <StyleMostRankedLatestGamesRight>
-                    <img src="images/game.png"></img>
-                    <img src="images/game.png"></img>
-                    <img src="images/game.png"></img>
+                    <GameHover />
+                    <GameHover />
+                    <GameHover />
                 </StyleMostRankedLatestGamesRight>
             </StyleGrid>
             <StyleThird>
-                <img src="images/game.png"></img>
-                <img src="images/game.png"></img>
-                <img src="images/game.png"></img>
-                <img src="images/game.png"></img>
-                <img src="images/game.png"></img>
+                <GameHover size="20%" />
+                <GameHover size="20%" />
+                <GameHover size="20%" />
+                <GameHover size="20%" />
+                <GameHover size="20%" />
             </StyleThird>
         </StyleMargin >
     )
