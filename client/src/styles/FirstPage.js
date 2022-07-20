@@ -4,16 +4,17 @@ export const StyleFirstPage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    div {
+    form {
         border-radius: 10px;
         background-color: #200220;
-        margin-bottom: 20px;
-        width: 30%;
         align-items: center;
+        width: 40%;
         padding: 20px 0;
+        margin-bottom: 50px;
     }
     input {
-        margin-bottom: 30px;
+        outline: none;
+        margin-bottom: 50px;
         width: 70%;
         background: none;
         border: none;
@@ -26,12 +27,12 @@ export const StyleFirstPage = styled.div`
     }
 `
 
-export const StyleLogin = styled.div`
+export const StyleLogin = styled.form`
     display: flex;
     flex-direction: column;
 `
 
-export const StyleRegistration = styled.div`
+export const StyleRegistration = styled.form`
     display: flex;
     flex-direction: column;
 `

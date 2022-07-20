@@ -2,12 +2,31 @@ import { StyleSingleGame, StyleGameImg, StyleGameDescription, StyleLeftSide, Sty
 import Button from "./Button";
 import GameType from "./GameType";
 import Rating from "./Rating";
+import { useState } from "react";
 
 const SingleGame = () => {
+
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovering(false);
+    };
+
     return (
         <StyleSingleGame>
             <StyleLeftSide>
-                <StyleGameImg src="images/game.png"></StyleGameImg>
+                <StyleGameImg src="images/game.png"
+                    style={{
+                        filter: isHovering ? 'blur(4px)' : ''
+                    }}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                </StyleGameImg>
             </StyleLeftSide>
             <StyleRightSide>
                 <StyleGameDescription>
@@ -20,7 +39,7 @@ const SingleGame = () => {
                     Game description
                 </div>
             </StyleRightSide>
-        </StyleSingleGame>
+        </StyleSingleGame >
     )
 }
 

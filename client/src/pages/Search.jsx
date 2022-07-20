@@ -2,7 +2,10 @@ import Button from "../components/Button"
 import SingleGame from "../components/SingleGame"
 import StarImg from "../components/StarImg"
 import { StyleMargin } from "../styles"
-import { StyleGameTypeAndPrice, StyleFilter, StyleInput, StyleLoadMore, StyleMiddle, StylePlatform, StyleSearch } from "../styles/SearchPage"
+import {
+    StyleGameTypeAndPrice, StyleFilter, StyleInput,
+    StyleLoadMore, StyleMiddle, StylePlatform, StyleSearch
+} from "../styles/SearchPage"
 
 
 const Search = () => {

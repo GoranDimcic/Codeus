@@ -1,6 +1,9 @@
 import Span from "../components/Span"
 import { StyleMargin } from "../styles"
-import { StyleMostRankedGames, StyleFirst, StyleMostCommentedGame, StyleSecond, StyleThird, StyleMostRankedLatestGamesLeft, StyleMostRankedLatestGamesRight, StyleGrid } from "../styles/BrowsePage"
+import {
+    StyleMostRankedGames, StyleMostCommentedGame, StyleThird,
+    StyleMostRankedLatestGamesLeft, StyleMostRankedLatestGamesRight, StyleGrid
+} from "../styles/BrowsePage"
 
 const Browse = () => {
     return (

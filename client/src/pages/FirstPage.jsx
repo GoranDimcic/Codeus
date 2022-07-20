@@ -6,7 +6,7 @@ const FirstPage = () => {
             <StyleLogin>
                 <h1>Login</h1>
                 <input placeholder="Username or email"></input>
-                <input placeholder="Password"></input>
+                <input placeholder="Password" type="password"></input>
             </StyleLogin>
             <StyleRegistration>
                 <h1>Register</h1>
@@ -14,8 +14,8 @@ const FirstPage = () => {
                 <input placeholder="Email"></input>
                 <input placeholder="First name"></input>
                 <input placeholder="Last name"></input>
-                <input placeholder="Password"></input>
-                <input placeholder="Repeat password"></input>
+                <input placeholder="Password" type="password"></input>
+                <input placeholder="Repeat password" type="password"></input>
             </StyleRegistration>
         </StyleFirstPage>
     )
