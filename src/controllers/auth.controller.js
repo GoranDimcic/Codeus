@@ -3,30 +3,26 @@ import bcrypt from "bcrypt"
 import 'dotenv/config'
 
 export const register = async (req, res) => {
-    const { email, username, password, firstName, lasdtName } = req.body;
+    const { email, username, password, repeatPassword, firstName, lastName } = req.body;
     const encryptedUserPassword = await bcrypt.hash(password, 10);
 
-    try {
-        const [user] = await authService.getUser(email.toLowerCase(), username)
+    const [user] = await authService.getUser(email, username)
 
-        if (!user) {
-            await authService.createUser(email.toLowerCase(), username, encryptedUserPassword, firstName, lasdtName)
-            const [user] = await authService.getUser(email.toLowerCase(), username)
-
-            const token = await authService.getToken(user)
+    if (!user) {
+        if (password == repeatPassword) {
+            await authService.createUser(email.toLowerCase(), username, encryptedUserPassword, firstName, lastName)
 
             res.status(201).json({
                 message: "You are successfully registred.",
-                data: { accessToken: token }
             })
         }
         else {
-            res.status(401).json({
-                message: "Email or username is taken, try again."
+            res.status(201).json({
+                message: "Password is not matching!",
             })
         }
     }
-    catch (error) {
+    else {
         res.status(401).json({
             message: "Email or username is taken, try again."
         })
@@ -72,32 +68,4 @@ export const login = async (req, res) => {
             message: "Error!"
         })
     }
-}
-
-export const update = async (req, res) => {
-    const { firstName, lasdtName } = req.body;
-    try {
-        const [user] = await authService.getUserById(req.user_id);
-
-        if (!user) {
-            res.status(401).json({
-                message: "No user with that email!"
-            })
-        }
-        else {
-            await authService.updateUser(user.user_id, firstName, lasdtName)
-            res.status(201).json({
-                message: "Update complete."
-            })
-        }
-    }
-    catch (error) {
-        res.status(401).json({
-            message: "Error"
-        })
-    }
-}
-
-export const updatePassword = async (req, res) => {
-
 }

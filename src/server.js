@@ -8,10 +8,17 @@ import transactionRouter from "./routes/transaction.route.js"
 import cartRouter from "./routes/cart.route.js"
 import bodyParser from 'body-parser'
 import 'dotenv/config'
+import cors from 'cors'
 
 const {API_PORT} = process.env
 const app = express()
 const port = process.env.port || API_PORT
+
+var corsOptions = {
+  origin: '*',
+}
+
+app.use(cors(corsOptions))
 
 app.use(bodyParser.json())
 

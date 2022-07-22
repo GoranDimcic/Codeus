@@ -13,10 +13,14 @@ const App = () => {
     <>
       <Header />
       <Inline />
-      <Browse />
+      <FirstPage />
       <Footer />
     </>
   )
 }
 
 export default App
+
+//hover za header, hover ili click za user logo
+//zvezdice za ocenjivanje, filter za search
+//klik na tipove i filtere

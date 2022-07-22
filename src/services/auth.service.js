@@ -4,18 +4,12 @@ import jwt from "jsonwebtoken"
 export const getUser = async (email, username) => {
     const result = await db('user')
         .where({
-            email: email,
+            email: email
+        })
+        .orWhere({
             username: username
         })
     return result;
-}
-
-export const getUserById = async (userId) => {
-    const result = await db('user')
-        .where({
-            id, userId
-        })
-    return result
 }
 
 export const getUserByEmail = async (email) => {
@@ -34,33 +28,16 @@ export const getUserByUsername = async (username) => {
     return result
 }
 
-export const createUser = async (email, username, password, firstName, lasdtName) => {
+export const createUser = async (email, username, password, firstName, lastName) => {
     const result = await db('user')
         .insert({
             email: email,
-            username: username,
             password: password,
+            username: username,
             firstName: firstName,
-            lasdtName: lasdtName
+            lastName: lastName
         })
     return result;
-}
-
-export const updateUser = async (userId, firstName, lasdtName) => {
-    const result = await db('user')
-        .where({
-            id: userId
-        })
-        .update({
-            firstName: firstName,
-            lasdtName: lasdtName
-        })
-    return result;
-}
-
-export const updatePass = async () => {
-
-    //update password samo ako unese isti pass koji je vec imao
 }
 
 export const getToken = async (user) => {
@@ -70,7 +47,7 @@ export const getToken = async (user) => {
         },
         process.env.TOKEN_KEY,
         {
-            expiresIn: "2h",
+            expiresIn: "5h",
         }
     );
     return token

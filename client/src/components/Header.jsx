@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import A from "./A";
+import Nav from "./Nav";
 
 const Header = () => {
     return (
@@ -13,6 +14,7 @@ const Header = () => {
             </div>
             <StyleUser>
                 <StyleImg src="images/user1.png"></StyleImg>
+                <Nav />
             </StyleUser>
         </StyleHeader >
     );
@@ -24,9 +26,11 @@ const StyleHeader = styled.div`
     align-items: center;
     margin: 10px 10px;
     a {
-        margin-left: 10px;
         padding: 10px;
         border-radius: 20px;
+        &:hover {
+            background-color: #200220;
+        }
     }
 `
 
@@ -35,14 +39,21 @@ const StyleLogo = styled.img`
 `
 
 const StyleUser = styled.div`
-    border-radius: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    border-radius: 50%;
     background-color: #FF00C7;
     background-image: linear-gradient(to right, #FF00C7, #d6a5cb);
     height: 50px;
     width: 50px;
+    &:hover {
+        div {
+            opacity: 1;
+        }
+    }
 `
 
 const StyleImg = styled.img`
