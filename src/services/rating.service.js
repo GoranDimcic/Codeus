@@ -9,6 +9,16 @@ export const getRating = async (userId, gameId) => {
     return result;
 }
 
+export const getMostAvgRatedGames = async () => {
+    const result = await db('rating')
+        .select('gameId')
+        .avg('ratingNumber')
+        .groupBy('gameId')
+        .orderBy('avg', 'desc')
+        .limit(6)
+    return result
+}
+
 export const createRating = async (userId, gameId, rate) => {
     const result = await db('rating')
         .insert({

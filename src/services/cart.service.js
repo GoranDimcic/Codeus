@@ -1,5 +1,12 @@
 import db from "../db/db.js"
 
+export const getGamesFromCart = async (userId) => {
+    const result = await db('cart')
+        .where('cart.userId', userId)
+        .join('game', 'cart.gameId', '=', 'game.id')
+    return result
+}
+
 export const createCart = async (userId, gameId, price) => {
     const result = await db('cart')
         .insert({

@@ -30,6 +30,7 @@ const StyleHeader = styled.div`
         border-radius: 20px;
         &:hover {
             background-color: #200220;
+            cursor: pointer;
         }
     }
 `

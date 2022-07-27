@@ -1,7 +1,21 @@
 import * as cartService from "../services/cart.service.js"
 import * as transactionService from "../services/transaction.service.js"
 
-export const addToCart = async (req, res) => {
+export const GamesFromCart = async (req, res) => {
+    try {
+        const games = await cartService.getGamesFromCart(req.id)
+        res.status(201).json({
+            message: games
+        })
+    }
+    catch (error) {
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
+export const AddGameToCart = async (req, res) => {
     const { game_id, price } = req.body
 
     try {
@@ -17,7 +31,7 @@ export const addToCart = async (req, res) => {
     }
 }
 
-export const chechout = async (req, res) => {
+export const Chechout = async (req, res) => {
     try {
         const transaction_id = await transactionService.createTransaction()
 
@@ -33,7 +47,7 @@ export const chechout = async (req, res) => {
     }
 }
 
-export const removeFromCart = async (req, res) => {
+export const RemoveGameFromCart = async (req, res) => {
     const { game_id } = req.body
 
     try {

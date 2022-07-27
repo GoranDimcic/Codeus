@@ -47,6 +47,12 @@ const StyleTop = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    a{
+        &:hover {
+        color: grey;
+        cursor: pointer;
+        }
+    }
 `
 
 const StyleTopItems = styled.div`
@@ -64,6 +70,10 @@ const StyleBottom = styled.div`
     align-items: center;
     a {
         margin-left: 10px;
+        &:hover {
+        color: grey;
+        cursor: pointer;
+        }
     }
     a:nth-child(1) {
         margin-left: 0;

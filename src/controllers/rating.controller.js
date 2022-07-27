@@ -1,6 +1,20 @@
 import * as ratingService from "../services/rating.service.js"
 
-export const addRating = async (req, res) => {
+export const MostAvgRatedGames = async (req, res) => {
+    try {
+        const games = await ratingService.getMostAvgRatedGames()
+        res.status(201).json({
+            message: games
+        })
+    }
+    catch (error) {
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
+export const AddRating = async (req, res) => {
     const { gameId, rate } = req.body
 
     try {
@@ -16,7 +30,7 @@ export const addRating = async (req, res) => {
     }
 }
 
-export const updateRating = async (req, res) => {
+export const UpdateRating = async (req, res) => {
     const { gameId, rate } = req.body
 
     try {
@@ -41,7 +55,7 @@ export const updateRating = async (req, res) => {
     }
 }
 
-export const deleteRating = async (req, res) => {
+export const DeleteRating = async (req, res) => {
     const { gameId } = req.body
 
     try {

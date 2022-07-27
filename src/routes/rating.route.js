@@ -1,11 +1,12 @@
 import { Router } from "express";
-import { addRating, deleteRating, updateRating } from "../controllers/rating.controller.js";
+import { MostAvgRatedGames, AddRating, UpdateRating, DeleteRating } from "../controllers/rating.controller.js";
 import authenticateToken from "../middleware/auth.middleware.js";
 
 const router = new Router()
 
-router.post("/", authenticateToken, addRating)
-router.put("/", authenticateToken, updateRating)
-router.delete("/", authenticateToken, deleteRating)
+router.get("/", MostAvgRatedGames)
+router.post("/", authenticateToken, AddRating)
+router.put("/", authenticateToken, UpdateRating)
+router.delete("/", authenticateToken, DeleteRating)
 
 export default router

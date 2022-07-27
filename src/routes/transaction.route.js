@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { createTransaction } from "../controllers/transaction.controller.js";
+import { CreateTransaction } from "../controllers/transaction.controller.js";
 
 const router = new Router()
 
-router.post("/", createTransaction)
+router.post("/", CreateTransaction)
 
 export default router

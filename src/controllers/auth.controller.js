@@ -2,7 +2,7 @@ import * as authService from '../services/auth.service.js';
 import bcrypt from "bcrypt"
 import 'dotenv/config'
 
-export const register = async (req, res) => {
+export const Register = async (req, res) => {
     const { email, username, password, repeatPassword, firstName, lastName } = req.body;
     const encryptedUserPassword = await bcrypt.hash(password, 10);
 
@@ -29,7 +29,7 @@ export const register = async (req, res) => {
     }
 }
 
-export const login = async (req, res) => {
+export const Login = async (req, res) => {
     const { usernameOrEmail, password } = req.body
     let user
 

@@ -1,6 +1,22 @@
 import * as favoriteServices from "../services/favorite.service.js"
 
-export const addFavorite = async (req, res) => {
+
+export const GamesFromFavorite = async (req, res) => {
+    try {
+        const games = await favoriteServices.getGamesFromFavorite(req.id)
+        res.status(201).json({
+            message: games
+        })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(401).json({
+            message: "Error"
+        })
+    }
+}
+
+export const AddFavorite = async (req, res) => {
     const { gameId } = req.body;
 
     try {
@@ -16,7 +32,7 @@ export const addFavorite = async (req, res) => {
     }
 }
 
-export const deleteFavorite = async (req, res) => {
+export const DeleteFavorite = async (req, res) => {
     const { gameId } = req.body;
 
     try {

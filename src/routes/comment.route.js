@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { addComment } from "../controllers/comment.controller.js";
+import { MostCommentedGame, AddComment } from "../controllers/comment.controller.js";
 import authenticateToken from "../middleware/auth.middleware.js"
 
 const router = new Router()
 
-router.post("/", authenticateToken, addComment)
+router.get("/", MostCommentedGame)
+router.post("/", authenticateToken, AddComment)
 
 export default router

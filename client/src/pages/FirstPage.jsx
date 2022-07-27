@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Button from "../components/Button"
 import { StyleFirstPage, StyleLogin, StyleRegistration } from "../styles/FirstPage"
+import ApiClient from "../api/axios"
 
 const FirstPage = () => {
     const [loginData, setLoginData] = useState({
@@ -18,17 +19,15 @@ const FirstPage = () => {
     })
 
     const loginUser = async () => {
-        const response = await fetch('http://localhost:4000/auth/login', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+        try {
+            const response = await ApiClient.post("/auth/login", {
                 usernameOrEmail: loginData.name,
                 password: loginData.password
             })
-        })
-        console.log(await response.json())
+            localStorage.setItem("token", response.data.data.accessToken)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const registerUser = async () => {
