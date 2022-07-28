@@ -1,6 +1,5 @@
 import * as favoriteServices from "../services/favorite.service.js"
 
-
 export const GamesFromFavorite = async (req, res) => {
     try {
         const games = await favoriteServices.getGamesFromFavorite(req.id)
