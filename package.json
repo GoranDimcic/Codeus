@@ -21,7 +21,8 @@
     "knex": "^2.1.0",
     "pg": "^8.7.3",
     "sqlite3": "^5.0.8",
-    "string": "^3.3.3"
+    "string": "^3.3.3",
+    "zustand": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"

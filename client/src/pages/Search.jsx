@@ -1,7 +1,6 @@
 import Button from "../components/Button"
 import SingleGame from "../components/SingleGame"
 import StarImg from "../components/StarImg"
-import { StyleMargin } from "../styles"
 import {
     StyleGameTypeAndPrice, StyleFilter, StyleInput,
     StyleLoadMore, StyleMiddle, StylePlatform, StyleSearch
@@ -10,7 +9,7 @@ import {
 
 const Search = () => {
     return (
-        <StyleMargin>
+        <>
             <StyleSearch>
                 <StyleInput></StyleInput>
                 <Button text1="Search" />
@@ -48,7 +47,7 @@ const Search = () => {
             <StyleLoadMore>
                 <Button text1="Loan more" />
             </StyleLoadMore>
-        </StyleMargin>
+        </>
     )
 }
 

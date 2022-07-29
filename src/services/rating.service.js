@@ -10,11 +10,12 @@ export const getRating = async (userId, gameId) => {
 }
 
 export const getMostAvgRatedGames = async () => {
-    const result = await db('rating')
-        .select('gameId')
-        .avg('ratingNumber')
-        .groupBy('gameId')
-        .orderBy('avg', 'desc')
+    const result = await db('favorite as f')
+        .select('g.mainPhoto', 'f.gameId')
+        .leftJoin('game as g', { 'f.gameId': 'g.id' })
+        .groupBy('g.mainPhoto', 'f.gameId')
+        .count('g.mainPhoto as favorites')
+        .orderBy('favorites', 'desc')
         .limit(6)
     return result
 }

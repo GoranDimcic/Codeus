@@ -1,4 +1,3 @@
-import { StyleMargin } from "../styles"
 import {
     StyleGame, StyleRightSide, StyleProfilePicture, StyleLeftSide, StyleSmallPicutre, StyleOtherGamePictures, StyleComments
 } from "../styles/GamePage"
@@ -8,7 +7,7 @@ import Span from "../components/Span"
 
 const Game = () => {
     return (
-        <StyleMargin>
+        <>
             <StyleGame>
                 <StyleLeftSide>
                     <div>
@@ -45,7 +44,7 @@ const Game = () => {
                     <p>Text</p>
                 </StyleComments>
             </div>
-        </StyleMargin>
+        </>
     )
 }
 

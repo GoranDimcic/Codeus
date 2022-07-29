@@ -1,16 +1,17 @@
 import styled from "styled-components"
 import A from "./A";
 import Nav from "./Nav";
+import { Link } from "react-router-dom"
 
 const Header = () => {
     return (
         <StyleHeader>
             <StyleLogo src="images/logo.png"></StyleLogo>
             <div>
-                <A text="BROWSE" />
-                <A text="SEARCH" />
-                <A text="FAVORITES" />
-                <A text="COMMUNITY" />
+                <Link to="/browse"><A text="BROWSE" /></Link>
+                <Link to="/search"><A text="SEARCH" /></Link>
+                <Link to="/favorite"><A text="FAVORITES" /></Link>
+                <Link to="/"><A text="COMMUNITY" /></Link>
             </div>
             <StyleUser>
                 <StyleImg src="images/user1.png"></StyleImg>

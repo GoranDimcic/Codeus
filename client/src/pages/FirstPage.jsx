@@ -1,9 +1,13 @@
 import { useState } from "react"
 import Button from "../components/Button"
 import { StyleFirstPage, StyleLogin, StyleRegistration } from "../styles/FirstPage"
+import useAuthStore from "../store/auth"
 import ApiClient from "../api/axios"
+import { useNavigate } from "react-router-dom"
 
 const FirstPage = () => {
+    const navigate = useNavigate()
+
     const [loginData, setLoginData] = useState({
         name: '',
         password: ''
@@ -18,25 +22,23 @@ const FirstPage = () => {
         repeatPassword: ''
     })
 
+    const setToken = useAuthStore(state => state.setToken)
+
     const loginUser = async () => {
         try {
             const response = await ApiClient.post("/auth/login", {
                 usernameOrEmail: loginData.name,
                 password: loginData.password
             })
-            localStorage.setItem("token", response.data.data.accessToken)
+            setToken(response.data.data.accessToken)
+            navigate('/browse')
         } catch (err) {
             console.log(err)
         }
     }
-
     const registerUser = async () => {
-        const response = await fetch('http://localhost:4000/auth/register', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+        try {
+            const response = await ApiClient.post("/auth/register", {
                 username: registerData.username,
                 email: registerData.email,
                 firstName: registerData.firstName,
@@ -44,8 +46,10 @@ const FirstPage = () => {
                 password: registerData.password,
                 repeatPassword: registerData.repeatPassword
             })
-        })
-        console.log(await response.json())
+            console.log(await response.json())
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (

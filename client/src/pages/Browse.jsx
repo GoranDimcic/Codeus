@@ -1,6 +1,5 @@
 import GameHover from "../components/GameHover"
 import Span from "../components/Span"
-import { StyleMargin } from "../styles"
 import {
     StyleMostRankedGames, StyleThird,
     StyleMostRankedLatestGamesLeft, StyleMostRankedLatestGamesRight, StyleGrid, StyleBestGameType
@@ -8,7 +7,7 @@ import {
 
 const Browse = () => {
     return (
-        <StyleMargin>
+        <>
             <StyleGrid>
                 <StyleMostRankedGames>
                     <StyleBestGameType>
@@ -39,7 +38,7 @@ const Browse = () => {
                 <GameHover size="20%" />
                 <GameHover size="20%" />
             </StyleThird>
-        </StyleMargin >
+        </ >
     )
 }
 
