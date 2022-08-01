@@ -18,7 +18,10 @@ const Favorite = () => {
     return (
         <>
             {
-                favorites.length > 0 ? <p>Total: {favorites.length} item(s) in favorites</p> : <p>There is no items in favorites.</p>
+                favorites.length > 0 ?
+                    <p>Total: {favorites.length} item(s) in favorites</p>
+                    :
+                    <p>There is no items in favorites.</p>
             }
             {favoriteGames}
         </>
