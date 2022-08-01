@@ -2,13 +2,24 @@ import db from "../db/db.js"
 
 export const getMostCommentedGame = async () => {
     const result = await db('comment as c')
-        .select('g.mainPhoto')
+        .select('g.mainPhoto', 'g.id')
         .leftJoin('game as g', { 'c.gameId': 'g.id' })
-        .groupBy('g.mainPhoto')
+        .groupBy('g.mainPhoto', 'g.id')
         .count('g.mainPhoto as comments')
         .orderBy('comments', 'desc')
         .limit(1)
     return result
+}
+
+export const getMostRatedGames = async () => {
+    const result = await db('rating as r')
+        .select('g.mainPhoto', 'r.gameId')
+        .leftJoin('game as g', { 'r.gameId': 'g.id' })
+        .groupBy('r.gameId', 'g.mainPhoto')
+        .count('r.gameId as ratings')
+        .orderBy('ratings', 'desc')
+        .limit(3)
+    return result;
 }
 
 export const getMostFavoritedGames = async () => {
