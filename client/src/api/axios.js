@@ -9,12 +9,11 @@ const ApiClient = axios.create({
 })
 
 const requestInterceptor = async config => {
-    const { authToken } = useAuthStore.getState()
-
-    if (authToken && config.baseURL) {
+    const {token}= useAuthStore.getState()
+    if (token && config.baseURL) {
         config.headers = {
             ...config.headers,
-            Authorization: `Bearer ${authToken}`,
+            Authorization: `Bearer ${token}`,
         }
     }
 

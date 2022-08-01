@@ -11,7 +11,7 @@ const Header = () => {
                 <Link to="/browse"><A text="BROWSE" /></Link>
                 <Link to="/search"><A text="SEARCH" /></Link>
                 <Link to="/favorite"><A text="FAVORITES" /></Link>
-                <Link to="/"><A text="COMMUNITY" /></Link>
+                <Link to="/browse"><A text="COMMUNITY" /></Link>
             </div>
             <StyleUser>
                 <StyleImg src="images/user1.png"></StyleImg>
@@ -27,6 +27,8 @@ const StyleHeader = styled.div`
     align-items: center;
     margin: 10px 10px;
     a {
+        text-decoration: none;
+        color: white;
         padding: 10px;
         border-radius: 20px;
         &:hover {
@@ -45,7 +47,6 @@ const StyleUser = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
     border-radius: 50%;
     background-color: #FF00C7;
     background-image: linear-gradient(to right, #FF00C7, #d6a5cb);

@@ -10,7 +10,7 @@ import bodyParser from 'body-parser'
 import 'dotenv/config'
 import cors from 'cors'
 
-const {API_PORT} = process.env
+const { API_PORT } = process.env
 const app = express()
 const port = process.env.port || API_PORT
 

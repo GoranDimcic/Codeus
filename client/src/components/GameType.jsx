@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Span from "./Span"
 
-const GameType = () => {
+const GameType = ({ game }) => {
     return (
         <StyleDiv>
             <Span text="RPG" />

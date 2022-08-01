@@ -6,6 +6,7 @@ import ApiClient from "../api/axios"
 import { useNavigate } from "react-router-dom"
 
 const FirstPage = () => {
+    const setToken = useAuthStore(state => state.setToken)
     const navigate = useNavigate()
 
     const [loginData, setLoginData] = useState({
@@ -22,8 +23,6 @@ const FirstPage = () => {
         repeatPassword: ''
     })
 
-    const setToken = useAuthStore(state => state.setToken)
-
     const loginUser = async () => {
         try {
             const response = await ApiClient.post("/auth/login", {
@@ -36,6 +35,7 @@ const FirstPage = () => {
             console.log(err)
         }
     }
+    
     const registerUser = async () => {
         try {
             const response = await ApiClient.post("/auth/register", {

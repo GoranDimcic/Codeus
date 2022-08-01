@@ -7,12 +7,12 @@ const Cart = () => {
         <>
             <StyledCart>
                 <p>Total: 3 item(s) in cart</p>
-                <Button text1="Checkout $45"></Button>
+                <Button button1="Checkout $45"></Button>
             </StyledCart>
             <div>
-                <SingleGame text1="Add to favorite" text2="Remove from cart" />
-                <SingleGame text1="Add to favorite" text2="Remove from cart" />
-                <SingleGame text1="Add to favorite" text2="Remove from cart" />
+                <SingleGame button1="Add to favorite" button2="Remove from cart" />
+                <SingleGame button1="Add to favorite" button2="Remove from cart" />
+                <SingleGame button1="Add to favorite" button2="Remove from cart" />
             </div>
         </>
     )

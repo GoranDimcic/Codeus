@@ -1,24 +1,23 @@
 import Button from "./Button";
-import GameType from "./GameType";
 import Rating from "./Rating";
 import styled from "styled-components";
 
-const SingleGame = ({ text1, text2 }) => {
+const SingleGame = ({ game, button1, button2 }) => {
     return (
         <StyleSingleGame>
             <StyleLeftSide>
-                <StyleGameImg src="images/game.png"></StyleGameImg>
-                <Button text1={text1} />
+                <StyleGameImg src={game.mainPhoto}></StyleGameImg>
+                <Button button1={button1} />
             </StyleLeftSide>
             <StyleRightSide>
                 <StyleGameDescription>
-                    <h2>Dishonored 2</h2>
-                    <Button text2={text2} />
+                    <h2>{game.gameTitle}</h2>
+                    <Button button2={button2} />
                 </StyleGameDescription>
-                <GameType />
+                {game.typename.join(" - ")}
                 <Rating />
                 <div>
-                    Game description
+                    {game.gameDescription}
                 </div>
             </StyleRightSide>
         </StyleSingleGame >
@@ -56,10 +55,12 @@ const StyleLeftSide = styled.div`
 
 const StyleGameImg = styled.img`
     width: 100%;
+    height: 157px;
 `
 
 const StyleRightSide = styled.div`
     width: 100%;
+    height: auto;
     margin-left: 20px;
 `
 
