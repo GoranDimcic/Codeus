@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react"
+import ApiClient from "../api/axios"
 import Button from "../components/Button"
 import SingleGame from "../components/SingleGame"
 import StarImg from "../components/StarImg"
@@ -8,11 +10,23 @@ import {
 
 
 const Search = () => {
+    const [games, setGames] = useState([])
+
+    useEffect(() => {
+        ApiClient.get("/games/").then((gamesResponse) => {
+            setGames(gamesResponse.data.message);
+        })
+    }, [])
+
+    const searchGames = games.map(game => (
+        <SingleGame game={game} button1="Add to favorite" button2={`Add to cart $${game.price}`} />
+    ))
+
     return (
         <>
             <StyleSearch>
-                <StyleInput></StyleInput>
-                <Button text1="Search" />
+                <StyleInput />
+                <Button button1="Search" />
             </StyleSearch>
             <StyleFilter>
                 <StyleGameTypeAndPrice>
@@ -39,13 +53,9 @@ const Search = () => {
                     <div>Over $30</div>
                 </StyleGameTypeAndPrice>
             </StyleFilter>
-            <div>
-                <SingleGame text1="Add to favorite" text2="Add to cart $15" />
-                <SingleGame text1="Add to favorite" text2="Add to cart $15" />
-                <SingleGame text1="Add to favorite" text2="Add to cart $15" />
-            </div>
+            {searchGames}
             <StyleLoadMore>
-                <Button text1="Loan more" />
+                <Button button1="Load more" />
             </StyleLoadMore>
         </>
     )

@@ -8,7 +8,6 @@ export const GamesFromFavorite = async (req, res) => {
         })
     }
     catch (error) {
-        console.log(error)
         res.status(401).json({
             message: "Error"
         })
@@ -25,7 +24,6 @@ export const AddFavorite = async (req, res) => {
         })
     }
     catch (error) {
-        console.log(error)
         res.status(401).json({
             message: "Error"
         })

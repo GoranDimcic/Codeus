@@ -8,7 +8,6 @@ export const MostCommentedGame = async (req, res) => {
         })
     }
     catch (error) {
-        console.log(error)
         res.status(401).json({
             message: "Error"
         })

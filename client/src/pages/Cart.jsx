@@ -22,7 +22,7 @@ const Cart = () => {
             <StyledCart>
                 {
                     cart.length > 0 ?
-                        <p>Total: {cart.length} item(s) in favorites</p>
+                        <p>Total: {cart.length} item(s) in cart</p>
                         :
                         <p>There is no items in favorites.</p>
                 }
