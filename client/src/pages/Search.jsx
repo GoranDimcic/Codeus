@@ -30,12 +30,12 @@ const Search = () => {
             </StyleSearch>
             <StyleFilter>
                 <StyleGameTypeAndPrice>
-                    <div>Role-playing</div>
-                    <div>Real time strategy</div>
-                    <div>Racing</div>
-                    <div>Simulation</div>
-                    <div>Action</div>
                     <div>Adventure</div>
+                    <div>Indie</div>
+                    <div>RPG</div>
+                    <div>Strategy</div>
+                    <div>Action</div>
+                    <div>Simulation</div>
                 </StyleGameTypeAndPrice>
                 <StyleMiddle>
                     <StylePlatform>

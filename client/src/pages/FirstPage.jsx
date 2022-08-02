@@ -35,7 +35,7 @@ const FirstPage = () => {
             console.log(err)
         }
     }
-    
+
     const registerUser = async () => {
         try {
             const response = await ApiClient.post("/auth/register", {

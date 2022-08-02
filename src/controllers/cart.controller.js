@@ -19,7 +19,7 @@ export const AddGameToCart = async (req, res) => {
     const { game_id, price } = req.body
 
     try {
-        await cartService.createCart(req.user_id, game_id, price)
+        await cartService.createCart(req.id, game_id, price)
         res.status(201).json({
             message: "Cart is created."
         })
@@ -51,7 +51,7 @@ export const RemoveGameFromCart = async (req, res) => {
     const { game_id } = req.body
 
     try {
-        await cartService.deleteFromCart(req.user_id, game_id)
+        await cartService.deleteFromCart(req.id, game_id)
         res.status(201).json({
             message: "Game is removed from the cart!"
         })

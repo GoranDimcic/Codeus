@@ -1,13 +1,13 @@
 import Button from "../components/Button"
 import styled from "styled-components"
 
-const GameHover = ({ size }) => {
+const GameHover = () => {
     return (
-        <StyleDiv size={size}>
+        <StyleDiv>
             <img src="images/game.png"></img>
             <StyleHover>
-                <Button text1="DETAILS" />
-                <Button text1="IN CART $19" />
+                <Button button1="DETAILS" />
+                <Button button2="IN CART $19" />
             </StyleHover>
         </StyleDiv >
     )
@@ -19,7 +19,6 @@ const StyleDiv = styled.div`
     justify-content: center;
     text-align: center;
     position: relative;
-    width: ${({ size }) => size};
     button {
         margin-bottom: 20px;
         transition: .3s ease-in;

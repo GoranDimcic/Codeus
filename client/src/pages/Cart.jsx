@@ -8,7 +8,7 @@ const Cart = () => {
     const [cart, setCart] = useState([])
 
     useEffect(() => {
-        ApiClient.get("/favorite/").then((cartResponse) => {
+        ApiClient.get("/cart/").then((cartResponse) => {
             setCart(cartResponse.data.message);
         })
     }, [])
@@ -24,9 +24,9 @@ const Cart = () => {
                     cart.length > 0 ?
                         <p>Total: {cart.length} item(s) in cart</p>
                         :
-                        <p>There is no items in favorites.</p>
+                        <p>There is no items in cart.</p>
                 }
-                <Button button1="Checkout $45"></Button>
+                {cart.length > 0 && <Button button1={"Checkout $45"}></Button>}
             </StyledCart>
             {cartGames}
         </>
