@@ -5,8 +5,9 @@ export const SingleGame = async (req, res) => {
 
     try {
         const game = await gamesService.getSingleGame(parseInt(id))
+        const comments = await gamesService.getSingleGameComments(parseInt(id))
         res.status(201).json({
-            data: game
+            data: { game, comments }
         })
     }
     catch (error) {

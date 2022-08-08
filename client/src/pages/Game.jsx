@@ -13,31 +13,27 @@ const Game = () => {
     const addToCart = useGamesStore(state => state.addToCart)
     const removeFromCart = useGamesStore(state => state.removeFromCart)
     const [game, setGame] = useState(null)
+    const [comments, setComments] = useState(null)
     const { id } = useParams()
 
     useEffect(() => {
         ApiClient.get(`/game/${id}`).then((gameResponse) => {
-            setGame(gameResponse.data.data[0]);
+            setGame(gameResponse.data.data.game[0]);
+            setComments(gameResponse.data.data.comments)
         })
     }, [])
 
-    const smallImages = game?.images.map(el => (
-        <StyleSmallPicutre src={el} />
+    const smallImages = game?.images.map(game => (
+        <StyleSmallPicutre src={game} />
     ))
 
-    const gameComments = game?.comments.map(el => (
+    const gameComments = comments?.map(comment => (
         <StyleComments>
-            <span style={{ "color": "#9D1B1B" }} >David</span>
-            <span style={{ "color": "grey" }}>12 October 2021</span>
-            <p>Text</p>
+            <span style={{ "color": "#9D1B1B" }} >{comment.username}</span>
+            <span style={{ "color": "grey" }}>{comment.createdAt}</span>
+            <p>{comment.comment}</p>
         </StyleComments>
     ))
-
-    {
-        game?.comments.map(el => {
-            return (<StyleComments />)
-        })
-    }
 
     return (
         <>
