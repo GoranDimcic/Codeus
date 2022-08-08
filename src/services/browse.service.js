@@ -1,13 +1,27 @@
 import db from "../db/db.js"
 
 export const getMostCommentedGame = async (ganre) => {
-    const result = await db('comment as c')
-        .select('g.mainPhoto', 'g.id')
-        .leftJoin('game as g', { 'c.gameId': 'g.id' })
-        .groupBy('g.mainPhoto', 'g.id')
-        .count('g.mainPhoto as comments')
+    const result = await db('game as g')
+        .select('g.id', 'mainPhoto', 'gt.gameId as gId')
+        .leftJoin('comment as c', { 'c.gameId': 'g.id' })
+        .innerJoin('gameType as gt', function () {
+            this
+                .on('g.id', 'gt.gameId')
+                .on('gt.typeId', '=', 4);
+        })
+        // .innerJoin('type as t', { 'gt.gameId': 't.id' })
+        .groupBy('g.id', 'gt.gameId')
+        .count('c.comment as comments')
         .orderBy('comments', 'desc')
-        .limit(1)
+
+    // .select('c.gameId')
+    // .innerJoin('game as g', { 'c.gameId': 'g.id' })
+    // .innerJoin('gameType as gt', { 'g.id': 'gt.gameId' })
+    // .innerJoin('type as t', { 'gt.gameId': 't.id' })
+    // .groupBy('c.gameId')
+    // .count('c.gameId as comments')
+    // .orderBy('comments', 'desc')
+    // .limit(1)
     return result
 }
 

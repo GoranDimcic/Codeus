@@ -1,14 +1,16 @@
 import * as gamesService from "../services/games.service.js"
 
 export const SingleGame = async (req, res) => {
-    const { gameId } = req.body
+    const { id } = req.params
+
     try {
-        const game = await gamesService.getSingleGame(gameId)
+        const game = await gamesService.getSingleGame(parseInt(id))
         res.status(201).json({
-            message: game
+            data: game
         })
     }
     catch (error) {
+        console.log(error)
         res.status(401).json({
             message: "Error"
         })
@@ -19,7 +21,7 @@ export const AllGames = async (req, res) => {
     try {
         const game = await gamesService.getAllGames()
         res.status(201).json({
-            message: game
+            data: game
         })
     }
     catch (error) {

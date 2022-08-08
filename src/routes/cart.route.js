@@ -7,6 +7,6 @@ const router = new Router()
 router.get("/", authenticateToken, GamesFromCart)
 router.post("/", authenticateToken, AddGameToCart)
 router.put("/", authenticateToken, Chechout)
-router.delete("/", authenticateToken, RemoveGameFromCart)
+router.delete("/:id", authenticateToken, RemoveGameFromCart)
 
 export default router

@@ -7,12 +7,18 @@ const Favorite = () => {
 
     useEffect(() => {
         ApiClient.get("/favorite/").then((favoritesResponse) => {
-            setFavorites(favoritesResponse.data.message);
+            setFavorites(favoritesResponse.data.data);
         })
     }, [])
 
+    const onchange = () => {
+        ApiClient.get("/favorite/").then((favoritesResponse) => {
+            setFavorites(favoritesResponse.data.data);
+        })
+    }
+
     const favoriteGames = favorites.map(game => (
-        <SingleGame game={game} button1="Add to cart" button2="Remove from favorites" />
+        <SingleGame game={game} onchange={onchange} key={game.id} />
     ))
 
     return (

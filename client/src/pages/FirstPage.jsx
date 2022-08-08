@@ -4,6 +4,7 @@ import { StyleFirstPage, StyleLogin, StyleRegistration } from "../styles/FirstPa
 import useAuthStore from "../store/auth"
 import ApiClient from "../api/axios"
 import { useNavigate } from "react-router-dom"
+import { initialFetch } from ".."
 
 const FirstPage = () => {
     const setToken = useAuthStore(state => state.setToken)
@@ -30,6 +31,7 @@ const FirstPage = () => {
                 password: loginData.password
             })
             setToken(response.data.data.accessToken)
+            await initialFetch()
             navigate('/browse')
         } catch (err) {
             console.log(err)

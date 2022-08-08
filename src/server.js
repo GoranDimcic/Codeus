@@ -24,7 +24,7 @@ app.use(cors(corsOptions))
 app.use(bodyParser.json())
 
 app.use("/auth", authRouter)
-app.use("/games", gameRouter)
+app.use("/game", gameRouter)
 app.use("/rating", ratingRouter)
 app.use("/favorite", favoriteRouter)
 app.use("/comment", commentRouter)

@@ -1,5 +1,14 @@
 import db from "../db/db.js"
 
+export const getGameFromCart = async (userId, gameId) => {
+    const result = await db('cart')
+        .where({
+            userId: userId,
+            gameId: gameId
+        })
+    return result;
+}
+
 export const getGamesFromCart = async (userId) => {
     const result = await db('cart as c')
         .select('g.id', 'g.gameTitle', 'g.gameDescription', 'g.mainPhoto', 'g.price', db.raw('ARRAY_AGG(DISTINCT t.name) as typeName'))
@@ -16,7 +25,7 @@ export const getGamesFromCart = async (userId) => {
     return result
 }
 
-export const createCart = async (userId, gameId, price) => {
+export const addToCart = async (userId, gameId, price) => {
     const result = await db('cart')
         .insert({
             userId: userId,

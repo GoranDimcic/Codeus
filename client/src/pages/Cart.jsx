@@ -9,12 +9,18 @@ const Cart = () => {
 
     useEffect(() => {
         ApiClient.get("/cart/").then((cartResponse) => {
-            setCart(cartResponse.data.message);
+            setCart(cartResponse.data.data);
         })
     }, [])
 
+    const onchange = () => {
+        ApiClient.get("/cart/").then((cartResponse) => {
+            setCart(cartResponse.data.data);
+        })
+    }
+
     const cartGames = cart.map(game => (
-        <SingleGame game={game} button1="Add to favorite" button2="Remove from cart" />
+        <SingleGame game={game} onchange={onchange} key={game.id}/>
     ))
 
     return (
@@ -26,7 +32,7 @@ const Cart = () => {
                         :
                         <p>There is no items in cart.</p>
                 }
-                {cart.length > 0 && <Button button1={"Checkout $45"}></Button>}
+                {cart.length > 0 && <Button text={"Checkout $45"}></Button>}
             </StyledCart>
             {cartGames}
         </>

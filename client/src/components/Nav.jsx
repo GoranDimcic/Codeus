@@ -1,14 +1,13 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import A from "./A";
 import useAuthStore from "../store/auth";
 
 const Nav = () => {
-    const setToken = useAuthStore(state => state.setToken)
+    const deleteToken = useAuthStore(state => state.deleteToken)
 
     const Logout = async () => {
         try {
-            setToken("")
+            deleteToken()
         } catch (err) {
             console.log(err)
         }
@@ -16,9 +15,9 @@ const Nav = () => {
 
     return (
         <StyleDiv>
-            <Link to="/browse"><A text="PROFILE" /></Link>
-            <Link to="/cart"><A text="MY_CART" /></Link>
-            <Link onClick={() => Logout()} to="/"><A text="LOGOUT" /></Link>
+            <Link to="/browse"><a>PROFILE</a></Link>
+            <Link to="/cart"><a>MY CART</a></Link>
+            <Link onClick={() => Logout()} to="/"><a>LOGOUT</a></Link>
         </StyleDiv>
     );
 }

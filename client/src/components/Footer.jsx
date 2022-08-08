@@ -1,38 +1,36 @@
 import styled from "styled-components"
 import Inline from "./Inline"
-import A from "./A"
-import Span from "./Span"
 
 const Footer = () => {
     return (
         <StyleFooter>
             <StyleTop>
                 <StyleTopItems>
-                    <A text="Login" />
-                    <A text="Registration" />
-                    <A text="Favorites" />
+                    <a>Login</a>
+                    <a>Registration</a>
+                    <a>Favorites</a>
                 </StyleTopItems>
                 <StyleTopItems>
-                    <A text="Community" />
-                    <A text="Browse games" />
-                    <A text="Search" />
+                    <a>Community</a>
+                    <a>Browse games</a>
+                    <a>Search</a>
                 </StyleTopItems>
                 <StyleTopItems>
-                    <A text="About" />
-                    <A text="Contact us" />
-                    <A text="FAQ" />
+                    <a>About</a>
+                    <a>Contact us</a>
+                    <a>FAQ</a>
                 </StyleTopItems>
-                <StyleLogo src="images/logo.png"></StyleLogo>
+                <StyleLogo src="../images/logo.png"></StyleLogo>
             </StyleTop>
             <Inline />
             <StyleBottom>
                 <div>
-                    <A text="Facebook" />
-                    <A text="Twitter" />
-                    <A text="Twitch" />
-                    <A text="Youtube" />
+                    <a>Facebook</a>
+                    <a>Twitter</a>
+                    <a>Twitch</a>
+                    <a>Youtube</a>
                 </div>
-                <Span text="+(581) 893-15-90" />
+                <span>+(581) 893-15-90</span>
             </StyleBottom>
         </StyleFooter>
     )

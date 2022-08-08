@@ -6,8 +6,8 @@ const GameHover = () => {
         <StyleDiv>
             <img src="images/game.png"></img>
             <StyleHover>
-                <Button button1="DETAILS" />
-                <Button button2="IN CART $19" />
+                <Button text="DETAILS" />
+                <Button text="IN CART $19" />
             </StyleHover>
         </StyleDiv >
     )

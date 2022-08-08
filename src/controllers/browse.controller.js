@@ -8,7 +8,7 @@ export const BrowseGames = async (req, res) => {
         const random = await browseService.getRandomGames(ganre)
 
         res.status(201).json({
-            message: game
+            data: game
         })
     }
     catch (error) {
@@ -22,7 +22,7 @@ export const MostCommentedGame = async (req, res) => {
     try {
         const game = await browseService.getMostCommentedGame()
         res.status(201).json({
-            message: game
+            data: game
         })
     }
     catch (error) {
@@ -37,7 +37,7 @@ export const MostRatedGames = async (req, res) => {
     try {
         const games = await browseService.getMostRatedGames()
         res.status(201).json({
-            message: games
+            data: games
         })
     }
     catch (error) {
@@ -51,7 +51,7 @@ export const MostFavoritedGames = async (req, res) => {
     try {
         const games = await browseService.getMostFavoritedGames()
         res.status(201).json({
-            message: games
+            data: games
         })
     }
     catch (error) {
@@ -65,7 +65,7 @@ export const RandomGames = async (req, res) => {
     try {
         const games = await browseService.getRandomGames()
         res.status(201).json({
-            message: games
+            data: games
         })
     }
     catch (error) {
@@ -74,5 +74,3 @@ export const RandomGames = async (req, res) => {
         })
     }
 }
-
-//za zadnje 5 igre i za sve ove 4 fje, ubaci zanr igre

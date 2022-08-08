@@ -9,7 +9,7 @@ const ApiClient = axios.create({
 })
 
 const requestInterceptor = async config => {
-    const {token}= useAuthStore.getState()
+    const { token } = useAuthStore.getState()
     if (token && config.baseURL) {
         config.headers = {
             ...config.headers,

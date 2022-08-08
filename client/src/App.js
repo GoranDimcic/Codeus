@@ -24,7 +24,7 @@ const App = () => {
             <Route path="/browse" element={<Browse />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorite" element={<Favorite />} />
-            <Route path="/game" element={<Game />} />
+            <Route path="/game/:id" element={<Game />} />
             <Route path="/search" element={<Search />} />
           </Routes>
         </Wrapper>

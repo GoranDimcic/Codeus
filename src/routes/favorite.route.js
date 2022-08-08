@@ -6,6 +6,6 @@ const router = new Router
 
 router.get("/", authenticateToken, GamesFromFavorite)
 router.post("/", authenticateToken, AddFavorite)
-router.delete("/", authenticateToken, DeleteFavorite)
+router.delete("/:id", authenticateToken, DeleteFavorite)
 
 export default router

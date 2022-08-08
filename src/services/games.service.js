@@ -9,13 +9,13 @@ export const getAllGames = async () => {
         .avg('r.ratingNumber as ratingNum')
         .groupBy('g.id')
         .orderBy('g.id')
-        .limit(10)
+        .limit(30)
     return games
 }
 
 export const getSingleGame = async (gameId) => {
     const singleGame = await db('game as g')
-        .select('id', 'gameTitle', 'gameDescription', 'mainPhoto', 'price', db.raw('ARRAY_AGG(DISTINCT p.image) as images'), db.raw('ARRAY_AGG(DISTINCT c.comment) as comments'))
+        .select('id', 'gameTitle', 'gameDescription', 'mainPhoto', 'price', db.raw('ARRAY_AGG(p.image) as images'), db.raw('ARRAY_AGG(DISTINCT c.comment) as comments'))
         .where({
             'g.id': gameId
         })

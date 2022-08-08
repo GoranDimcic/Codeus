@@ -13,20 +13,20 @@ const Search = () => {
     const [games, setGames] = useState([])
 
     useEffect(() => {
-        ApiClient.get("/games/").then((gamesResponse) => {
-            setGames(gamesResponse.data.message);
+        ApiClient.get("/game/").then((gamesResponse) => {
+            setGames(gamesResponse.data.data);
         })
     }, [])
 
     const searchGames = games.map(game => (
-        <SingleGame game={game} button1="Add to favorite" button2={`Add to cart $${game.price}`} />
+        <SingleGame game={game} key={game.id} />
     ))
 
     return (
         <>
             <StyleSearch>
                 <StyleInput />
-                <Button button1="Search" />
+                <Button text="Search" />
             </StyleSearch>
             <StyleFilter>
                 <StyleGameTypeAndPrice>
@@ -55,7 +55,7 @@ const Search = () => {
             </StyleFilter>
             {searchGames}
             <StyleLoadMore>
-                <Button button1="Load more" />
+                <Button text="Load more" />
             </StyleLoadMore>
         </>
     )

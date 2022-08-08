@@ -11,7 +11,7 @@ export const getFavorite = async (userId, gameId) => {
 
 export const getGamesFromFavorite = async (userId) => {
     const favorites = await db('favorite as f')
-        .select('g.id', 'g.gameTitle', 'g.gameDescription', 'g.mainPhoto', db.raw('ARRAY_AGG(DISTINCT t.name) as typeName'))
+        .select('g.id', 'g.gameTitle', 'g.price', 'g.gameDescription', 'g.mainPhoto', db.raw('ARRAY_AGG(DISTINCT t.name) as typeName'))
         .where({
             'f.userId': userId
         })

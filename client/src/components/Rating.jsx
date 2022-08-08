@@ -3,11 +3,11 @@ import styled from "styled-components"
 const Rating = () => {
     return (
         <StyleRating>
-            <img src="images/star-empty.png"></img>
-            <img src="images/star-empty.png"></img>
-            <img src="images/star-empty.png"></img>
-            <img src="images/star-empty.png"></img>
-            <img src="images/star-empty.png"></img>
+            <img src="../images/star-empty.png"></img>
+            <img src="../images/star-empty.png"></img>
+            <img src="../images/star-empty.png"></img>
+            <img src="../images/star-empty.png"></img>
+            <img src="../images/star-empty.png"></img>
         </StyleRating>
     )
 }

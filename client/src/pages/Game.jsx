@@ -3,46 +3,68 @@ import {
 } from "../styles/GamePage"
 import Button from "../components/Button"
 import Rating from "../components/Rating"
-import Span from "../components/Span"
+import { useEffect, useState } from "react"
+import ApiClient from "../api/axios"
+import { useParams } from "react-router-dom"
+import useGamesStore from "../store/games"
 
 const Game = () => {
+    const cart = useGamesStore(state => state.cart)
+    const addToCart = useGamesStore(state => state.addToCart)
+    const removeFromCart = useGamesStore(state => state.removeFromCart)
+    const [game, setGame] = useState(null)
+    const { id } = useParams()
+
+    useEffect(() => {
+        ApiClient.get(`/game/${id}`).then((gameResponse) => {
+            setGame(gameResponse.data.data[0]);
+        })
+    }, [])
+
+    const smallImages = game?.images.map(el => (
+        <StyleSmallPicutre src={el} />
+    ))
+
+    const gameComments = game?.comments.map(el => (
+        <StyleComments>
+            <span style={{ "color": "#9D1B1B" }} >David</span>
+            <span style={{ "color": "grey" }}>12 October 2021</span>
+            <p>Text</p>
+        </StyleComments>
+    ))
+
+    {
+        game?.comments.map(el => {
+            return (<StyleComments />)
+        })
+    }
+
     return (
         <>
             <StyleGame>
                 <StyleLeftSide>
                     <div>
-                        <StyleProfilePicture src="images/Dishonored.png"></StyleProfilePicture>
+                        <StyleProfilePicture src={game?.mainPhoto}></StyleProfilePicture>
                     </div>
                     <StyleOtherGamePictures>
-                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
-                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
-                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
-                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
-                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
-                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
-                        <StyleSmallPicutre src="images/Dishonored.png"></StyleSmallPicutre>
+                        {smallImages}
                     </StyleOtherGamePictures>
                 </StyleLeftSide>
                 <StyleRightSide>
-                    <h1>Dishonored 2</h1>
+                    <h1>{game?.gameTitle}</h1>
                     <Rating />
-                    <p>Add to favorite</p>
-                    <Button text1="Add to cart $15" />
-                    <p>Game description</p>
+                    <p style={{ "color": "#9D1B1B" }}>Add to favorite</p>
+                    {
+                        cart.find(cart => cart.id === game?.id) ?
+                            <Button onClick={() => removeFromCart(game)} text="Remove from cart" />
+                            : <Button onClick={() => addToCart(game)} text={`Add to cart ${game?.price}`} />
+                    }
+                    <p>{game?.gameDescription}</p>
                 </StyleRightSide>
             </StyleGame>
             <div>
                 <h1>Comment</h1>
-                <StyleComments>
-                    <Span text="David" color="#9D1B1B" />
-                    <Span text="12 October 2021" color="grey" />
-                    <p>Text</p>
-                </StyleComments>
-                <StyleComments>
-                    <Span text="David" color="#9D1B1B" />
-                    <Span text="12 October 2021" color="grey" />
-                    <p>Text</p>
-                </StyleComments>
+                {gameComments}
             </div>
         </>
     )

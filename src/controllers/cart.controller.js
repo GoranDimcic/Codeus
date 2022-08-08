@@ -5,7 +5,7 @@ export const GamesFromCart = async (req, res) => {
     try {
         const games = await cartService.getGamesFromCart(req.id)
         res.status(201).json({
-            message: games
+            data: games
         })
     }
     catch (error) {
@@ -16,18 +16,52 @@ export const GamesFromCart = async (req, res) => {
 }
 
 export const AddGameToCart = async (req, res) => {
-    const { game_id, price } = req.body
+    const { gameId, price } = req.body
+    const cart = await cartService.getGameFromCart(req.id, gameId)
 
-    try {
-        await cartService.createCart(req.id, game_id, price)
-        res.status(201).json({
-            message: "Cart is created."
+    if (cart.length) {
+        res.status(400).json({
+            message: "Game is already in cart!"
         })
     }
-    catch (error) {
-        res.status(401).json({
-            message: "Error!"
+    else {
+        try {
+            await cartService.addToCart(req.id, gameId, price)
+            res.status(201).json({
+                message: "Cart is created."
+            })
+        }
+        catch (error) {
+            console.log(error)
+            res.status(401).json({
+                message: "Error!"
+            })
+        }
+    }
+}
+
+export const RemoveGameFromCart = async (req, res) => {
+    const { id } = req.params
+    const cart = await cartService.getGameFromCart(req.id, id)
+
+    if (!cart.length) {
+        res.status(400).json({
+            message: "Game is not in cart!"
         })
+    }
+    else {
+        try {
+            await cartService.deleteFromCart(req.id, id)
+            res.status(201).json({
+                message: "Game is removed from the cart!"
+            })
+        }
+        catch (error) {
+            console.log(error)
+            res.status(401).json({
+                message: "Error!"
+            })
+        }
     }
 }
 
@@ -38,22 +72,6 @@ export const Chechout = async (req, res) => {
         await cartService.updateCart(req.user_id, transaction_id)
         res.status(201).json({
             message: "Chechout for the game is done!"
-        })
-    }
-    catch (error) {
-        res.status(401).json({
-            message: "Error!"
-        })
-    }
-}
-
-export const RemoveGameFromCart = async (req, res) => {
-    const { game_id } = req.body
-
-    try {
-        await cartService.deleteFromCart(req.id, game_id)
-        res.status(201).json({
-            message: "Game is removed from the cart!"
         })
     }
     catch (error) {

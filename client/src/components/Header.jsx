@@ -1,20 +1,19 @@
 import styled from "styled-components"
-import A from "./A";
 import Nav from "./Nav";
 import { Link } from "react-router-dom"
 
 const Header = () => {
     return (
         <StyleHeader>
-            <StyleLogo src="images/logo.png"></StyleLogo>
+            <StyleLogo src="../images/logo.png"></StyleLogo>
             <div>
-                <Link to="/browse"><A text="BROWSE" /></Link>
-                <Link to="/search"><A text="SEARCH" /></Link>
-                <Link to="/favorite"><A text="FAVORITES" /></Link>
-                <Link to="/browse"><A text="COMMUNITY" /></Link>
+                <Link to="/browse"><a>BROWSE</a></Link>
+                <Link to="/search"><a>SEARCH</a></Link>
+                <Link to="/favorite"><a>FAVORITES</a></Link>
+                <Link to="/browse"><a>COMMUNITY</a></Link>
             </div>
             <StyleUser>
-                <StyleImg src="images/user1.png"></StyleImg>
+                <StyleImg src="../images/user1.png"></StyleImg>
                 <Nav />
             </StyleUser>
         </StyleHeader >

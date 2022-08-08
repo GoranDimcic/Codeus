@@ -1,5 +1,4 @@
 import GameHover from "../components/GameHover"
-import Span from "../components/Span"
 import {
     StyleMostRankedGames, StyleThird,
     StyleMostRankedLatestGamesLeft, StyleMostRankedLatestGamesRight, StyleGrid, StyleBestGameType
@@ -11,9 +10,7 @@ const Browse = () => {
             <StyleGrid>
                 <StyleMostRankedGames>
                     <StyleBestGameType>
-                        <Span text="BEST" />
-                        <Span text="RPG" />
-                        <Span text="GAMES" />
+                        <span>RPG</span>
                     </StyleBestGameType>
                     <GameHover />
                     <GameHover />
