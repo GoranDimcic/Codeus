@@ -9,9 +9,10 @@ const Wrapper = ({ children }) => {
 }
 
 const StyledWraper = styled.div`
-    max-width: 1000px;
     width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
+    min-height: calc(100vh - 234px);
 `
 
 export default Wrapper

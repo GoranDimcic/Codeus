@@ -60,7 +60,7 @@ const FirstPage = () => {
                 <h1>Login</h1>
                 <input placeholder="Username or email" onKeyUp={(e) => setLoginData(prevState => ({ ...prevState, name: e.target.value }))}></input>
                 <input placeholder="Password" type="password" onKeyUp={(e) => setLoginData(prevState => ({ ...prevState, password: e.target.value }))}></input>
-                <Button text1="Login" onClick={() => loginUser()} />
+                <Button text="Login" onClick={() => loginUser()} />
             </StyleLogin>
             <StyleRegistration>
                 <h1>Register</h1>
@@ -70,7 +70,7 @@ const FirstPage = () => {
                 <input placeholder="Last name" onKeyUp={(e) => setRegisterData(prevState => ({ ...prevState, lastName: e.target.value }))}></input>
                 <input placeholder="Password" type="password" onKeyUp={(e) => setRegisterData(prevState => ({ ...prevState, password: e.target.value }))}></input>
                 <input placeholder="Repeat password" type="password" onKeyUp={(e) => setRegisterData(prevState => ({ ...prevState, repeatPassword: e.target.value }))}></input>
-                <Button text1="Register" onClick={() => registerUser()} />
+                <Button text="Register" onClick={() => registerUser()} />
             </StyleRegistration>
         </StyleFirstPage>
     )

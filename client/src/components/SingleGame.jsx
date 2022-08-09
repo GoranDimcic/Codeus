@@ -95,11 +95,6 @@ const StyleRightSide = styled.div`
     margin-left: 20px;
 `
 
-const StyledStarImg = styled.img`
-    height: 30px;
-    width: 30px;
-`
-
 const StyleGameDescription = styled.div`
     display: flex;
     justify-content: space-between;

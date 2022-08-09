@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const StyleGame = styled.div`
     display: flex;
+    margin-bottom: 20px;
 `
 
 export const StyleLeftSide = styled.div`

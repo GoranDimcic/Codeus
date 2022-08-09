@@ -17,7 +17,7 @@ export const StyleInput = styled.input`
 export const StyleFilter = styled.div`
     display: flex;
     background-color: #3B0931;
-    margin-top: 20px;
+    margin: 20px 0 ;
     padding: 20px;
     div {
         margin-bottom: 5px;

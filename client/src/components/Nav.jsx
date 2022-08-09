@@ -15,7 +15,7 @@ const Nav = () => {
 
     return (
         <StyleDiv>
-            <Link to="/browse"><a>PROFILE</a></Link>
+            <Link to="/profile"><a>PROFILE</a></Link>
             <Link to="/cart"><a>MY CART</a></Link>
             <Link onClick={() => Logout()} to="/"><a>LOGOUT</a></Link>
         </StyleDiv>

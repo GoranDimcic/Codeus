@@ -14,6 +14,7 @@ const Rating = () => {
 
 const StyleRating = styled.div`
     display: flex;
+    padding: .6rem 0;
     img {
         width: 30px;
         margin-left: 20px;
