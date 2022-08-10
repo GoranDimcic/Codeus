@@ -12,6 +12,8 @@ export const StyleInput = styled.input`
     background-color: #3B0931;
     border: none;
     color: white;
+    padding-left: 20px;
+    font-size: 20px;
 `
 
 export const StyleFilter = styled.div`

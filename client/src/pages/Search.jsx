@@ -11,22 +11,54 @@ import {
 
 const Search = () => {
     const [games, setGames] = useState([])
+    const [searchData, setsearchData] = useState("")
+    const [searchOffset, setSearchOffset] = useState(0)
+
+    const searchGame = async () => {
+        if (searchData !== "") {
+            ApiClient.get(`/search?search=${searchData}&offset=${searchOffset}`).then((response) => {
+                setGames(response.data.data)
+            })
+        }
+        else {
+            ApiClient.get(`/search?offset=${searchOffset}`).then((response) => {
+                setGames(response.data.data)
+            })
+        }
+    }
 
     useEffect(() => {
-        ApiClient.get("/game/").then((gamesResponse) => {
-            setGames(gamesResponse.data.data);
-        })
-    }, [])
+        if (searchData !== "") {
+            ApiClient.get(`/search?search=${searchData}&offset=${searchOffset}`).then((gamesResponse) => {
+                setGames(prevState => [
+                    ...prevState,
+                    ...gamesResponse.data.data
+                ]);
+            })
+        }
+        else {
+            ApiClient.get(`/search?offset=${searchOffset}`).then((gamesResponse) => {
+                setGames(prevState => [
+                    ...prevState,
+                    ...gamesResponse.data.data
+                ]);
+            })
+        }
+    }, [searchOffset])
 
-    const searchGames = games.map(game => (
-        <SingleGame game={game} key={game.id} />
+    const loadMore = () => {
+        setSearchOffset(prevState => prevState + 30)
+    }
+
+    const searchGames = games.map((game, index) => (
+        <SingleGame game={game} key={index} />
     ))
 
     return (
         <>
             <StyleSearch>
-                <StyleInput />
-                <Button text="Search" />
+                <StyleInput onKeyUp={(e) => setsearchData(prevState => e.target.value)} />
+                <Button text="Search" onClick={() => searchGame()} />
             </StyleSearch>
             <StyleFilter>
                 <StyleGameTypeAndPrice>
@@ -54,9 +86,10 @@ const Search = () => {
                 </StyleGameTypeAndPrice>
             </StyleFilter>
             {searchGames}
-            <StyleLoadMore>
-                <Button text="Load more" />
-            </StyleLoadMore>
+            {searchOffset < 2000 &&
+                <StyleLoadMore>
+                    <Button text="Load more" onClick={() => loadMore()} />
+                </StyleLoadMore>}
         </>
     )
 }

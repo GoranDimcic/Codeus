@@ -22,7 +22,6 @@ export const getGamesFromFavorite = async (userId) => {
         .avg('r.ratingNumber as ratingNum')
         .groupBy('g.id')
         .orderBy('g.id')
-        .limit(10)
     return favorites
 }
 
