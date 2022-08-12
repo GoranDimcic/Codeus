@@ -1,11 +1,10 @@
 import * as searchService from "../services/search.service.js"
 
 export const Search = async (req, res) => {
-    const searchGame = req.query.search
-    const offset = req.query.offset
+    const { searchGame, perPage, page } = req.query
 
     try {
-        const games = await searchService.searchGames(searchGame, offset)
+        const games = await searchService.searchGames(searchGame, page, perPage)
 
         res.status(201).json({
             data: games

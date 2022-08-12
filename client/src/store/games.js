@@ -23,11 +23,12 @@ const useGamesStore = create(
         },
 
         removeFromFavorites: async (game) => {
-            ApiClient.delete(`/favorite/${game.id}`).then(() =>
-                set(state => ({
-                    favorites: [...state.favorites.filter(fav => fav.id !== game.id)]
-                }))
-            ).catch(e => console.log("Game is not in favorite: ", e))
+            await ApiClient.delete(`/favorite/${game.id}`)
+                .then(() =>
+                    set(state => ({
+                        favorites: state.favorites.filter(fav => fav.id !== game.id)
+                    }))
+                ).catch(e => console.log("Game is not in favorite: ", e))
         },
 
         addToCart: async (game) => {
@@ -37,13 +38,14 @@ const useGamesStore = create(
                 }))
             ).catch(e => console.log("Game is already in cart: ", e))
         },
-        
+
         removeFromCart: async (game) => {
-            ApiClient.delete(`/cart/${game.id}`).then(() =>
-                set(state => ({
-                    cart: [...state.cart.filter(cart => cart.id !== game.id)]
-                }))
-            ).catch(e => console.log("Game is not in cart: ", e))
+            await ApiClient.delete(`/cart/${game.id}`)
+                .then(() =>
+                    set(state => ({
+                        cart: state.cart.filter(cart => cart.id !== game.id)
+                    }))
+                ).catch(e => console.log("Game is not in cart: ", e))
         }
     })
 )

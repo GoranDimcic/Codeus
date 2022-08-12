@@ -11,43 +11,57 @@ import {
 
 const Search = () => {
     const [games, setGames] = useState([])
-    const [searchData, setsearchData] = useState("")
-    const [searchOffset, setSearchOffset] = useState(0)
-
-    const searchGame = async () => {
-        if (searchData !== "") {
-            ApiClient.get(`/search?search=${searchData}&offset=${searchOffset}`).then((response) => {
-                setGames(response.data.data)
-            })
-        }
-        else {
-            ApiClient.get(`/search?offset=${searchOffset}`).then((response) => {
-                setGames(response.data.data)
-            })
-        }
-    }
+    const [searchData, setSearchData] = useState("")
+    const [page, setPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(1)
 
     useEffect(() => {
-        if (searchData !== "") {
-            ApiClient.get(`/search?search=${searchData}&offset=${searchOffset}`).then((gamesResponse) => {
-                setGames(prevState => [
-                    ...prevState,
-                    ...gamesResponse.data.data
-                ]);
-            })
-        }
-        else {
-            ApiClient.get(`/search?offset=${searchOffset}`).then((gamesResponse) => {
-                setGames(prevState => [
-                    ...prevState,
-                    ...gamesResponse.data.data
-                ]);
-            })
-        }
-    }, [searchOffset])
+        ApiClient.get(`/search`, {
+            params: {
+                searchGame: searchData,
+                page,
+                perPage: 10
+            }
+        }).then((gameResponse) => {
+            setTotalPages(gameResponse.data.data.metaData.totalPages)
+            setGames(prevState => [
+                ...prevState,
+                ...gameResponse.data.data.results
+            ]);
+        })
+    }, [])
+
+    const searchGame = async () => {
+        setPage(1)
+        ApiClient.get(`/search`, {
+            params: {
+                searchGame: searchData,
+                page: 1,
+                perPage: 10
+            }
+        }).then((gameResponse) => {
+            setTotalPages(gameResponse.data.data.metaData.totalPages)
+            setGames(
+                gameResponse.data.data.results
+            );
+        })
+    }
 
     const loadMore = () => {
-        setSearchOffset(prevState => prevState + 30)
+        ApiClient.get(`/search`, {
+            params: {
+                searchGame: searchData,
+                page: page + 1,
+                perPage: 10
+            }
+        }).then((gameResponse) => {
+            setTotalPages(gameResponse.data.data.metaData.totalPages)
+            setGames(prevState => [
+                ...prevState,
+                ...gameResponse.data.data.results
+            ]);
+        })
+        setPage((prevState) => prevState + 1)
     }
 
     const searchGames = games.map((game, index) => (
@@ -57,8 +71,8 @@ const Search = () => {
     return (
         <>
             <StyleSearch>
-                <StyleInput onKeyUp={(e) => setsearchData(prevState => e.target.value)} />
-                <Button text="Search" onClick={() => searchGame()} />
+                <StyleInput onKeyUp={(e) => setSearchData(prevState => e.target.value)} />
+                <Button text="Search" onClick={() => { searchGame() }} />
             </StyleSearch>
             <StyleFilter>
                 <StyleGameTypeAndPrice>
@@ -86,10 +100,12 @@ const Search = () => {
                 </StyleGameTypeAndPrice>
             </StyleFilter>
             {searchGames}
-            {searchOffset < 2000 &&
+            {
+                page < totalPages &&
                 <StyleLoadMore>
                     <Button text="Load more" onClick={() => loadMore()} />
-                </StyleLoadMore>}
+                </StyleLoadMore>
+            }
         </>
     )
 }

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react"
 import ApiClient from "../api/axios"
 import Button from "../components/Button"
 import SingleGame from "../components/SingleGame"
+import useGamesStore from "../store/games"
 import { StyledCart } from "../styles/CartPage"
 
 const Cart = () => {
-    const [cart, setCart] = useState([])
+    const cart = useGamesStore(state => state.favorites)
+    const setCart = useGamesStore(state => state.setFavorites)
 
     useEffect(() => {
         ApiClient.get("/cart/").then((cartResponse) => {
@@ -20,7 +22,7 @@ const Cart = () => {
     }
 
     const cartGames = cart.map(game => (
-        <SingleGame game={game} onchange={onchange} key={game.id}/>
+        <SingleGame game={game} onchange={onchange} key={game.id} />
     ))
 
     return (

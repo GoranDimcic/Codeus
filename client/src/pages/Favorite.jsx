@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react"
 import ApiClient from "../api/axios"
+import Button from "../components/Button"
 import SingleGame from "../components/SingleGame"
+import useGamesStore from "../store/games"
+import { StyleLoadMore } from "../styles/SearchPage"
 
 const Favorite = () => {
-    const [favorites, setFavorites] = useState([])
+    const favorites = useGamesStore(state => state.favorites)
+    const setFavorites = useGamesStore(state => state.setFavorites)
 
     useEffect(() => {
         ApiClient.get("/favorite/").then((favoritesResponse) => {
@@ -30,6 +34,10 @@ const Favorite = () => {
                     <p>There is no items in favorites.</p>
             }
             {favoriteGames}
+            <StyleLoadMore>
+                <Button text="Load more" />
+            </StyleLoadMore>
+
         </>
     )
 }

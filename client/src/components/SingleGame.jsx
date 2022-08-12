@@ -11,16 +11,18 @@ const SingleGame = ({ game, onchange }) => {
     const favorites = useGamesStore(state => state.favorites)
     const cart = useGamesStore(state => state.cart)
 
-    const removeGameFromFavorites = (game) => {
-        removeFromFavorites(game).then(() =>
+    const removeGameFromFavorites = async (game) => {
+        await removeFromFavorites(game)
+        if (onchange) {
             onchange()
-        )
+        }
     }
 
-    const removeGameFromCart = (game) => {
-        removeFromCart(game).then(() => {
+    const removeGameFromCart = async (game) => {
+        await removeFromCart(game)
+        if (onchange) {
             onchange()
-        })
+        }
     }
 
     return (

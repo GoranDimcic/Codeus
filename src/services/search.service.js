@@ -1,6 +1,7 @@
 import db from '../db/db.js'
 
-export const searchGames = async (searchGame, offset) => {
+export const searchGames = async (searchGame, page = 1, perPage = 5) => {
+    const offset = (page - 1) * perPage;
     const games = await db('game as g')
         .select('g.id', 'gameTitle', 'gameDescription', 'mainPhoto', 'price', db.raw('ARRAY_AGG(DISTINCT t.name) as typeName'))
         .where('g.gameTitle', 'like', `%${searchGame || ''}%`)
@@ -11,6 +12,21 @@ export const searchGames = async (searchGame, offset) => {
         .groupBy('g.id')
         .orderBy('g.id')
         .offset(offset)
-        .limit(30)
-    return games
+        .limit(perPage)
+
+    const count = await db('game as g')
+        .where('g.gameTitle', 'like', `%${searchGame || ''}%`)
+        .count('g.id')
+
+    const totalCount = count[0]?.count || 0
+
+    return {
+        results: games,
+        metaData: {
+            page: Number(page),
+            perPage: Number(perPage),
+            totalCount: +totalCount,
+            totalPages: Math.ceil(totalCount / perPage)
+        }
+    }
 }
