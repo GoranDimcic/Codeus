@@ -13,7 +13,8 @@ export const getGamesFromCart = async (userId) => {
     const result = await db('cart as c')
         .select('g.id', 'g.gameTitle', 'g.gameDescription', 'g.mainPhoto', 'g.price', db.raw('ARRAY_AGG(DISTINCT t.name) as typeName'))
         .where({
-            'c.userId': userId
+            'c.userId': userId,
+            'transactionId': null
         })
         .leftJoin('game as g', { 'g.id': 'c.gameId' })
         .leftJoin('rating as r', { 'r.gameId': 'c.gameId' })

@@ -45,7 +45,7 @@ export const DeleteFavorite = async (req, res) => {
 
     if (!favorite.length) {
         res.status(400).json({
-            message: "Game is not in favoritese!"
+            message: "Game is not in favorites!"
         })
     }
     else {

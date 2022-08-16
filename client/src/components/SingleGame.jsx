@@ -4,12 +4,19 @@ import styled from "styled-components";
 import useGamesStore from "../store/games";
 
 const SingleGame = ({ game, onchange }) => {
+    const favorites = useGamesStore(state => state.favorites)
+    const cart = useGamesStore(state => state.cart)
     const addToFavorites = useGamesStore(state => state.addToFavorites)
     const removeFromFavorites = useGamesStore(state => state.removeFromFavorites)
     const addToCart = useGamesStore(state => state.addToCart)
     const removeFromCart = useGamesStore(state => state.removeFromCart)
-    const favorites = useGamesStore(state => state.favorites)
-    const cart = useGamesStore(state => state.cart)
+
+    const addGameToFavorites = async (game) => {
+        await addToFavorites(game)
+        if (onchange) {
+            onchange()
+        }
+    }
 
     const removeGameFromFavorites = async (game) => {
         await removeFromFavorites(game)
@@ -31,7 +38,7 @@ const SingleGame = ({ game, onchange }) => {
                 <StyleGameImg src={game.mainPhoto}></StyleGameImg>
                 {favorites.find(fav => fav.id === game.id) ?
                     <Button onClick={() => removeGameFromFavorites(game)} text="Remove from favorites" />
-                    : <Button onClick={() => addToFavorites(game)} text="Add to favorites" />
+                    : <Button onClick={() => addGameToFavorites(game)} text="Add to favorites" />
                 }
             </StyleLeftSide>
             <StyleRightSide>
@@ -43,7 +50,7 @@ const SingleGame = ({ game, onchange }) => {
                             : <Button onClick={() => addToCart(game)} text={`Add to cart ${game.price}`} />
                     }
                 </StyleGameDescription>
-                {game.typename.join(" - ")}
+                {game.typename?.join(" - ")}
                 <Rating />
                 <div>
                     {game.gameDescription}

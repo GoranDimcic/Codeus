@@ -1,7 +1,6 @@
 import db from "../db/db.js"
 
 export const createTransaction = async () => {
-    const [{ transactionId }] = await db('transaction')
-        .insert({}, 'transactionId')
-    return transactionId;
+    const res = await db.raw('INSERT INTO "transaction" DEFAULT VALUES returning *')
+    return res.rows[0]?.id;
 }

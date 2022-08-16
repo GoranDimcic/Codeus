@@ -1,7 +1,7 @@
 import * as searchService from "../services/search.service.js"
 
 export const Search = async (req, res) => {
-    const { searchGame, perPage, page } = req.query
+    const { searchGame, page, perPage } = req.query
 
     try {
         const games = await searchService.searchGames(searchGame, page, perPage)

@@ -17,26 +17,18 @@ export const GamesFromCart = async (req, res) => {
 
 export const AddGameToCart = async (req, res) => {
     const { gameId, price } = req.body
-    const cart = await cartService.getGameFromCart(req.id, gameId)
 
-    if (cart.length) {
-        res.status(400).json({
-            message: "Game is already in cart!"
+    try {
+        await cartService.addToCart(req.id, gameId, price)
+        res.status(201).json({
+            message: "Cart is created."
         })
     }
-    else {
-        try {
-            await cartService.addToCart(req.id, gameId, price)
-            res.status(201).json({
-                message: "Cart is created."
-            })
-        }
-        catch (error) {
-            console.log(error)
-            res.status(401).json({
-                message: "Error!"
-            })
-        }
+    catch (error) {
+        console.log(error)
+        res.status(401).json({
+            message: "Error!"
+        })
     }
 }
 
@@ -65,16 +57,17 @@ export const RemoveGameFromCart = async (req, res) => {
     }
 }
 
-export const Chechout = async (req, res) => {
+export const Checkout = async (req, res) => {
     try {
-        const transaction_id = await transactionService.createTransaction()
+        const transactionId = await transactionService.createTransaction()
 
-        await cartService.updateCart(req.user_id, transaction_id)
+        await cartService.updateCart(req.id, transactionId)
         res.status(201).json({
-            message: "Chechout for the game is done!"
+            message: "Checkout for the game is done!"
         })
     }
     catch (error) {
+        console.log(error)
         res.status(401).json({
             message: "Error!"
         })

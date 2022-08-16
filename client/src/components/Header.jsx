@@ -20,7 +20,7 @@ const Header = () => {
                 <Link to="/browse"><a>BROWSE</a></Link>
                 <Link to="/search"><a>SEARCH</a></Link>
                 <Link to="/favorite"><a>FAVORITES</a></Link>
-                <Link to="/browse"><a>COMMUNITY</a></Link>
+                <Link to="/cart"><a>MY CART</a></Link>
             </StyleNavigation>
             <StyleUser>
                 <StyleUserLogo src="../images/user1.png"></StyleUserLogo>

@@ -25,7 +25,7 @@ export const searchGames = async (searchGame, page = 1, perPage = 5) => {
         metaData: {
             page: Number(page),
             perPage: Number(perPage),
-            totalCount: +totalCount,
+            totalCount: Number(totalCount),
             totalPages: Math.ceil(totalCount / perPage)
         }
     }

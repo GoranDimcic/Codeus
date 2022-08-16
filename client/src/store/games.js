@@ -9,43 +9,36 @@ const useGamesStore = create(
         setFavorites: favorites => {
             set({ favorites: favorites })
         },
-        setCarts: carts => {
-            set({ carts: carts })
+        setCart: cart => {
+            set({ cart: cart })
         },
 
         addToFavorites: async (game) => {
-            ApiClient.post("/favorite/", { gameId: game.id }).then(() =>
-                set(state => ({
-                    favorites: [...state.favorites, game]
-                }))
-            ).catch(e => console.log("Game is already in favorite: ", e))
-
+            await ApiClient.post("/favorite/", { gameId: game.id })
+            await ApiClient.get("/favorite/").then((favoriteResponse) => {
+                set({ favorites: favoriteResponse.data.data })
+            })
         },
 
         removeFromFavorites: async (game) => {
             await ApiClient.delete(`/favorite/${game.id}`)
-                .then(() =>
-                    set(state => ({
-                        favorites: state.favorites.filter(fav => fav.id !== game.id)
-                    }))
-                ).catch(e => console.log("Game is not in favorite: ", e))
+            await ApiClient.get("/favorite/").then((favoriteResponse) => {
+                set({ favorites: favoriteResponse.data.data })
+            })
         },
 
         addToCart: async (game) => {
-            ApiClient.post("/cart/", { gameId: game.id, price: game.price }).then(() =>
-                set(state => ({
-                    cart: [...state.cart, game]
-                }))
-            ).catch(e => console.log("Game is already in cart: ", e))
+            await ApiClient.post("/cart/", { gameId: game.id, price: game.price })
+            set(state => ({
+                cart: [...state.cart, game]
+            }))
         },
 
         removeFromCart: async (game) => {
             await ApiClient.delete(`/cart/${game.id}`)
-                .then(() =>
-                    set(state => ({
-                        cart: state.cart.filter(cart => cart.id !== game.id)
-                    }))
-                ).catch(e => console.log("Game is not in cart: ", e))
+            set(state => ({
+                cart: state.cart.filter(cart => cart.id !== game.id)
+            }))
         }
     })
 )
