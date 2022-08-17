@@ -34,9 +34,11 @@ const Game = () => {
 
     const gameComments = comments?.map((comment, index) => (
         <StyleComments key={index}>
-            <span style={{ "color": "#9D1B1B" }} >{comment.username}</span>
-            <span style={{ "color": "grey" }}>{comment.createdAt}</span>
-            <p>{comment.comment}</p>
+            <span style={{ "color": "#9D1B1B" }} >{comment?.username}</span>
+            <span style={{ "color": "grey" }}>
+                {new Date(comment?.createdAt).toLocaleString()}
+            </span>
+            <p>{comment?.comment}</p>
         </StyleComments>
     ))
 
@@ -59,7 +61,7 @@ const Game = () => {
                     {
                         cart.find(cart => cart.id === game?.id) ?
                             <Button onClick={() => removeFromCart(game)} text="Remove from cart" />
-                            : <Button onClick={() => addToCart(game)} text={`Add to cart ${game?.price}`} />
+                            : <Button onClick={() => addToCart(game)} text={`Add to cart $${game?.price}`} />
                     }
                     <p>{game?.gameDescription}</p>
                 </StyleRightSide>

@@ -29,16 +29,16 @@ const useGamesStore = create(
 
         addToCart: async (game) => {
             await ApiClient.post("/cart/", { gameId: game.id, price: game.price })
-            set(state => ({
-                cart: [...state.cart, game]
-            }))
+            await ApiClient.get("/cart/").then((cartResonse) => {
+                set({ cart: cartResonse.data.data })
+            })
         },
 
         removeFromCart: async (game) => {
             await ApiClient.delete(`/cart/${game.id}`)
-            set(state => ({
-                cart: state.cart.filter(cart => cart.id !== game.id)
-            }))
+            await ApiClient.get("/cart/").then((cartResonse) => {
+                set({ cart: cartResonse.data.data })
+            })
         }
     })
 )

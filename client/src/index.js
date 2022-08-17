@@ -11,17 +11,15 @@ export const initialFetch = async () => {
   if (localStorage.getItem("token")) {
     useAuthStore.setState({ token: localStorage.getItem("token") })
 
-    ApiClient.get(`/favorite`, {
-      params: {
-        perPage: 3
-      }
-    }).then(favoritesResponse => {
-      useGamesStore.setState({ favorites: favoritesResponse.data.data });
-    })
+    ApiClient.get("/favorite")
+      .then(favoritesResponse => {
+        useGamesStore.setState({ favorites: favoritesResponse.data.data });
+      })
 
-    ApiClient.get("/cart/").then((cartResponse) => {
-      useGamesStore.setState({ cart: cartResponse.data.data });
-    })
+    ApiClient.get("/cart/")
+      .then((cartResponse) => {
+        useGamesStore.setState({ cart: cartResponse.data.data });
+      })
   }
 }
 

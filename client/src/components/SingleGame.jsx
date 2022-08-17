@@ -11,13 +11,6 @@ const SingleGame = ({ game, onchange }) => {
     const addToCart = useGamesStore(state => state.addToCart)
     const removeFromCart = useGamesStore(state => state.removeFromCart)
 
-    const addGameToFavorites = async (game) => {
-        await addToFavorites(game)
-        if (onchange) {
-            onchange()
-        }
-    }
-
     const removeGameFromFavorites = async (game) => {
         await removeFromFavorites(game)
         if (onchange) {
@@ -38,7 +31,7 @@ const SingleGame = ({ game, onchange }) => {
                 <StyleGameImg src={game.mainPhoto}></StyleGameImg>
                 {favorites.find(fav => fav.id === game.id) ?
                     <Button onClick={() => removeGameFromFavorites(game)} text="Remove from favorites" />
-                    : <Button onClick={() => addGameToFavorites(game)} text="Add to favorites" />
+                    : <Button onClick={() => addToFavorites(game)} text="Add to favorites" />
                 }
             </StyleLeftSide>
             <StyleRightSide>
@@ -47,7 +40,7 @@ const SingleGame = ({ game, onchange }) => {
                     {
                         cart.find(cart => cart.id === game.id) ?
                             <Button onClick={() => removeGameFromCart(game)} text="Remove from cart" />
-                            : <Button onClick={() => addToCart(game)} text={`Add to cart ${game.price}`} />
+                            : <Button onClick={() => addToCart(game)} text={`Add to cart $${game.price}`} />
                     }
                 </StyleGameDescription>
                 {game.typename?.join(" - ")}
