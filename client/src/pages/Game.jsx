@@ -19,12 +19,14 @@ const Game = () => {
     const removeFromCart = useGamesStore(state => state.removeFromCart)
     const [game, setGame] = useState(null)
     const [comments, setComments] = useState(null)
+    const [totalComments, setTotalComments] = useState(0)
     const { id } = useParams()
 
     useEffect(() => {
         ApiClient.get(`/game/${id}`).then((gameResponse) => {
             setGame(gameResponse.data.data.game[0]);
             setComments(gameResponse.data.data.comments)
+            setTotalComments(gameResponse.data.data.comments)
         })
     }, [])
 
@@ -67,7 +69,9 @@ const Game = () => {
                 </StyleRightSide>
             </StyleGame>
             <div>
-                <h1>Comment</h1>
+                {
+                    totalComments.length > 0 && <h1>Comment</h1>
+                }
                 {gameComments}
             </div>
         </>
