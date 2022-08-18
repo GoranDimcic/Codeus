@@ -27,9 +27,9 @@ export const StyleGameType = styled.div`
     background-color: #20021D;
     width: 33%;
     padding: 10px;
-    max-height: 200px;
     overflow: scroll;
     overflow-x: hidden;
+    max-height: 200px;
     div {
         border-radius: 5px;
         width: 80%;
@@ -61,7 +61,6 @@ export const StylePrice = styled.div`
     background-color: #20021D;
     width: 33%;
     padding: 10px;
-    max-height: 200px;
     div {
         border-radius: 5px;
         width: 80%;

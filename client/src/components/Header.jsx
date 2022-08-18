@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import useAuthStore from "../store/auth";
 
 const Header = () => {
@@ -17,10 +17,10 @@ const Header = () => {
         <StyleHeader>
             <StyleLogo src="../images/logo.png"></StyleLogo>
             <StyleNavigation>
-                <Link to="/browse"><a>BROWSE</a></Link>
-                <Link to="/search"><a>SEARCH</a></Link>
-                <Link to="/favorite"><a>FAVORITES</a></Link>
-                <Link to="/cart"><a>MY CART</a></Link>
+                <NavLink to="/browse" activeClassName="active"><a>BROWSE</a></NavLink>
+                <NavLink to="/search" activeClassName="active"><a>SEARCH</a></NavLink>
+                <NavLink to="/favorite" activeClassName="active"><a>FAVORITES</a></NavLink>
+                <NavLink to="/cart" activeClassName="active"><a>MY CART</a></NavLink>
             </StyleNavigation>
             <StyleUser>
                 <StyleUserLogo src="../images/user1.png"></StyleUserLogo>
@@ -42,6 +42,9 @@ const StyleHeader = styled.div`
     a {
         text-decoration: none;
         color: white;
+    }
+    .active {
+        background-color: #200220;
     }
 `
 

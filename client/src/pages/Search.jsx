@@ -9,6 +9,8 @@ import {
     StyleLoadMore, StyleMiddle, StylePlatform, StyleSearch, StylePrice
 } from "../styles/SearchPage"
 
+const prices = ["Free", "Under $5", "From $5 - $10", "From $10 - $30", "Over $30"]
+
 const Search = () => {
     const [games, setGames] = useState([])
     const [searchData, setSearchData] = useState("")
@@ -153,11 +155,11 @@ const Search = () => {
                     <StarImg />
                 </StyleMiddle>
                 <StylePrice>
-                    <div>Free</div>
-                    <div>Under $5</div>
-                    <div>From $5 - $10</div>
-                    <div>From $10 - $30</div>
-                    <div>Over $30</div>
+                    {
+                        prices.map(p => {
+                            return <div>{p}</div>
+                        })
+                    }
                 </StylePrice>
             </StyleFilter>
             {searchGames}

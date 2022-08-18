@@ -21,9 +21,9 @@ const StyleRating = styled.div`
     img {
         width: 30px;
         margin-left: 20px;
-        &:hover {
+        /* &:hover {
             background: url("../images/star-filled.png")
-        }
+        } */
     }
     img:nth-child(1) {
         margin-left: 0;
