@@ -44,7 +44,7 @@ const SingleGame = ({ game, onchange }) => {
                     }
                 </StyleGameDescription>
                 {game.typename?.join(" - ")}
-                <Rating game={game} />
+                <Rating ratingNum={Math.floor(game.ratingNum)} />
                 <div>
                     {game.gameDescription}
                 </div>

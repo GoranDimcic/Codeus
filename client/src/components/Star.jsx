@@ -1,9 +1,13 @@
 import styled from "styled-components"
 
-const Star = () => {
+const Star = ({ gameRating, starNumber }) => {
     return (
         <>
-            <img src="../images/star-empty.png"></img>
+            {gameRating >= starNumber ?
+                <img src="../images/star-filled.png"></img>
+                : <img src="../images/star-empty.png"></img>
+            }
+
         </>
     )
 }

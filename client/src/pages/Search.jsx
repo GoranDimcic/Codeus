@@ -36,7 +36,7 @@ const Search = () => {
             setGames(prevState => [
                 ...prevState,
                 ...gameResponse.data.data.results
-            ]);
+            ])
         })
     }, [])
 

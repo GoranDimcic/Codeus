@@ -2,17 +2,16 @@ import { useState } from "react"
 import styled from "styled-components"
 import Star from "./Star"
 
-const Array = [<Star />, <Star />, <Star />, <Star />, <Star />]
-
-const Rating = ({ game }) => {
-    const [rating, setRating] = useState(Math.floor(game.ratingNum))
+const Rating = ({ ratingNum }) => {
+    const [rating, setRating] = useState(ratingNum)
 
     return (
         <StyleRating>
-            {Array}
-            {/* new Array[5].map(() => {
-                <Star />
-            }) */}
+            <Star gameRating={rating} starNumber={1} />
+            <Star gameRating={rating} starNumber={2} />
+            <Star gameRating={rating} starNumber={3} />
+            <Star gameRating={rating} starNumber={4} />
+            <Star gameRating={rating} starNumber={5} />
         </StyleRating>
     )
 }
