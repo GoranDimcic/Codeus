@@ -1,19 +1,26 @@
+import e from "cors"
 import { useEffect, useState } from "react"
 import ApiClient from "../api/axios"
 import Button from "../components/Button"
 import SingleGame from "../components/SingleGame"
 import StarImg from "../components/StarImg"
 import {
-    StyleGameTypeAndPrice, StyleFilter, StyleInput,
-    StyleLoadMore, StyleMiddle, StylePlatform, StyleSearch
+    StyleGameType, StyleFilter, StyleInput,
+    StyleLoadMore, StyleMiddle, StylePlatform, StyleSearch, StylePrice
 } from "../styles/SearchPage"
-
 
 const Search = () => {
     const [games, setGames] = useState([])
     const [searchData, setSearchData] = useState("")
     const [page, setPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
+    const [filter, setFilter] = useState({
+        type: [],
+        platform: [],
+        rating: 3,
+        priceMin: 0,
+        priceMax: 5
+    })
 
     useEffect(() => {
         ApiClient.get(`/search`, {
@@ -28,6 +35,21 @@ const Search = () => {
                 ...prevState,
                 ...gameResponse.data.data.results
             ]);
+        })
+    }, [])
+
+    useEffect(() => {
+        ApiClient.get("/search/types").then((typeResponse) => {
+            setFilter((oldValue) => ({
+                ...oldValue,
+                type: typeResponse.data.data
+            }))
+        })
+        ApiClient.get("/search/platforms").then((platformResponse) => {
+            setFilter((oldValue) => ({
+                ...oldValue,
+                platform: platformResponse.data.data
+            }))
         })
     }, [])
 
@@ -64,6 +86,44 @@ const Search = () => {
         setPage((prevState) => prevState + 1)
     }
 
+    const onTypeChanged = (typeId) => {
+        const alreadySelected = filter.type.includes(typeId)
+        if (alreadySelected) {
+            const updatedTypes = filter.type.filter(id => id !== typeId)
+            setFilter({
+                ...filter,
+                type: updatedTypes
+            })
+        }
+        else {
+            setFilter({
+                ...filter,
+                type: [
+                    ...filter.type, typeId
+                ]
+            })
+        }
+    }
+
+    const onPlatformChanged = (platformId) => {
+        const alreadySelected = filter.platform.includes(platformId)
+        if (alreadySelected) {
+            const updatedPlatforms = filter.platform.filter(id => id !== platformId)
+            setFilter({
+                ...filter,
+                platform: updatedPlatforms
+            })
+        }
+        else {
+            setFilter({
+                ...filter,
+                platform: [
+                    ...filter.platform, platformId
+                ]
+            })
+        }
+    }
+
     const searchGames = games.map((game, index) => (
         <SingleGame game={game} key={index} />
     ))
@@ -75,29 +135,30 @@ const Search = () => {
                 <Button text="Search" onClick={() => { searchGame() }} />
             </StyleSearch>
             <StyleFilter>
-                <StyleGameTypeAndPrice>
-                    <div>Adventure</div>
-                    <div>Indie</div>
-                    <div>RPG</div>
-                    <div>Strategy</div>
-                    <div>Action</div>
-                    <div>Simulation</div>
-                </StyleGameTypeAndPrice>
+                <StyleGameType>
+                    {
+                        filter.type.map(t => {
+                            return <div className={filter.type.includes(t.id) ? "selected" : ""} onClick={() => onTypeChanged(t.id)}>{t.name}</div>
+                        })
+                    }
+                </StyleGameType>
                 <StyleMiddle>
                     <StylePlatform>
-                        <div>Mac oc</div>
-                        <div>Windows</div>
-                        <div>Linux</div>
+                        {
+                            filter.platform.map(p => {
+                                return <div className={filter.platform.includes(p.id) ? "selected" : ""} onClick={() => onPlatformChanged(p.id)}>{p.name}</div>
+                            })
+                        }
                     </StylePlatform>
                     <StarImg />
                 </StyleMiddle>
-                <StyleGameTypeAndPrice>
+                <StylePrice>
                     <div>Free</div>
                     <div>Under $5</div>
                     <div>From $5 - $10</div>
                     <div>From $10 - $30</div>
                     <div>Over $30</div>
-                </StyleGameTypeAndPrice>
+                </StylePrice>
             </StyleFilter>
             {searchGames}
             {

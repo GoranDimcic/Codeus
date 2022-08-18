@@ -1,6 +1,9 @@
+import { useState } from "react"
 import styled from "styled-components"
 
-const Rating = () => {
+const Rating = ({ game }) => {
+    const [rating, setRating] = useState(Math.floor(game.ratingNum))
+
     return (
         <StyleRating>
             <img src="../images/star-empty.png"></img>
@@ -18,6 +21,9 @@ const StyleRating = styled.div`
     img {
         width: 30px;
         margin-left: 20px;
+        &:hover {
+            background: url("../images/star-filled.png")
+        }
     }
     img:nth-child(1) {
         margin-left: 0;

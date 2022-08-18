@@ -44,7 +44,7 @@ const SingleGame = ({ game, onchange }) => {
                     }
                 </StyleGameDescription>
                 {game.typename?.join(" - ")}
-                <Rating />
+                <Rating game={game} />
                 <div>
                     {game.gameDescription}
                 </div>

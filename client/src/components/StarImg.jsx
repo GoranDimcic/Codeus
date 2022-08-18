@@ -16,7 +16,6 @@ const StyleImg = styled.div`
     display: flex;
     justify-content: space-around;
     background-color: #20021D;
-    margin-top: 20px;
     padding: 10px;
     img {
         width: 30px;

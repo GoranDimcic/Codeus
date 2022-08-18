@@ -30,13 +30,3 @@ export const updateRating = async (userId, gameId, rate) => {
         })
     return result;
 }
-
-export const deleteRating = async (userId, gameId) => {
-    const result = db('rating')
-        .where({
-            userId: userId,
-            gameId: gameId
-        })
-        .delete()
-    return result;
-}

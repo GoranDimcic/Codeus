@@ -30,3 +30,15 @@ export const searchGames = async (searchGame, page = 1, perPage = 5) => {
         }
     }
 }
+
+export const getTypes = async () => {
+    const types = await db('type')
+        .select()
+    return types;
+}
+
+export const getPlatforms = async () => {
+    const platforms = await db('platform')
+        .select()
+    return platforms;
+}
