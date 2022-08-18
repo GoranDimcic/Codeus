@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import ApiClient from "../api/axios"
 import Button from "../components/Button"
 import SingleGame from "../components/SingleGame"
-import StarImg from "../components/StarImg"
+import StarFilter from "../components/StarFilter"
 import {
     StyleGameType, StyleFilter, StyleInput,
     StyleLoadMore, StyleMiddle, StylePlatform, StyleSearch, StylePrice
@@ -140,7 +140,7 @@ const Search = () => {
                 <StyleGameType>
                     {
                         filter.type.map(t => {
-                            return <div className={filter.type.includes(t.id) ? "selected" : ""} onClick={() => onTypeChanged(t.id)}>{t.name}</div>
+                            return <div className={filter.type.includes(t.id) ? "selected" : ""} onClick={() => onTypeChanged(t.id)} >{t.name}</div>
                         })
                     }
                 </StyleGameType>
@@ -152,7 +152,7 @@ const Search = () => {
                             })
                         }
                     </StylePlatform>
-                    <StarImg />
+                    <StarFilter />
                 </StyleMiddle>
                 <StylePrice>
                     {

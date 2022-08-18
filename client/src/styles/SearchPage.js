@@ -29,12 +29,15 @@ export const StyleGameType = styled.div`
     padding: 10px;
     overflow: scroll;
     overflow-x: hidden;
-    max-height: 200px;
+    max-height: 210px;
     div {
         border-radius: 5px;
-        width: 80%;
-        padding-left: 20px;
+        padding: 5px 0 5px 20px;
         margin-bottom: 5px;
+        &:hover {
+            background-color: #3B0931;
+            cursor: pointer;
+        }
     }
 `
 
@@ -49,11 +52,15 @@ export const StyleMiddle = styled.div`
 export const StylePlatform = styled.div`
     background-color: #20021D;
     padding: 10px;
+    max-height: 100px;
     div {
         border-radius: 5px;
-        padding-left: 20px;
-        width: 80%;
+        padding: 5px 0 5px 20px;
         margin-bottom: 5px;
+        &:hover {
+            background-color: #3B0931;
+            cursor: pointer;
+        }
     }
 `
 
@@ -63,9 +70,12 @@ export const StylePrice = styled.div`
     padding: 10px;
     div {
         border-radius: 5px;
-        width: 80%;
-        padding-left: 20px;
+        padding: 5px 0 5px 20px;
         margin-bottom: 5px;
+        &:hover {
+            background-color: #3B0931;
+            cursor: pointer;
+        }
     }
 `
 

@@ -55,7 +55,7 @@ const Game = () => {
                 </StyleLeftSide>
                 <StyleRightSide>
                     <h1 style={{ "margin": "0" }}>{game?.gameTitle}</h1>
-                    <Rating />
+                    <Rating game={id} />
                     {favorites.find(fav => fav.id === game?.id) ?
                         <div style={{ "color": "#9D1B1B", "margin": "10px 0", "cursor": "pointer" }} onClick={() => removeFromFavorites(game)}><FaHeartBroken /> Remove from favorite</div>
                         : <div style={{ "color": "#9D1B1B", "margin": "10px 0", "cursor": "pointer" }} onClick={() => addToFavorites(game)}><FaHeart /> Add to favorite</div>

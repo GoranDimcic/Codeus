@@ -1,16 +1,18 @@
 import { useState } from "react"
 import styled from "styled-components"
+import Star from "./Star"
+
+const Array = [<Star />, <Star />, <Star />, <Star />, <Star />]
 
 const Rating = ({ game }) => {
     const [rating, setRating] = useState(Math.floor(game.ratingNum))
 
     return (
         <StyleRating>
-            <img src="../images/star-empty.png"></img>
-            <img src="../images/star-empty.png"></img>
-            <img src="../images/star-empty.png"></img>
-            <img src="../images/star-empty.png"></img>
-            <img src="../images/star-empty.png"></img>
+            {Array}
+            {/* new Array[5].map(() => {
+                <Star />
+            }) */}
         </StyleRating>
     )
 }
@@ -21,9 +23,6 @@ const StyleRating = styled.div`
     img {
         width: 30px;
         margin-left: 20px;
-        /* &:hover {
-            background: url("../images/star-filled.png")
-        } */
     }
     img:nth-child(1) {
         margin-left: 0;

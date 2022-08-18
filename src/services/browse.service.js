@@ -1,28 +1,18 @@
 import db from "../db/db.js"
 
 export const getMostCommentedGame = async (ganre) => {
-    const result = await db('game as g')
-        .select('g.id', 'mainPhoto', 'gt.gameId as gId')
-        .leftJoin('comment as c', { 'c.gameId': 'g.id' })
-        .innerJoin('gameType as gt', function () {
-            this
-                .on('g.id', 'gt.gameId')
-                .on('gt.typeId', '=', 4);
-        })
-        // .innerJoin('type as t', { 'gt.gameId': 't.id' })
-        .groupBy('g.id', 'gt.gameId')
-        .count('c.comment as comments')
-        .orderBy('comments', 'desc')
-
-    // .select('c.gameId')
-    // .innerJoin('game as g', { 'c.gameId': 'g.id' })
-    // .innerJoin('gameType as gt', { 'g.id': 'gt.gameId' })
-    // .innerJoin('type as t', { 'gt.gameId': 't.id' })
-    // .groupBy('c.gameId')
-    // .count('c.gameId as comments')
-    // .orderBy('comments', 'desc')
-    // .limit(1)
-    return result
+    // const result = await db('type as t')
+    //     .select('t.id', 't.name', 'g.id', 'g.gameTitle', 'g.num_of_comments')
+    //     .leftJoin('gameType as gt', { 'gt.typeId': 't.id' })
+    //     .leftJoin(
+    //         db('game as g')
+    //             .select('g.id', 'g.gameTitle')
+    //             .leftJoin('comment as c', { 'c.game': 'g.id' })
+    //             .count('comment as num_of_comments')
+    //     )
+    //     .orderBy('t.name', 'asc', 'g.num_of_comments', 'desc')
+    // console.log(result)
+    // return result
 }
 
 export const getMostRatedGames = async (ganre) => {
