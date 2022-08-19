@@ -1,10 +1,10 @@
 import Button from "../components/Button"
 import styled from "styled-components"
 
-const GameHover = () => {
+const GameHover = ({ game }) => {
     return (
         <StyleDiv>
-            <img src="images/game.png"></img>
+            <img src={game?.mainPhoto}></img>
             <StyleHover>
                 <Button text="DETAILS" />
                 <Button text="IN CART $19" />
@@ -26,6 +26,7 @@ const StyleDiv = styled.div`
     }
     img {
         width: 100%;
+        height: 100%;
     }
     &:hover {
         button {

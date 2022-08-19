@@ -1,46 +1,62 @@
 import db from "../db/db.js"
 
-export const getMostCommentedGame = async (ganre) => {
-    // const result = await db('type as t')
-    //     .select('t.id', 't.name', 'g.id', 'g.gameTitle', 'g.num_of_comments')
-    //     .leftJoin('gameType as gt', { 'gt.typeId': 't.id' })
-    //     .leftJoin(
-    //         db('game as g')
-    //             .select('g.id', 'g.gameTitle')
-    //             .leftJoin('comment as c', { 'c.game': 'g.id' })
-    //             .count('comment as num_of_comments')
-    //     )
-    //     .orderBy('t.name', 'asc', 'g.num_of_comments', 'desc')
-    // console.log(result)
-    // return result
-}
-
-export const getMostRatedGames = async (ganre) => {
-    const result = await db('rating as r')
-        .select('g.mainPhoto', 'r.gameId')
-        .leftJoin('game as g', { 'r.gameId': 'g.id' })
-        .groupBy('r.gameId', 'g.mainPhoto')
-        .count('r.gameId as ratings')
-        .orderBy('ratings', 'desc')
-        .limit(3)
-    return result;
-}
-
-export const getMostFavoritedGames = async (ganre) => {
-    const result = await db('favorite as f')
-        .select('g.mainPhoto', 'f.gameId')
-        .leftJoin('game as g', { 'f.gameId': 'g.id' })
-        .groupBy('g.mainPhoto', 'f.gameId')
-        .count('g.mainPhoto as favorites')
-        .orderBy('favorites', 'desc')
-        .limit(6)
+export const getMostCommentedGame = async (type) => {
+    const result = await db.raw(
+        `select type.id, type.name, g.id, g."mainPhoto", g.num_of_comments
+            from type
+            left join "gameType" gT on type.id = gT."typeId"
+            left join (
+                select game.id, game."mainPhoto", count(comment) as num_of_comments
+                from game
+                    left join comment c on game.id = c."gameId"
+                group by game.id
+            ) g on gT."gameId" = g.id
+            where type.name = '${type}'
+        order by type.name asc, g.num_of_comments desc`
+    )
     return result
 }
 
-export const getRandomGames = async (ganre) => {
-    const result = await db('game as g')
-        .select('g.id', 'mainPhoto')
-        .orderByRaw('RANDOM()')
-        .limit(5)
+export const getMostFavoritedGames = async (type) => {
+    const result = await db.raw(`select type.id, type.name, g.id, g."mainPhoto", g.num_of_favorites
+    from type
+             left join "gameType" gT on type.id = gT."typeId"
+             left join (
+                select game.id, game."mainPhoto", count(f."gameId") as num_of_favorites
+                from game
+                    left join favorite f on game.id = f."gameId"
+                group by game.id
+            ) g on gT."gameId" = g.id
+            where type.name = '${type}'
+    order by type.name asc, g.num_of_favorites desc`)
+    return result
+}
+
+export const getMostRatedGames = async (type) => {
+    const result = await db.raw(`select type.id, type.name, g.id, g."mainPhoto", g.num_of_ratings
+    from type
+             left join "gameType" gT on type.id = gT."typeId"
+             left join (
+                select game.id, game."mainPhoto", count("ratingNumber") as num_of_ratings
+                from game
+                    left join rating r on game.id = r."gameId"
+                group by game.id
+            ) g on gT."gameId" = g.id
+            where type.name = '${type}'
+    order by type.name asc, g.num_of_ratings desc`)
+    return result;
+}
+
+export const getMostPricedGames = async (type) => {
+    const result = await db.raw(`select type.id, type.name, g.id, g."mainPhoto", g."price"
+    from type
+             left join "gameType" gT on type.id = gT."typeId"
+             left join (
+                select game.id, game."mainPhoto", game."price"
+                from game
+                group by game.id
+            ) g on gT."gameId" = g.id
+            where type.name = '${type}'
+    order by type.name asc, g.price DESC`)
     return result
 }

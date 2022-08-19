@@ -17,10 +17,10 @@ const Header = () => {
         <StyleHeader>
             <StyleLogo src="../images/logo.png"></StyleLogo>
             <StyleNavigation>
-                <NavLink to="/browse" activeClassName="active"><a>BROWSE</a></NavLink>
-                <NavLink to="/search" activeClassName="active"><a>SEARCH</a></NavLink>
-                <NavLink to="/favorite" activeClassName="active"><a>FAVORITES</a></NavLink>
-                <NavLink to="/cart" activeClassName="active"><a>MY CART</a></NavLink>
+                <NavLink to="/browse" activeclassname="active"><a>BROWSE</a></NavLink>
+                <NavLink to="/search" activeclassname="active"><a>SEARCH</a></NavLink>
+                <NavLink to="/favorite" activeclassname="active"><a>FAVORITES</a></NavLink>
+                <NavLink to="/cart" activeclassname="active"><a>MY CART</a></NavLink>
             </StyleNavigation>
             <StyleUser>
                 <StyleUserLogo src="../images/user1.png"></StyleUserLogo>

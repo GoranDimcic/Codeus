@@ -1,74 +1,25 @@
 import * as browseService from "../services/browse.service.js"
 
 export const BrowseGames = async (req, res) => {
+    const {type} = req.query
+
     try {
-        const comment = await browseService.getMostCommentedGame(ganre)
-        const rate = await browseService.getMostRatedGames(ganre)
-        const favorite = await browseService.getMostFavoritedGames(ganre)
-        const random = await browseService.getRandomGames(ganre)
+        const comment = await browseService.getMostCommentedGame(type)
+        const rate = await browseService.getMostRatedGames(type)
+        const favorite = await browseService.getMostFavoritedGames(type)
+        const price = await browseService.getMostPricedGames(type)
 
         res.status(201).json({
-            data: game
-        })
-    }
-    catch (error) {
-        res.status(401).json({
-            message: "Error"
-        })
-    }
-}
-
-export const MostCommentedGame = async (req, res) => {
-    try {
-        const game = await browseService.getMostCommentedGame()
-        res.status(201).json({
-            data: game
+            data: {
+                comment,
+                favorite,
+                rate,
+                price
+            }
         })
     }
     catch (error) {
         console.log(error)
-        res.status(401).json({
-            message: "Error"
-        })
-    }
-}
-
-export const MostRatedGames = async (req, res) => {
-    try {
-        const games = await browseService.getMostRatedGames()
-        res.status(201).json({
-            data: games
-        })
-    }
-    catch (error) {
-        res.status(401).json({
-            message: "Error"
-        })
-    }
-}
-
-export const MostFavoritedGames = async (req, res) => {
-    try {
-        const games = await browseService.getMostFavoritedGames()
-        res.status(201).json({
-            data: games
-        })
-    }
-    catch (error) {
-        res.status(401).json({
-            message: "Error"
-        })
-    }
-}
-
-export const RandomGames = async (req, res) => {
-    try {
-        const games = await browseService.getRandomGames()
-        res.status(201).json({
-            data: games
-        })
-    }
-    catch (error) {
         res.status(401).json({
             message: "Error"
         })

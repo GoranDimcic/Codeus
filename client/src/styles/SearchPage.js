@@ -27,8 +27,8 @@ export const StyleGameType = styled.div`
     background-color: #20021D;
     width: 33%;
     padding: 10px;
-    overflow: scroll;
-    overflow-x: hidden;
+    /* overflow: scroll;
+    overflow-x: hidden; */
     max-height: 210px;
     div {
         border-radius: 5px;
@@ -39,6 +39,9 @@ export const StyleGameType = styled.div`
             cursor: pointer;
         }
     }
+    /* div:nth-child(1) {
+        background-color: red;
+    } */
 `
 
 export const StyleMiddle = styled.div`
