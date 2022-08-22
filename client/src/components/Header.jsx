@@ -18,29 +18,25 @@ const Header = () => {
       <StyleLogo src="../images/logo.png"></StyleLogo>
       <StyleNavigation>
         <NavLink to="/browse" activeclassname="active">
-          <a>BROWSE</a>
+          BROWSE
         </NavLink>
         <NavLink to="/search" activeclassname="active">
-          <a>SEARCH</a>
+          SEARCH
         </NavLink>
         <NavLink to="/favorite" activeclassname="active">
-          <a>FAVORITES</a>
+          FAVORITES
         </NavLink>
         <NavLink to="/cart" activeclassname="active">
-          <a>MY CART</a>
+          MY CART
         </NavLink>
       </StyleNavigation>
       <StyleUser>
         <StyleUserLogo src="../images/user1.png"></StyleUserLogo>
         <StyleDropdown>
-          <Link to="/profile">
-            <a>PROFILE</a>
-          </Link>
-          <Link to="/cart">
-            <a>MY CART</a>
-          </Link>
+          <Link to="/profile">PROFILE</Link>
+          <Link to="/cart">MY CART</Link>
           <Link onClick={() => Logout()} to="/">
-            <a>LOGOUT</a>
+            LOGOUT
           </Link>
         </StyleDropdown>
       </StyleUser>
@@ -68,7 +64,7 @@ const StyleLogo = styled.img`
 
 const StyleNavigation = styled.div`
   a {
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 20px;
     &:hover {
       background-color: #200220;
@@ -110,7 +106,7 @@ const StyleDropdown = styled.div`
   transition: 0.1s ease-in;
   a {
     display: block;
-    padding: 0 10px;
+    padding: 5px 20px;
     margin: 5px 0;
     text-align: right;
     &:hover {

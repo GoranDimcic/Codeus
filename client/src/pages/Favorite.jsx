@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import ApiClient from "../api/axios";
 import SingleGame from "../components/SingleGame";
-import useAuthStore from "../store/auth";
 import useGamesStore from "../store/games";
 
 const Favorite = () => {

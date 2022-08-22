@@ -11,7 +11,9 @@ const Browse = () => {
     });
   }, []);
 
-  const gameTypes = types.map((type) => <BrowseGrid type={type} />);
+  const gameTypes = types.map((type, index) => (
+    <BrowseGrid key={index} type={type} />
+  ));
 
   return <>{gameTypes}</>;
 };

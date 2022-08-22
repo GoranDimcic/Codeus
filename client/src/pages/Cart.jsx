@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ApiClient from "../api/axios";
 import Button from "../components/Button";
 import SingleGame from "../components/SingleGame";
