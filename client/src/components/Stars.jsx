@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+
 const Stars = (props) => {
-    
+
     const [hoveredStars, setHoveredStars] = useState(0);
 
     let stars = [];
@@ -10,7 +11,7 @@ const Stars = (props) => {
         stars.push(
             <StyledStar
                 size={props.size}
-                src={i <= props.selectedRating ? props.filled : props.empty}
+                src={i <= props.selectedRating ? "../images/star-filled.png" : "../images/star-empty.png"}
                 onMouseEnter={() => setHoveredStars(i)}
                 opacity={i <= hoveredStars ? 0.5 : 1}
                 key={i}

@@ -1,31 +1,37 @@
-import { useState } from "react"
-import styled from "styled-components"
-import Star from "./Star"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import Stars from "./Stars";
 
-const Rating = ({ ratingNum }) => {
-    const [rating, setRating] = useState(ratingNum)
-
+const Rating = (props) => {
+    const [ratingDisabled, setRatingDisabled] = useState(false);
+    const handleClick = async (ratingNum) => {
+        setRatingDisabled(true);
+        if (props.userRating && ratingNum === props.userRating) {
+            await props.removeRatingHandler(props.gameId);
+        } else {
+            await props.addRatingHandler(props.gameId, ratingNum);
+        }
+        setRatingDisabled(false);
+    };
     return (
-        <StyleRating>
-            <Star gameRating={rating} starNumber={1} />
-            <Star gameRating={rating} starNumber={2} />
-            <Star gameRating={rating} starNumber={3} />
-            <Star gameRating={rating} starNumber={4} />
-            <Star gameRating={rating} starNumber={5} />
-        </StyleRating>
-    )
-}
+        <Stars
+            handleClick={handleClick}
+            size={props.size}
+            selectedRating={props.userRating ? props.userRating : props.rating}
+            className={props.className}
+            disabled={ratingDisabled}
+        />
+    );
 
-const StyleRating = styled.div`
-    display: flex;
-    padding: .6rem 0;
-    img {
-        width: 30px;
-        margin-left: 20px;
-    }
-    img:nth-child(1) {
-        margin-left: 0;
-    }
-`
+};
 
-export default Rating
+Rating.propTypes = {
+    size: PropTypes.number,
+    addRatingHandler: PropTypes.func,
+    removeRatingHandler: PropTypes.func,
+    rating: PropTypes.number,
+    userRating: PropTypes.number,
+    gameId: PropTypes.number,
+};
+
+export default Rating;

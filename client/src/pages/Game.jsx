@@ -30,6 +30,10 @@ const Game = () => {
         })
     }, [])
 
+    const addRatingHandler = async (gameId, ratingNum) => {
+        await ApiClient.post("/rating", { gameId, rate: ratingNum })
+    }
+
     const smallImages = game?.images.map((game, index) => (
         <StyleSmallPicutre src={game} key={index} />
     ))
@@ -56,7 +60,7 @@ const Game = () => {
                 <StyleRightSide>
                     <h1 style={{ "margin": "0" }}>{game?.gameTitle}</h1>
                     {
-                        game?.ratingNum >= 0 && <Rating ratingNum={Math.floor(game?.ratingNum)} />
+                        game?.ratingNum >= 0 && <Rating gameId={game.id} userRating={Math.floor(game.ratingNum)} addRatingHandler={addRatingHandler} />
                     }
                     {favorites.find(fav => fav.id === game?.id) ?
                         <div style={{ "color": "#9D1B1B", "margin": "10px 0", "cursor": "pointer" }} onClick={() => removeFromFavorites(game)}><FaHeartBroken /> Remove from favorite</div>

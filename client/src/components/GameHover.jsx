@@ -1,13 +1,23 @@
 import Button from "../components/Button"
 import styled from "styled-components"
+import { useNavigate } from "react-router-dom"
+import useGamesStore from "../store/games"
 
 const GameHover = ({ game }) => {
+    const navigate = useNavigate()
+    const cart = useGamesStore(state => state.cart)
+    const addToCart = useGamesStore(state => state.addToCart)
+    const removeFromCart = useGamesStore(state => state.removeFromCart)
+
+    const gameDetail = async () => {
+        navigate(`/game/${game.id}`)
+    }
+
     return (
         <StyleDiv>
             <img src={game?.mainPhoto}></img>
             <StyleHover>
-                <Button text="DETAILS" />
-                <Button text="IN CART $19" />
+                <Button text="DETAILS" onClick={() => gameDetail()} />
             </StyleHover>
         </StyleDiv >
     )

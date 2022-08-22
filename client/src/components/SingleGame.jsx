@@ -2,6 +2,7 @@ import Button from "./Button";
 import Rating from "./Rating";
 import styled from "styled-components";
 import useGamesStore from "../store/games";
+import ApiClient from "../api/axios";
 
 const SingleGame = ({ game, onchange }) => {
     const favorites = useGamesStore(state => state.favorites)
@@ -10,6 +11,10 @@ const SingleGame = ({ game, onchange }) => {
     const removeFromFavorites = useGamesStore(state => state.removeFromFavorites)
     const addToCart = useGamesStore(state => state.addToCart)
     const removeFromCart = useGamesStore(state => state.removeFromCart)
+
+    const addRatingHandler = async (gameId, ratingNum) => {
+        await ApiClient.post("/rating", { gameId, rate: ratingNum })
+    }
 
     const removeGameFromFavorites = async (game) => {
         await removeFromFavorites(game)
@@ -44,7 +49,7 @@ const SingleGame = ({ game, onchange }) => {
                     }
                 </StyleGameDescription>
                 {game.typename?.join(" - ")}
-                <Rating ratingNum={Math.floor(game.ratingNum)} />
+                <Rating gameId={game.id} userRating={Math.floor(game.ratingNum)} addRatingHandler={addRatingHandler} />
                 <div>
                     {game.gameDescription}
                 </div>

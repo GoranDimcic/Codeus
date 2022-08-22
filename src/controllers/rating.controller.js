@@ -1,21 +1,5 @@
 import * as ratingService from "../services/rating.service.js"
 
-export const AddRating = async (req, res) => {
-    const { gameId, rate } = req.body
-
-    try {
-        await ratingService.createRating(req.id, gameId, rate)
-        res.status(201).json({
-            message: "You rated this game."
-        })
-    }
-    catch (error) {
-        res.status(401).json({
-            message: "Error"
-        })
-    }
-}
-
 export const UpdateRating = async (req, res) => {
     const { gameId, rate } = req.body
 
@@ -23,8 +7,9 @@ export const UpdateRating = async (req, res) => {
         const [rating] = await ratingService.getRating(req.id, gameId)
 
         if (!rating) {
-            res.status(401).json({
-                message: "There is no rating for this game!"
+            await ratingService.createRating(req.id, gameId, rate)
+            res.status(201).json({
+                message: "Created rating."
             })
         }
         else {

@@ -139,16 +139,16 @@ const Search = () => {
             <StyleFilter>
                 <StyleGameType>
                     {
-                        filter.type.map(t => {
-                            return <div className={filter.type.includes(t.id) ? "selected" : ""} onClick={() => onTypeChanged(t.id)} >{t.name}</div>
+                        filter.type.map((t, index) => {
+                            return <div key={index} className={filter.type.includes(t.id) ? "selected" : ""} onClick={() => onTypeChanged(t.id)} >{t.name}</div>
                         })
                     }
                 </StyleGameType>
                 <StyleMiddle>
                     <StylePlatform>
                         {
-                            filter.platform.map(p => {
-                                return <div className={filter.platform.includes(p.id) ? "selected" : ""} onClick={() => onPlatformChanged(p.id)}>{p.name}</div>
+                            filter.platform.map((p, index) => {
+                                return <div key={index} className={filter.platform.includes(p.id) ? "selected" : ""} onClick={() => onPlatformChanged(p.id)}>{p.name}</div>
                             })
                         }
                     </StylePlatform>
@@ -156,8 +156,8 @@ const Search = () => {
                 </StyleMiddle>
                 <StylePrice>
                     {
-                        prices.map(p => {
-                            return <div>{p}</div>
+                        prices.map((p, index) => {
+                            return <div key={index}>{p}</div>
                         })
                     }
                 </StylePrice>
