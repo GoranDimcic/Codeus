@@ -23,11 +23,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<FirstPage />} />
             <Route path="/browse" element={<Browse />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/favorite" element={<Favorite />} />
+            <Route path="/cart" element={token ? <Cart /> : <FirstPage />} />
+            <Route path="/favorite" element={token ? <Favorite /> : <FirstPage />} />
             <Route path="/game/:id" element={<Game />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/profile" element={<Profile />} />
           </Routes>
         </Wrapper>
         <Footer />
