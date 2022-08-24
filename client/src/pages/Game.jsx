@@ -41,7 +41,14 @@ const Game = () => {
   }, []);
 
   const addRatingHandler = async (gameId, ratingNum) => {
-    await ApiClient.post("/rating", { gameId, rate: ratingNum });
+    const newRating = await ApiClient.post("/rating", {
+      gameId,
+      rate: ratingNum,
+    });
+    setGame((prevGame) => ({
+      ...prevGame,
+      ratingNum: newRating.data.data[0].rating,
+    }));
   };
 
   const smallImages = game?.images.map((game, index) => (
