@@ -27,9 +27,7 @@ export const StyleGameType = styled.div`
   background-color: #20021d;
   width: 33%;
   padding: 10px;
-  /* overflow: scroll;
-    overflow-x: hidden; */
-  max-height: 210px;
+  max-height: auto;
   div {
     border-radius: 5px;
     padding: 5px 0 5px 20px;
@@ -39,9 +37,6 @@ export const StyleGameType = styled.div`
       cursor: pointer;
     }
   }
-  /* div:nth-child(1) {
-        background-color: red;
-    } */
 `;
 
 export const StyleMiddle = styled.div`
@@ -55,7 +50,7 @@ export const StyleMiddle = styled.div`
 export const StylePlatform = styled.div`
   background-color: #20021d;
   padding: 10px;
-  max-height: 100px;
+  max-height: auto;
   div {
     border-radius: 5px;
     padding: 5px 0 5px 20px;

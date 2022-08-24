@@ -16,10 +16,10 @@ import {
 
 const prices = [
   "Free",
-  "Under $5",
-  "From $5 - $10",
-  "From $10 - $30",
-  "Over $30",
+  `Under $${5}`,
+  `From $${5} - $${10}`,
+  `From $${10} - $${30}`,
+  `Over $${30}`,
 ];
 
 const Search = () => {
@@ -97,39 +97,40 @@ const Search = () => {
     setPage((prevState) => prevState + 1);
   };
 
-  const onTypeChanged = (typeId) => {
-    const alreadySelected = filter.type.includes(typeId);
-    if (alreadySelected) {
-      const updatedTypes = filter.type.filter((id) => id !== typeId);
-      setFilter({
-        ...filter,
-        type: updatedTypes,
-      });
-    } else {
-      setFilter({
-        ...filter,
-        type: [...filter.type, typeId],
-      });
-    }
-  };
+  // const onTypeChanged = (typeId) => {
+  //   const alreadySelected = filter.type.includes(typeId);
+  //   console.log(alreadySelected);
+  //   if (alreadySelected) {
+  //     const updatedTypes = filter.type.filter((id) => id !== typeId);
+  //     setFilter({
+  //       ...filter,
+  //       type: updatedTypes,
+  //     });
+  //   } else {
+  //     setFilter({
+  //       ...filter,
+  //       type: [...filter.type, typeId],
+  //     });
+  //   }
+  // };
 
-  const onPlatformChanged = (platformId) => {
-    const alreadySelected = filter.platform.includes(platformId);
-    if (alreadySelected) {
-      const updatedPlatforms = filter.platform.filter(
-        (id) => id !== platformId
-      );
-      setFilter({
-        ...filter,
-        platform: updatedPlatforms,
-      });
-    } else {
-      setFilter({
-        ...filter,
-        platform: [...filter.platform, platformId],
-      });
-    }
-  };
+  // const onPlatformChanged = (platformId) => {
+  //   const alreadySelected = filter.platform.includes(platformId);
+  //   if (alreadySelected) {
+  //     const updatedPlatforms = filter.platform.filter(
+  //       (id) => id !== platformId
+  //     );
+  //     setFilter({
+  //       ...filter,
+  //       platform: updatedPlatforms,
+  //     });
+  //   } else {
+  //     setFilter({
+  //       ...filter,
+  //       platform: [...filter.platform, platformId],
+  //     });
+  //   }
+  // };
 
   const searchGames = games.map((game, index) => (
     <SingleGame game={game} key={index} setGames={setGames} />
@@ -155,7 +156,7 @@ const Search = () => {
               <div
                 key={index}
                 className={filter.type.includes(t.id) ? "selected" : ""}
-                onClick={() => onTypeChanged(t.id)}
+                // onClick={() => onTypeChanged(t.id)}
               >
                 {t.name}
               </div>
@@ -169,7 +170,7 @@ const Search = () => {
                 <div
                   key={index}
                   className={filter.platform.includes(p.id) ? "selected" : ""}
-                  onClick={() => onPlatformChanged(p.id)}
+                  // onClick={() => onPlatformChanged(p.id)}
                 >
                   {p.name}
                 </div>

@@ -17,7 +17,21 @@ const SingleGame = ({ game, onchange, setGames }) => {
   const removeFromCart = useGamesStore((state) => state.removeFromCart);
 
   const addRatingHandler = async (gameId, ratingNum) => {
-    await ApiClient.post("/rating", { gameId, rate: ratingNum });
+    const newRating = await ApiClient.post("/rating", {
+      gameId,
+      rate: ratingNum,
+    });
+    setGames((prevGames) =>
+      prevGames.map((gm) => {
+        if (gm.id === gameId) {
+          return {
+            ...gm,
+            ratingNum: newRating.data.data[0].rating,
+          };
+        }
+        return gm;
+      })
+    );
   };
 
   const removeGameFromFavorites = async (game) => {
