@@ -10,9 +10,7 @@ const SingleGame = ({ game, onchange, setGames }) => {
   const favorites = useGamesStore((state) => state.favorites);
   const cart = useGamesStore((state) => state.cart);
   const addToFavorites = useGamesStore((state) => state.addToFavorites);
-  const removeFromFavorites = useGamesStore(
-    (state) => state.removeFromFavorites
-  );
+  const removeFromFavorites = useGamesStore((state) => state.removeFromFavorites);
   const addToCart = useGamesStore((state) => state.addToCart);
   const removeFromCart = useGamesStore((state) => state.removeFromCart);
 

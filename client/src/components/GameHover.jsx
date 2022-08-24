@@ -1,8 +1,12 @@
 import Button from "../components/Button";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import useGamesStore from "../store/games";
 
 const GameHover = ({ game }) => {
+  const cart = useGamesStore((state) => state.cart);
+  const addToCart = useGamesStore((state) => state.addToCart);
+  const removeFromCart = useGamesStore((state) => state.removeFromCart);
   const navigate = useNavigate();
 
   const gameDetail = async () => {
@@ -14,6 +18,17 @@ const GameHover = ({ game }) => {
       <img src={game?.mainPhoto}></img>
       <StyleHover>
         <Button text="DETAILS" onClick={() => gameDetail()} />
+        {cart.find((cart) => cart.id === game?.id) ? (
+          <Button
+            onClick={() => removeFromCart(game)}
+            text="Remove from cart"
+          />
+        ) : (
+          <Button
+            onClick={() => addToCart(game)}
+            text={`Add to cart $${game?.price}`}
+          />
+        )}
       </StyleHover>
     </StyleDiv>
   );
