@@ -37,14 +37,16 @@ const BrowseGrid = ({ type }) => {
         </StyleMostFavoritedGames>
         <GameHover game={browse?.comment?.rows[0]} />
         <StyleMostRatedGamesLeft>
-          <GameHover game={browse?.rate?.rows[0]} />
-          <GameHover game={browse?.rate?.rows[2]} />
-          <GameHover game={browse?.rate?.rows[4]} />
+          {browse?.rate?.rows
+            .filter((_, index) => index % 2 === 0)
+            .map((r, index) => <GameHover game={r} key={index} />)
+            .slice(0, 3)}
         </StyleMostRatedGamesLeft>
         <StyleMostRatedGamesRight>
-          <GameHover game={browse?.rate?.rows[1]} />
-          <GameHover game={browse?.rate?.rows[3]} />
-          <GameHover game={browse?.rate?.rows[5]} />
+          {browse?.rate?.rows
+            .filter((_, index) => index % 2 === 1)
+            .map((r, index) => <GameHover game={r} key={index} />)
+            .slice(0, 3)}
         </StyleMostRatedGamesRight>
       </StyleGrid>
       <StyleMostPricedGames>
