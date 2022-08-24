@@ -31,28 +31,26 @@ const BrowseGrid = ({ type }) => {
           <StyleBestGameType>
             <span>{type.name}</span>
           </StyleBestGameType>
-          <GameHover game={browse?.favorite?.rows[0]} />
-          <GameHover game={browse?.favorite?.rows[1]} />
-          <GameHover game={browse?.favorite?.rows[2]} />
+          {browse?.favorite?.rows.slice(0, 3).map((favorite) => (
+            <GameHover key={favorite.id} game={favorite} />
+          ))}
         </StyleMostFavoritedGames>
         <GameHover game={browse?.comment?.rows[0]} />
         <StyleMostRatedGamesLeft>
           <GameHover game={browse?.rate?.rows[0]} />
           <GameHover game={browse?.rate?.rows[2]} />
-          <GameHover game={browse?.rate?.rows[3]} />
+          <GameHover game={browse?.rate?.rows[4]} />
         </StyleMostRatedGamesLeft>
         <StyleMostRatedGamesRight>
           <GameHover game={browse?.rate?.rows[1]} />
-          <GameHover game={browse?.rate?.rows[4]} />
+          <GameHover game={browse?.rate?.rows[3]} />
           <GameHover game={browse?.rate?.rows[5]} />
         </StyleMostRatedGamesRight>
       </StyleGrid>
       <StyleMostPricedGames>
-        <GameHover game={browse?.price?.rows[0]} />
-        <GameHover game={browse?.price?.rows[1]} />
-        <GameHover game={browse?.price?.rows[2]} />
-        <GameHover game={browse?.price?.rows[3]} />
-        <GameHover game={browse?.price?.rows[4]} />
+        {browse?.price?.rows.slice(0, 5).map((favorite) => (
+          <GameHover key={favorite.id} game={favorite} />
+        ))}
       </StyleMostPricedGames>
     </>
   );
