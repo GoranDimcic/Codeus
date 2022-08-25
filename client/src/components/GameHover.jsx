@@ -2,8 +2,10 @@ import Button from "../components/Button";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import useGamesStore from "../store/games";
+import useAuthStore from "../store/auth";
 
 const GameHover = ({ game }) => {
+  const { token } = useAuthStore();
   const cart = useGamesStore((state) => state.cart);
   const addToCart = useGamesStore((state) => state.addToCart);
   const removeFromCart = useGamesStore((state) => state.removeFromCart);
@@ -18,16 +20,20 @@ const GameHover = ({ game }) => {
       <img src={game?.mainPhoto}></img>
       <StyleHover>
         <Button text="DETAILS" onClick={() => gameDetail()} />
-        {cart.find((cart) => cart.id === game?.id) ? (
-          <Button
-            onClick={() => removeFromCart(game)}
-            text="Remove from cart"
-          />
+        {token ? (
+          cart.find((cart) => cart.id === game?.id) ? (
+            <Button
+              onClick={() => removeFromCart(game)}
+              text="Remove from cart"
+            />
+          ) : (
+            <Button
+              onClick={() => addToCart(game)}
+              text={`Add to cart $${game?.price}`}
+            />
+          )
         ) : (
-          <Button
-            onClick={() => addToCart(game)}
-            text={`Add to cart $${game?.price}`}
-          />
+          <></>
         )}
       </StyleHover>
     </StyleDiv>

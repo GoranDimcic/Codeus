@@ -76,8 +76,8 @@ const SingleGame = ({ game, onchange, setGames }) => {
           <a href={[`/game/${game.id}`]}>
             <h2>{game.gameTitle}</h2>
           </a>
-          {token &&
-            (cart.find((cart) => cart.id === game.id) ? (
+          {token ? (
+            cart.find((cart) => cart.id === game.id) ? (
               <Button
                 onClick={() => removeGameFromCart(game)}
                 text="Remove from cart"
@@ -87,7 +87,10 @@ const SingleGame = ({ game, onchange, setGames }) => {
                 onClick={() => addToCart(game)}
                 text={`Add to cart $${game.price}`}
               />
-            ))}
+            )
+          ) : (
+            <></>
+          )}
         </StyleGameDescription>
         {game.typename?.join(" - ")}
         {token && (

@@ -27,12 +27,15 @@ const Search = () => {
   const [searchData, setSearchData] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [searchFields, setSearchFields] = useState({
+    type: [],
+    platform: [],
+  });
   const [filter, setFilter] = useState({
     type: [],
     platform: [],
-    rating: 3,
     priceMin: 0,
-    priceMax: 5,
+    priceMax: 30,
   });
 
   useEffect(() => {
@@ -53,13 +56,13 @@ const Search = () => {
 
   useEffect(() => {
     ApiClient.get("/search/types").then((typeResponse) => {
-      setFilter((oldValue) => ({
+      setSearchFields((oldValue) => ({
         ...oldValue,
         type: typeResponse.data.data,
       }));
     });
     ApiClient.get("/search/platforms").then((platformResponse) => {
-      setFilter((oldValue) => ({
+      setSearchFields((oldValue) => ({
         ...oldValue,
         platform: platformResponse.data.data,
       }));
@@ -98,36 +101,36 @@ const Search = () => {
   };
 
   // const onTypeChanged = (typeId) => {
-  //   const alreadySelected = filter.type.includes(typeId);
+  //   const alreadySelected = searchFields.type.includes(typeId);
   //   console.log(alreadySelected);
   //   if (alreadySelected) {
-  //     const updatedTypes = filter.type.filter((id) => id !== typeId);
-  //     setFilter({
-  //       ...filter,
+  //     const updatedTypes = searchFields.type.searchFields((id) => id !== typeId);
+  //     setSearchFields({
+  //       ...searchFields,
   //       type: updatedTypes,
   //     });
   //   } else {
-  //     setFilter({
-  //       ...filter,
-  //       type: [...filter.type, typeId],
+  //     setSearchFields({
+  //       ...searchFields,
+  //       type: [...searchFields.type, typeId],
   //     });
   //   }
   // };
 
   // const onPlatformChanged = (platformId) => {
-  //   const alreadySelected = filter.platform.includes(platformId);
+  //   const alreadySelected = searchFields.platform.includes(platformId);
   //   if (alreadySelected) {
-  //     const updatedPlatforms = filter.platform.filter(
+  //     const updatedPlatforms = searchFields.platform.searchFields(
   //       (id) => id !== platformId
   //     );
-  //     setFilter({
-  //       ...filter,
+  //     setSearchFields({
+  //       ...searchFields,
   //       platform: updatedPlatforms,
   //     });
   //   } else {
-  //     setFilter({
-  //       ...filter,
-  //       platform: [...filter.platform, platformId],
+  //     setSearchFields({
+  //       ...searchFields,
+  //       platform: [...searchFields.platform, platformId],
   //     });
   //   }
   // };
@@ -151,12 +154,14 @@ const Search = () => {
       </StyleSearch>
       <StyleFilter>
         <StyleGameType>
-          {filter.type.map((t, index) => {
+          {searchFields.type.map((t, index) => {
             return (
               <div
                 key={index}
-                className={filter.type.includes(t.id) ? "selected" : ""}
-                // onClick={() => onTypeChanged(t.id)}
+                className={searchFields.type.includes(t.id) ? "selected" : ""}
+                onClick={(e) => {
+                  console.log(e.target.textContent);
+                }}
               >
                 {t.name}
               </div>
@@ -165,12 +170,16 @@ const Search = () => {
         </StyleGameType>
         <StyleMiddle>
           <StylePlatform>
-            {filter.platform.map((p, index) => {
+            {searchFields.platform.map((p, index) => {
               return (
                 <div
                   key={index}
-                  className={filter.platform.includes(p.id) ? "selected" : ""}
-                  // onClick={() => onPlatformChanged(p.id)}
+                  className={
+                    searchFields.platform.includes(p.id) ? "selected" : ""
+                  }
+                  onClick={(e) => {
+                    console.log(e.target.textContent);
+                  }}
                 >
                   {p.name}
                 </div>
@@ -181,7 +190,16 @@ const Search = () => {
         </StyleMiddle>
         <StylePrice>
           {prices.map((p, index) => {
-            return <div key={index}>{p}</div>;
+            return (
+              <div
+                key={index}
+                onClick={(e) => {
+                  console.log(e.target.textContent);
+                }}
+              >
+                {p}
+              </div>
+            );
           })}
         </StylePrice>
       </StyleFilter>
